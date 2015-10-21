@@ -1,0 +1,413 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>CompanyProfile</h2>*@
+
+<script src="../../Scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
+
+
+
+
+<script  type="text/javascript">
+    function insertdata() {
+
+        if ($('#txtcompanyname').val() == "") {
+            alert('Plz Enter Company Name..');
+            return;
+        }
+        var Company_Name = $('#txtcompanyname').val();
+
+        var Address = $('#txtaddress').val();
+        if (Address == "") {
+            alert('Plz Enter Address..');
+            return;
+        }
+
+
+
+        var ManagingDirector = $('#txtpersonincharge').val();
+        if (ManagingDirector == "") {
+            alert('Plz Enter Person in Chaarge..');
+            return;
+        }
+
+        var ContactNo = $('#txtcontactno').val();
+        if (isNaN($('#txtcontactno').val())) {
+            alert("Sim No Should be Numeric....");
+            return;
+        }
+        if ($('#txtcontactno').val() == "") {
+            alert('Plz Enter Contact..');
+            return;
+        }
+        if ($('#txtcontactno').val().length != 10 && $('#txtcontactno').val().length != 0) {
+            alert("Contact No Not vailid");
+            return;
+        }
+
+
+        var CustSupportNo = $('#txtsupportno').val();
+        if (CustSupportNo == "") {
+            alert('Plz Enter Support NO..');
+            return;
+        }
+
+        var EmailID = $('#txtemailid').val();
+        if (EmailID == "") {
+            alert('Plz Enter Email ID..');
+            return;
+        }
+
+        var WebSite = $('#txtwebsite').val();
+        if (WebSite == "") {
+            alert('Plz Enter WebSite..');
+            return;
+        }
+
+
+        var bankdetails = $('#txtbankdetails').val();
+        if (bankdetails == "") {
+            alert('Plz Enter Bank A/c Details..');
+            return;
+        }
+        if (isNaN($('#txtbankdetails').val())) {
+            alert("Bank A/c Details No Should be Numeric....");
+            return;
+        }
+
+
+        var panno = $('#txtpanno').val();
+        if (panno == "") {
+            alert('Plz Enter PAN NO..');
+            return;
+        }
+
+        var servicetax = $('#txttaxno').val();
+
+        if (servicetax == "") {
+            alert('Plz Enter Tax No..');
+            return;
+        }
+
+
+        $.post('/CompanyProfile/insertcompanyvalidate', { CompanyName: Company_Name, Address: Address, ManagingDirector: ManagingDirector,
+            ContactNo: ContactNo, CustSupportNo: CustSupportNo, EmailID: EmailID, WebSite: WebSite, bankdetails: bankdetails, panno: panno, servicetax: servicetax
+        }, function (data) { chk(data); }).error(function (data) { chk(data); });
+    }
+    function chk(abc) {
+
+        alert(abc);
+        clearr();
+    }
+
+    function show() {
+        var val = $('#cmbopName').val();
+        if (val == -1) {
+            alert('Plz  Select..');
+            return;
+        }
+
+
+        $.post('/CompanyProfile/searchdata', { strval: val }, function (data) { chkShow(data); }).error(function (data) { chkShow(data); });
+    }
+
+    function chkShow(abc) {
+        GData = abc;
+        BuildTable(GData, 0);
+    }
+    function BuildTable(msg, eid) {
+
+        var table = "<table style=width:95%;><thead><tr>"
+              + "<th style=background-color:#FAEBD7;width:100px; >ID</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >COMPANY NAME</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >ADDRESS</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >CONTACT NO</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >MAIL-ID</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >PAN NO</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >SERVICE TAX</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >Opration</th>"
+            + "</thead><tbody>";
+        //     
+        //=======================================================================================================================================
+        for (var cd in msg) {
+
+            var row = "<tr ondblclick=Dialog(" + msg[cd].cmpid + "," + msg[cd].CompanyName + ",'" + msg[cd].Address + "','" + msg[cd].ContactNo + "'," + msg[cd].EmailID + ",'" + msg[cd].panno + "','" + msg[cd].servicetax + "')  >";
+            row += '<td style=background-color:Silver;width:100px; >' + msg[cd].cmpid + '</td>';
+            if (eid != msg[cd].cmpid) {
+                //  row += "<td class='eid' style=background-color:Silver;width:100px; >" + msg[cd].sno + "</td>";
+                //  row += "<td class='eidbilno' style=background-color:Silver;width:60px; >" + msg[cd].cmpid + "</td>";
+                row += "<td class='eiditemtype' style=background-color:Silver;width:100px; >" + msg[cd].CompanyName + "</td>";
+                row += "<td class='esimno' style=background-color:Silver;width:100px; >" + msg[cd].Address + "</td>";
+                row += "<td class='ecountry' style=background-color:Silver;width:100px; >" + msg[cd].ContactNo + "</td>";
+                row += "<td class='ephoneno' style=background-color:Silver;width:100px; >" + msg[cd].EmailID + "</td>";
+                row += "<td class='eapn' style=background-color:Silver;width:70px; >" + msg[cd].panno + "</td>";
+                row += "<td class='eapn' style=background-color:Silver;width:70px; >" + msg[cd].servicetax + "</td>";
+                row += "<td align=center style=background-color:Silver;width:100px; >"
+                   + "<input onclick=editRecord(" + msg[cd].cmpid + ") id='btnEdit' type='button' value='Edit' /> </td>";
+
+            }
+            else {
+
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtbillno_U type=text value=' + msg[cd].cmpid + ' /></td>';
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtAddress_U type=text value=' + msg[cd].Address
+                      + ' /> </td>';
+
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtContactNo_U type=text value=' + msg[cd].ContactNo
+                      + ' /> </td>';
+
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtEmailID_U type=text value=' + msg[cd].EmailID + ' /></td>';
+
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtpanno_U type=text value=' + msg[cd].panno
+                      + ' /> </td>';
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtservicetax_U type=text value=' + msg[cd].servicetax
+                      + ' /> </td>';
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                + "<input onclick=updateRecord(" + msg[cd].cmpid + ") id='btnUpdate' type='button' value='Update' />"
+                + " <input onclick=cancelRecord() id='btnCancel' type='button' value='Cancel' /> </td>";
+            }
+            row += '</tr>';
+            table += row;
+        }
+        //==============================================================================================================================
+        var row = "<tr >";
+        row += "<td colspan=7 style=background-color:Silver;width:100px; >";
+        for (var i = 1; i <= msg.noOfPages; i++) {
+            row += "<a href=# onclick='show(" + i + ")'>" + i + "</a> &nbsp;";
+        }
+        //  row += '<td colspan=8 style=background-color:Silver;width:100px; ><input id="btnSave" onClick="deleteChkRecord();" type="button" value="Save" /></td>';
+
+        row += "</td>";
+        row += "</tr>";
+        table += row;
+        table += "</tbody></table>";
+        $('#div1').html(table);
+    }
+
+
+    function editRecord(eid) {
+        BuildTable(GData, eid);
+    }
+    function cancelRecord() {
+        BuildTable(GData, 0);
+    }
+    function updateRecord(eid) {
+
+        var sno = eid;
+        var Address = $('#txtAddress_U').val();
+        var ContactNo = $('#txtContactNo_U').val();
+        var EMAILID = $('#txtEmailID_U').val();
+        var panno = $('#txtpanno_U').val();
+        var servicetax = $('#txtservicetax_U').val();
+
+        $.post('/CompanyProfile/UpdateCompanyValidate',
+           { cmpid: sno, Address: Address, ContactNo: ContactNo, EmailID: EMAILID, panno: panno, servicetax: servicetax },
+            function (data) { chkupdateRecord(data); }).error(function (data) { chkupdateRecord(data); });
+    }
+    function chkupdateRecord(abc) {
+
+        alert(abc);
+        show();
+    }
+
+    function email() {
+
+        var email_name = $('#txtemailid').val();
+        $.post('/CustomerEntry/Emailvalidate', { email: email_name }, function (data) { chkemail(data); }).error(function (data) { chkemail(data); });
+    }
+
+    function chkemail(abc) {
+
+        if (abc == "Email id Not Valid") {
+
+            alert(abc);
+            return;
+
+        }
+
+    }
+
+    function websitesp() {
+
+        var websp = $('#txtwebsite').val();
+        $.post('/CompanyProfile/WEBlvalidate', { websp: websp }, function (data) { chkwebsp(data); }).error(function (data) { chkwebsp(data); });
+    }
+
+    function chkwebsp(abc) {
+
+        if (abc == "invalid WEBSITE address") {
+
+            alert(abc);
+            return;
+
+        }
+
+    }
+
+
+
+
+    $(document).ready(function () { chop(); });
+
+    function chop() {
+        rdentry.checked = true;
+        chredioop();
+    }
+    function chredioop() {
+        if ($("#rdentry").is(":checked")) {
+            $("#myform").show();
+            $("#d3").hide();
+        }
+        else if ($("#rdsearch").is(":checked")) {
+            //        $("#d2").hide();
+            $("#d3").show();
+            $("#myform").hide();
+        }
+
+    }
+
+
+
+    function clearr() {
+        txtaddress.value = ""; txtbankdetails.value = ""; txtcompanyname.value = ""; txtcontactno.value = ""; txtemailid.value = "";
+        txtpanno.value = ""; txtpersonincharge.value = ""; txtsupportno.value = "";
+        txttaxno.value = ""; txtwebsite.value = "";
+    }
+   
+    </script>
+
+    <div align="center" style = "border-color:transparent;" >
+
+<div align="center" style=" width:95%; border:2;  border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">COMPANY PROFILE</h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+
+</div>
+
+<div align="center" style= "width:95% ;  ">
+
+    <input id="rdentry" onclick="chredioop()" type="radio" name ="a" > ENTRY   </input>
+    
+    <input id="rdsearch" type="radio" onclick="chredioop()" name = "a" /> SEARCH</input>
+    </div>
+
+<div style="width:100% ; text-align:center" id = "myform" >
+    <div  style="width:90% ; margin-top:25px; margin-left:5%;" >
+   
+    <table  align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;border-collapse:collapse; 
+         font-size: medium; margin :auto; width: 90%; height:100%">
+
+        <tr>
+        <td class="style8">Company Name. * : </td>
+        <td class="style2" colspan="3">
+         <input id="txtcompanyname" type="text" style = "Width:97%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder ="ENTER COMPANY NAME" />          
+                     
+       </td>
+
+      </tr>
+       
+        <tr><td class="style8">Address * : </td><td class="style9" colspan ="3">
+         <input id="txtaddress" type="text" style = "Width:97%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER ADDRESS" />          
+             
+        </td>
+     
+      </tr> <tr>  <td class="style13">Person In Charge * : </td>
+         
+         <td>
+          <input id="txtpersonincharge" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER PERSON IN CHARGE" />          
+       
+        </td>
+        
+        
+      
+
+        <td class="style8">Contact No.  * : </td><td class="style10">
+         <input id="txtcontactno" maxlength="10" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER CONTACT NO." />          
+           
+        </td>
+
+        </tr>
+        
+        <tr>
+        <td class="style6">Support No. * : </td><td class="style12">
+         <input id="txtsupportno" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER SUPPORT NO." />          
+              
+        </td>
+         <td>Email-Id * : </td><td>
+          <input id="txtemailid" onchange = "email()" name="field" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER EMAIL-Id" />          
+   
+        </td>
+        </tr>
+        
+     <tr>
+        <td class="style6">Web Site. * : </td><td class="style12">
+         <input id="txtwebsite" onchange="websitesp();" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER WEB SITE" />          
+              
+        </td>
+         <td>Bank A/c Details * : </td><td>
+          <input id="txtbankdetails" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER BANK DETAILS" />          
+              
+        </td>
+        </tr>
+        <tr>
+        <td class="style6">PAN No. * : </td><td class="style12">
+         <input id="txtpanno" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER PAN NO" />          
+     
+          
+        </td>
+         <td>Tax No. * : </td><td>
+          <input id="txttaxno" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER TAX " />          
+              
+        </td>
+        </tr>
+        <tr>
+            <td class="style1" align ="center" colspan="4" rowspan="1">
+                <input id="btnSubmit" type="button" onclick = "insertdata()" value="Submit" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+           <input id="btnClear" type="button" onclick ="clearr()" value="Cancel" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+         
+          </td>
+                </tr>
+                <tr><td colspan="4"></td></tr>
+    </table>   
+        <br />   
+        
+          
+    </div>&nbsp;
+    </div>
+
+    <div id="d3" align="center">
+    <table width = "60%" border = "1px">
+    <tr><td><select id = "cmbopName" style = "width:90%">
+    <option value="-1">SELECT</option>
+     <option value="A-D">A-D</option>
+      <option value="E-H">E-H</option>
+       <option value="I-P">I-P</option>
+        <option value="Q-Z">Q-Z</option>         
+    </select></td>
+    <td align="center"> <input id="btnsearch" type="button"  onclick = "show()"  value="SEARCH" style= "width:70% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" /></td>
+    </tr>
+    </table>
+    <br />
+     <div align="center" id = "div1">
+    
+    </div>
+    </div>
+  
+    
+   
+
+    

@@ -1,0 +1,1521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="inventoryforwebappModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="inventoryforwebappModelStoreContainer">
+    <EntitySet Name="AddNewTable" EntityType="inventoryforwebappModel.Store.AddNewTable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ADDTARIF" EntityType="inventoryforwebappModel.Store.ADDTARIF" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="billexcel" EntityType="inventoryforwebappModel.Store.billexcel" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BillUpload" EntityType="inventoryforwebappModel.Store.BillUpload" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChallanIn" EntityType="inventoryforwebappModel.Store.ChallanIn" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="challanout" EntityType="inventoryforwebappModel.Store.challanout" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="challanoutcounter" EntityType="inventoryforwebappModel.Store.challanoutcounter" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="challanoutitemcounter" EntityType="inventoryforwebappModel.Store.challanoutitemcounter" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="challanoutothers" EntityType="inventoryforwebappModel.Store.challanoutothers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClientMaster" EntityType="inventoryforwebappModel.Store.ClientMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClientMasterothers" EntityType="inventoryforwebappModel.Store.ClientMasterothers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClientmasterTFNO" EntityType="inventoryforwebappModel.Store.ClientmasterTFNO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanyProfile" EntityType="inventoryforwebappModel.Store.CompanyProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="consigneename" EntityType="inventoryforwebappModel.Store.consigneename" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CountryList" EntityType="inventoryforwebappModel.Store.CountryList" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="customeraccounter" EntityType="inventoryforwebappModel.Store.customeraccounter" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="customerdetailstable" EntityType="inventoryforwebappModel.Store.customerdetailstable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Executivecounter" EntityType="inventoryforwebappModel.Store.Executivecounter" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LostSimData" EntityType="inventoryforwebappModel.Store.LostSimData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MAILSETTINGTABLE" EntityType="inventoryforwebappModel.Store.MAILSETTINGTABLE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="mobile_topup" EntityType="inventoryforwebappModel.Store.mobile_topup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NewSimRequest" EntityType="inventoryforwebappModel.Store.NewSimRequest" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pdffiles" EntityType="inventoryforwebappModel.Store.pdffiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlanTable" EntityType="inventoryforwebappModel.Store.PlanTable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="prefixsettings" EntityType="inventoryforwebappModel.Store.prefixsettings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PROFILE_TABLE" EntityType="inventoryforwebappModel.Store.PROFILE_TABLE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PurchaseEntry" EntityType="inventoryforwebappModel.Store.PurchaseEntry" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Purchaseentrycounter" EntityType="inventoryforwebappModel.Store.Purchaseentrycounter" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Purchaseentryitemcounter" EntityType="inventoryforwebappModel.Store.Purchaseentryitemcounter" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PurchaseEntryotherstab" EntityType="inventoryforwebappModel.Store.PurchaseEntryotherstab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleSettings_Tab" EntityType="inventoryforwebappModel.Store.RoleSettings_Tab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Rollsetting_subtab" EntityType="inventoryforwebappModel.Store.Rollsetting_subtab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="simreplacementtab" EntityType="inventoryforwebappModel.Store.simreplacementtab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Todolist" EntityType="inventoryforwebappModel.Store.Todolist" store:Type="Tables" store:Schema="dbo" store:Name="Todolist">
+      <DefiningQuery>SELECT 
+      [Todolist].[todolistid] AS [todolistid], 
+      [Todolist].[Alertdate] AS [Alertdate], 
+      [Todolist].[Alerttime] AS [Alerttime], 
+      [Todolist].[Message] AS [Message], 
+      [Todolist].[username] AS [username]
+      FROM [dbo].[Todolist] AS [Todolist]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="User_Name" EntityType="inventoryforwebappModel.Store.User_Name" store:Type="Tables" store:Schema="dbo" store:Name="User_Name">
+      <DefiningQuery>SELECT 
+      [User_Name].[date] AS [date], 
+      [User_Name].[UserType] AS [UserType], 
+      [User_Name].[Branchcode] AS [Branchcode], 
+      [User_Name].[partnername] AS [partnername], 
+      [User_Name].[User_Code] AS [User_Code], 
+      [User_Name].[UserName] AS [UserName], 
+      [User_Name].[Password] AS [Password], 
+      [User_Name].[address] AS [address], 
+      [User_Name].[mobileno] AS [mobileno], 
+      [User_Name].[emailid] AS [emailid], 
+      [User_Name].[rolesetting] AS [rolesetting], 
+      [User_Name].[valueassign] AS [valueassign], 
+      [User_Name].[updatedata] AS [updatedata]
+      FROM [dbo].[User_Name] AS [User_Name]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="userdetailstable" EntityType="inventoryforwebappModel.Store.userdetailstable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="vouchertable" EntityType="inventoryforwebappModel.Store.vouchertable" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_BillUpload_ClientMaster" Association="inventoryforwebappModel.Store.FK_BillUpload_ClientMaster">
+      <End Role="ClientMaster" EntitySet="ClientMaster" />
+      <End Role="BillUpload" EntitySet="BillUpload" />
+    </AssociationSet>
+    <AssociationSet Name="FK_challanout_CountryList" Association="inventoryforwebappModel.Store.FK_challanout_CountryList">
+      <End Role="CountryList" EntitySet="CountryList" />
+      <End Role="challanout" EntitySet="challanout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_challanout_PurchaseEntry" Association="inventoryforwebappModel.Store.FK_challanout_PurchaseEntry">
+      <End Role="PurchaseEntry" EntitySet="PurchaseEntry" />
+      <End Role="challanout" EntitySet="challanout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_challanoutothers_PurchaseEntryotherstab" Association="inventoryforwebappModel.Store.FK_challanoutothers_PurchaseEntryotherstab">
+      <End Role="PurchaseEntryotherstab" EntitySet="PurchaseEntryotherstab" />
+      <End Role="challanoutothers" EntitySet="challanoutothers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMaster_challanout" Association="inventoryforwebappModel.Store.FK_ClientMaster_challanout">
+      <End Role="challanout" EntitySet="challanout" />
+      <End Role="ClientMaster" EntitySet="ClientMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMaster_ClientMaster" Association="inventoryforwebappModel.Store.FK_ClientMaster_ClientMaster">
+      <End Role="CountryList" EntitySet="CountryList" />
+      <End Role="ClientMaster" EntitySet="ClientMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMaster_customerdetailstable" Association="inventoryforwebappModel.Store.FK_ClientMaster_customerdetailstable">
+      <End Role="customerdetailstable" EntitySet="customerdetailstable" />
+      <End Role="ClientMaster" EntitySet="ClientMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMasterothers_challanoutothers" Association="inventoryforwebappModel.Store.FK_ClientMasterothers_challanoutothers">
+      <End Role="challanoutothers" EntitySet="challanoutothers" />
+      <End Role="ClientMasterothers" EntitySet="ClientMasterothers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMasterothers_PurchaseEntryotherstab" Association="inventoryforwebappModel.Store.FK_ClientMasterothers_PurchaseEntryotherstab">
+      <End Role="PurchaseEntryotherstab" EntitySet="PurchaseEntryotherstab" />
+      <End Role="ClientMasterothers" EntitySet="ClientMasterothers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LostSimData_PurchaseEntry" Association="inventoryforwebappModel.Store.FK_LostSimData_PurchaseEntry">
+      <End Role="PurchaseEntry" EntitySet="PurchaseEntry" />
+      <End Role="LostSimData" EntitySet="LostSimData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NewSimRequest_CountryList" Association="inventoryforwebappModel.Store.FK_NewSimRequest_CountryList">
+      <End Role="CountryList" EntitySet="CountryList" />
+      <End Role="NewSimRequest" EntitySet="NewSimRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pdffiles_CountryList" Association="inventoryforwebappModel.Store.FK_pdffiles_CountryList">
+      <End Role="CountryList" EntitySet="CountryList" />
+      <End Role="pdffiles" EntitySet="pdffiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseEntry_CountryList" Association="inventoryforwebappModel.Store.FK_PurchaseEntry_CountryList">
+      <End Role="CountryList" EntitySet="CountryList" />
+      <End Role="PurchaseEntry" EntitySet="PurchaseEntry" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AddNewTable">
+    <Key>
+      <PropertyRef Name="ExecCode" />
+    </Key>
+    <Property Name="AddNewid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="LDate" Type="date" />
+    <Property Name="type" Type="varchar" MaxLength="100" />
+    <Property Name="ExecCode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="ExecName" Type="varchar(max)" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="email" Type="varchar" MaxLength="150" />
+    <Property Name="Phone" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ADDTARIF">
+    <Key>
+      <PropertyRef Name="SNO" />
+    </Key>
+    <Property Name="SNO" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TARIFF_CODE" Type="varchar" MaxLength="200" />
+    <Property Name="COUNTRY" Type="varchar" MaxLength="200" />
+    <Property Name="PLANTYPE" Type="varchar" MaxLength="100" />
+    <Property Name="CURRENCY" Type="varchar" MaxLength="100" />
+    <Property Name="CHARGESTYPE" Type="varchar" MaxLength="200" />
+    <Property Name="VALUE" Type="varchar" MaxLength="100" />
+    <Property Name="TALK_VALUE" Type="varchar" MaxLength="200" />
+    <Property Name="PERMINCHARGES" Type="varchar" MaxLength="100" />
+    <Property Name="VALIDITY_DAYS" Type="varchar" MaxLength="100" />
+    <Property Name="COUNTRY_FROM" Type="varchar" MaxLength="100" />
+    <Property Name="COUNTRY_TO" Type="varchar" MaxLength="100" />
+    <Property Name="A" Type="varchar" MaxLength="200" />
+    <Property Name="B" Type="varchar" MaxLength="200" />
+    <Property Name="C" Type="varchar" MaxLength="200" />
+    <Property Name="D" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="billexcel">
+    <Key>
+      <PropertyRef Name="cafno" />
+    </Key>
+    <Property Name="billexcel" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cafno" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="mobileno" Type="varchar" MaxLength="100" />
+    <Property Name="username" Type="varchar" MaxLength="200" />
+    <Property Name="country" Type="varchar" MaxLength="200" />
+    <Property Name="excelfilename" Type="varchar(max)" />
+    <Property Name="total" Type="varchar" MaxLength="200" />
+    <Property Name="discount" Type="varchar" MaxLength="200" />
+    <Property Name="grandtotal" Type="varchar" MaxLength="200" />
+    <Property Name="loginuser" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="BillUpload">
+    <Key>
+      <PropertyRef Name="billid" />
+    </Key>
+    <Property Name="billid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cafno" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="amount" Type="varchar" MaxLength="50" />
+    <Property Name="particulars" Type="varchar(max)" />
+    <Property Name="date" Type="varchar" MaxLength="50" />
+    <Property Name="caffile" Type="varchar(max)" />
+    <Property Name="billfile" Type="varchar(max)" />
+    <Property Name="execcode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ChallanIn">
+    <Key>
+      <PropertyRef Name="pkchallanin" />
+    </Key>
+    <Property Name="chdate" Type="varchar" MaxLength="50" />
+    <Property Name="pkchallanin" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="fkchallanoutid" Type="bigint" />
+    <Property Name="ChallanNo" Type="varchar" MaxLength="50" />
+    <Property Name="SimNo" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+    <Property Name="ExecName" Type="varchar" MaxLength="50" />
+    <Property Name="LoginUsercode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="challanout">
+    <Key>
+      <PropertyRef Name="pkchallanid" />
+    </Key>
+    <Property Name="challanno" Type="varchar" MaxLength="50" />
+    <Property Name="cdate" Type="datetime" />
+    <Property Name="country" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="itemtype" Type="varchar" MaxLength="50" />
+    <Property Name="others" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="executivenameto" Type="varchar" MaxLength="100" />
+    <Property Name="executivename" Type="varchar" MaxLength="200" />
+    <Property Name="pkchallanid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="CountryCode" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="givento" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="challanoutcounter">
+    <Key>
+      <PropertyRef Name="challanoutid" />
+    </Key>
+    <Property Name="challanoutid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="challanoutitemcounter">
+    <Key>
+      <PropertyRef Name="challanoutitemid" />
+    </Key>
+    <Property Name="challanoutitemid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="challanoutothers">
+    <Key>
+      <PropertyRef Name="pkchallanid" />
+    </Key>
+    <Property Name="challanno" Type="varchar" MaxLength="50" />
+    <Property Name="cdate" Type="datetime" />
+    <Property Name="sno" Type="varchar" MaxLength="50" />
+    <Property Name="itemtype" Type="varchar" MaxLength="50" />
+    <Property Name="itemname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Imeino" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="executivenameto" Type="varchar" MaxLength="200" />
+    <Property Name="executivename" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="pkchallanid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="branchcode" Type="varchar" MaxLength="100" />
+    <Property Name="partnersname" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ClientMaster">
+    <Key>
+      <PropertyRef Name="cafno" />
+    </Key>
+    <Property Name="clmasterdate" Type="date" />
+    <Property Name="cafno" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="customeracno" Type="varchar" MaxLength="100" />
+    <Property Name="fkchallanoutid" Type="bigint" />
+    <Property Name="pdffile" Type="varchar(max)" />
+    <Property Name="User_Name" Type="varchar" MaxLength="200" />
+    <Property Name="Father_Name" Type="varchar" MaxLength="200" />
+    <Property Name="Category" Type="varchar" MaxLength="30" />
+    <Property Name="Payment_Mode" Type="varchar" MaxLength="100" />
+    <Property Name="Amount" Type="decimal" Scale="3" />
+    <Property Name="Bank" Type="varchar" MaxLength="50" />
+    <Property Name="Cheque_No" Type="varchar" MaxLength="10" />
+    <Property Name="Sim_No" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="mobileno" Type="varchar" MaxLength="50" />
+    <Property Name="ItemType" Type="varchar" MaxLength="50" />
+    <Property Name="Plan" Type="varchar" MaxLength="50" />
+    <Property Name="Validity" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="100" />
+    <Property Name="Start_Date" Type="date" />
+    <Property Name="End_Date" Type="date" />
+    <Property Name="Sim_Return_Date" Type="date" />
+    <Property Name="Tarrif_Detail" Type="varchar" MaxLength="200" />
+    <Property Name="Executive_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Executive_Code" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="tfno" Type="varchar" MaxLength="200" />
+    <Property Name="REMARK" Type="varchar(max)" />
+    <Property Name="itemname" Type="varchar" MaxLength="100" />
+    <Property Name="imeino" Type="varchar" MaxLength="100" />
+    <Property Name="amtstatus" Type="varchar" MaxLength="100" />
+    <Property Name="neft" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ClientMasterothers">
+    <Key>
+      <PropertyRef Name="cafno" />
+    </Key>
+    <Property Name="cafno" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="customeracno" Type="varchar" MaxLength="100" />
+    <Property Name="fkchallanoutid" Type="bigint" />
+    <Property Name="User_Name" Type="varchar" MaxLength="20" />
+    <Property Name="Father_Name" Type="varchar" MaxLength="20" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+    <Property Name="Payment_Mode" Type="varchar" MaxLength="100" />
+    <Property Name="Amount" Type="decimal" Scale="3" />
+    <Property Name="Bank" Type="varchar" MaxLength="50" />
+    <Property Name="Cheque_No" Type="varchar" MaxLength="10" />
+    <Property Name="itemname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="imeino" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Plan" Type="varchar" MaxLength="50" />
+    <Property Name="Executive_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Executive_Code" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="STATUS" Type="varchar" MaxLength="200" />
+    <Property Name="itemtype" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ClientmasterTFNO">
+    <Key>
+      <PropertyRef Name="ClientmasterTFNO" />
+    </Key>
+    <Property Name="ClientmasterTFNO" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CompanyProfile">
+    <Key>
+      <PropertyRef Name="cmpid" />
+    </Key>
+    <Property Name="cmpid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="ManagingDirector" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="100" />
+    <Property Name="CustSupportNo" Type="varchar" MaxLength="100" />
+    <Property Name="PunchLine" Type="nvarchar(max)" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="100" />
+    <Property Name="bankdetails" Type="varchar(max)" />
+    <Property Name="panno" Type="varchar" MaxLength="100" />
+    <Property Name="servicetax" Type="varchar" MaxLength="100" />
+    <Property Name="loginusercode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="consigneename">
+    <Key>
+      <PropertyRef Name="cmpid" />
+    </Key>
+    <Property Name="cmpid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="ManagingDirector" Type="varchar" MaxLength="200" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="100" />
+    <Property Name="CustSupportNo" Type="varchar" MaxLength="100" />
+    <Property Name="PunchLine" Type="nvarchar(max)" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="200" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="200" />
+    <Property Name="loginusercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CountryList">
+    <Key>
+      <PropertyRef Name="Country" />
+    </Key>
+    <Property Name="Country" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="isdcode" Type="varchar" MaxLength="50" />
+    <Property Name="Indiacalling" Type="varchar" MaxLength="50" />
+    <Property Name="countrycode" Type="varchar" MaxLength="200" />
+    <Property Name="currency" Type="varchar" MaxLength="200" />
+    <Property Name="importantnotice" Type="varchar(max)" />
+    <Property Name="impnotice" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="customeraccounter">
+    <Key>
+      <PropertyRef Name="customeracid" />
+    </Key>
+    <Property Name="customeracid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="customerdetailstable">
+    <Key>
+      <PropertyRef Name="customeracno" />
+    </Key>
+    <Property Name="customerdetailstableid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="customeracno" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="customername" Type="varchar" MaxLength="200" />
+    <Property Name="customeraddress" Type="varchar" MaxLength="300" />
+    <Property Name="emailid" Type="varchar" MaxLength="300" />
+    <Property Name="website" Type="varchar" MaxLength="300" />
+    <Property Name="passportno" Type="varchar" MaxLength="300" />
+    <Property Name="mobileno" Type="varchar" MaxLength="300" />
+    <Property Name="alternateno" Type="varchar" MaxLength="300" />
+    <Property Name="loginusercode" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Executivecounter">
+    <Key>
+      <PropertyRef Name="Executiveid" />
+    </Key>
+    <Property Name="Executiveid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="LostSimData">
+    <Key>
+      <PropertyRef Name="SimNo" />
+    </Key>
+    <Property Name="LostDate" Type="date" />
+    <Property Name="SimNo" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="country" Type="varchar" MaxLength="100" />
+    <Property Name="Reason" Type="varchar" MaxLength="200" />
+    <Property Name="DeleteInventry" Type="varchar" MaxLength="50" />
+    <Property Name="branchcode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="partnername" Type="varchar" MaxLength="100" />
+    <Property Name="loginuser" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MAILSETTINGTABLE">
+    <Key>
+      <PropertyRef Name="MAILSETTING_ID" />
+    </Key>
+    <Property Name="MAILSETTING_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SMTP_ADDRESS" Type="varchar" MaxLength="200" />
+    <Property Name="PORT_NUMBER" Type="varchar" MaxLength="50" />
+    <Property Name="ENABLE_SSL" Type="bit" />
+    <Property Name="EMAIL_FROM" Type="varchar" MaxLength="200" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="200" />
+    <Property Name="SUBJECT" Type="varchar" MaxLength="200" />
+    <Property Name="BODY" Type="varchar(max)" />
+    <Property Name="LOGINUSER" Type="varchar" MaxLength="200" />
+    <Property Name="BRANCHCODE" Type="varchar" MaxLength="200" />
+    <Property Name="A" Type="varchar" MaxLength="200" />
+    <Property Name="B" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="mobile_topup">
+    <Key>
+      <PropertyRef Name="topid" />
+    </Key>
+    <Property Name="topid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="country" Type="varchar" MaxLength="200" />
+    <Property Name="mobileno" Type="varchar" MaxLength="100" />
+    <Property Name="topup" Type="varchar" MaxLength="200" />
+    <Property Name="topup_data" Type="varchar" MaxLength="200" />
+    <Property Name="topup_sptopup" Type="varchar" MaxLength="200" />
+    <Property Name="total" Type="varchar" MaxLength="200" />
+    <Property Name="loginuser" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="plancode" Type="varchar" MaxLength="200" />
+    <Property Name="request_date" Type="date" />
+    <Property Name="statu_s" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="NewSimRequest">
+    <Key>
+      <PropertyRef Name="requestid" />
+    </Key>
+    <Property Name="requestid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="100" />
+    <Property Name="SimNo" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Priority" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="Executive_Code" Type="varchar" MaxLength="200" />
+    <Property Name="UniqueValue" Type="varchar(max)" />
+    <Property Name="status_n" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="pdffiles">
+    <Key>
+      <PropertyRef Name="pdffileid" />
+    </Key>
+    <Property Name="pdffileid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="country" Type="varchar" MaxLength="100" />
+    <Property Name="pdffile" Type="varchar(max)" />
+    <Property Name="usernamecode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PlanTable">
+    <Key>
+      <PropertyRef Name="PLANID" />
+    </Key>
+    <Property Name="PLANID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PLAN_CODE" Type="varchar(max)" />
+    <Property Name="PLAN_NAME" Type="varchar" MaxLength="200" />
+    <Property Name="PLAN_TYPE" Type="varchar" MaxLength="200" />
+    <Property Name="COUNTRY" Type="varchar" MaxLength="200" />
+    <Property Name="PLAN_VALUE" Type="varchar" MaxLength="200" />
+    <Property Name="TALKTIMEDATA" Type="varchar" MaxLength="200" />
+    <Property Name="BRANCHCODE" Type="varchar" MaxLength="200" />
+    <Property Name="LOGINUSER" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="prefixsettings">
+    <Key>
+      <PropertyRef Name="prefixid" />
+    </Key>
+    <Property Name="prefixid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Prefixtype" Type="varchar" MaxLength="200" />
+    <Property Name="formname" Type="varchar" MaxLength="200" />
+    <Property Name="prefixnumber" Type="varchar" MaxLength="200" />
+    <Property Name="startwith" Type="varchar" MaxLength="50" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="status_s" Type="varchar" MaxLength="200" />
+    <Property Name="A" Type="varchar" MaxLength="200" />
+    <Property Name="B" Type="varchar" MaxLength="200" />
+    <Property Name="C" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PROFILE_TABLE">
+    <Key>
+      <PropertyRef Name="PROFILE_NAME" />
+    </Key>
+    <Property Name="PROFILE_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PROFILE_NAME" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="A" Type="varchar" MaxLength="200" />
+    <Property Name="B" Type="varchar" MaxLength="200" />
+    <Property Name="C" Type="varchar" MaxLength="200" />
+    <Property Name="D" Type="varchar" MaxLength="200" />
+    <Property Name="E" Type="varchar" MaxLength="200" />
+    <Property Name="F" Type="varchar" MaxLength="200" />
+    <Property Name="G" Type="varchar" MaxLength="200" />
+    <Property Name="H" Type="varchar" MaxLength="200" />
+    <Property Name="BRANCHCODE" Type="varchar" MaxLength="200" />
+    <Property Name="LOGINUSERCODE" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PurchaseEntry">
+    <Key>
+      <PropertyRef Name="SimNo" />
+    </Key>
+    <Property Name="sno" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BillNo" Type="varchar" MaxLength="200" />
+    <Property Name="Date" Type="date" />
+    <Property Name="ItemType" Type="varchar" MaxLength="50" />
+    <Property Name="SimNo" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="100" />
+    <Property Name="IndCallCode" Type="varchar" MaxLength="50" />
+    <Property Name="PUK" Type="varchar" MaxLength="50" />
+    <Property Name="Validity" Type="varchar" MaxLength="50" />
+    <Property Name="APN" Type="varchar" MaxLength="50" />
+    <Property Name="loginusercode" Type="varchar" MaxLength="200" />
+    <Property Name="SimAlotexeccode" Type="varchar" MaxLength="200" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="simcode" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="partnername" Type="varchar" MaxLength="200" />
+    <Property Name="username" Type="varchar" MaxLength="200" />
+    <Property Name="password" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Purchaseentrycounter">
+    <Key>
+      <PropertyRef Name="Purchaseid" />
+    </Key>
+    <Property Name="Purchaseid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Purchaseentryitemcounter">
+    <Key>
+      <PropertyRef Name="Purchaseitemid" />
+    </Key>
+    <Property Name="Purchaseitemid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="billno" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PurchaseEntryotherstab">
+    <Key>
+      <PropertyRef Name="IMEINO" />
+    </Key>
+    <Property Name="sno" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BillNo" Type="varchar" MaxLength="200" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="ItemType" Type="varchar" MaxLength="50" />
+    <Property Name="itemname" Type="varchar" MaxLength="100" />
+    <Property Name="loginusercode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="SimAlotexeccode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="IMEINO" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="branchcode" Type="varchar" MaxLength="100" />
+    <Property Name="partnername" Type="varchar" MaxLength="200" />
+    <Property Name="validity" Type="date" />
+    <Property Name="country" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="RoleSettings_Tab">
+    <Key>
+      <PropertyRef Name="rolesettingname" />
+    </Key>
+    <Property Name="rolesettiungid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="rolesettingname" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usertype" Type="varchar" MaxLength="100" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="usercode" Type="varchar" MaxLength="200" />
+    <Property Name="CMPID" Type="varchar" MaxLength="200" />
+    <Property Name="rolesettingcode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Rollsetting_subtab">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="formname" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="insert" Type="bit" />
+    <Property Name="view" Type="bit" />
+    <Property Name="edit" Type="bit" />
+    <Property Name="delete_1" Type="bit" />
+    <Property Name="all" Type="bit" />
+    <Property Name="rolsetingname" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usercode" Type="varchar" MaxLength="100" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="simreplacementtab">
+    <Key>
+      <PropertyRef Name="simriplacementid" />
+    </Key>
+    <Property Name="simriplacementid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="date" />
+    <Property Name="currentsimno" Type="varchar" MaxLength="100" />
+    <Property Name="cafno" Type="varchar" MaxLength="100" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="Aloatnewsimno" Type="varchar" MaxLength="100" />
+    <Property Name="execcode" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Inventory_MVC.dbo.Todolist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Todolist">
+    <Key>
+      <PropertyRef Name="todolistid" />
+    </Key>
+    <Property Name="todolistid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Alertdate" Type="bigint" />
+    <Property Name="Alerttime" Type="bigint" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="username" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Inventory_MVC.dbo.User_Name' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="User_Name">
+    <Key>
+      <PropertyRef Name="UserType" />
+      <PropertyRef Name="User_Code" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="date" Type="date" />
+    <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Branchcode" Type="varchar" MaxLength="200" />
+    <Property Name="partnername" Type="varchar" MaxLength="200" />
+    <Property Name="User_Code" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="mobileno" Type="varchar" MaxLength="50" />
+    <Property Name="emailid" Type="varchar" MaxLength="200" />
+    <Property Name="rolesetting" Type="varchar" MaxLength="200" />
+    <Property Name="valueassign" Type="varchar" MaxLength="200" />
+    <Property Name="updatedata" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="userdetailstable">
+    <Key>
+      <PropertyRef Name="userdetailstableid" />
+    </Key>
+    <Property Name="userdetailstableid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="fkcompid" Type="bigint" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="200" />
+    <Property Name="fathersname" Type="varchar" MaxLength="200" />
+    <Property Name="mobileno" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="emailid" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="vouchertable">
+    <Key>
+      <PropertyRef Name="voucher_id" />
+    </Key>
+    <Property Name="voucher_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Voucherno" Type="varchar" MaxLength="100" />
+    <Property Name="Date" Type="varchar" MaxLength="50" />
+    <Property Name="Sno" Type="int" Nullable="false" />
+    <Property Name="cafno" Type="varchar" MaxLength="100" />
+    <Property Name="Acno" Type="varchar(max)" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="paymentmode" Type="varchar(max)" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Chequeno" Type="varchar" MaxLength="200" />
+    <Property Name="Bank" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="netbalance" Type="money" />
+    <Property Name="executivecode" Type="varchar" MaxLength="200" />
+    <Property Name="branchcode" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_BillUpload_ClientMaster">
+    <End Role="ClientMaster" Type="inventoryforwebappModel.Store.ClientMaster" Multiplicity="1" />
+    <End Role="BillUpload" Type="inventoryforwebappModel.Store.BillUpload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientMaster">
+        <PropertyRef Name="cafno" />
+      </Principal>
+      <Dependent Role="BillUpload">
+        <PropertyRef Name="cafno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_challanout_CountryList">
+    <End Role="CountryList" Type="inventoryforwebappModel.Store.CountryList" Multiplicity="1" />
+    <End Role="challanout" Type="inventoryforwebappModel.Store.challanout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="challanout">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_challanout_PurchaseEntry">
+    <End Role="PurchaseEntry" Type="inventoryforwebappModel.Store.PurchaseEntry" Multiplicity="1" />
+    <End Role="challanout" Type="inventoryforwebappModel.Store.challanout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntry">
+        <PropertyRef Name="SimNo" />
+      </Principal>
+      <Dependent Role="challanout">
+        <PropertyRef Name="others" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_challanoutothers_PurchaseEntryotherstab">
+    <End Role="PurchaseEntryotherstab" Type="inventoryforwebappModel.Store.PurchaseEntryotherstab" Multiplicity="1" />
+    <End Role="challanoutothers" Type="inventoryforwebappModel.Store.challanoutothers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntryotherstab">
+        <PropertyRef Name="IMEINO" />
+      </Principal>
+      <Dependent Role="challanoutothers">
+        <PropertyRef Name="Imeino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMaster_challanout">
+    <End Role="challanout" Type="inventoryforwebappModel.Store.challanout" Multiplicity="0..1" />
+    <End Role="ClientMaster" Type="inventoryforwebappModel.Store.ClientMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="challanout">
+        <PropertyRef Name="pkchallanid" />
+      </Principal>
+      <Dependent Role="ClientMaster">
+        <PropertyRef Name="fkchallanoutid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMaster_ClientMaster">
+    <End Role="CountryList" Type="inventoryforwebappModel.Store.CountryList" Multiplicity="0..1" />
+    <End Role="ClientMaster" Type="inventoryforwebappModel.Store.ClientMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="ClientMaster">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMaster_customerdetailstable">
+    <End Role="customerdetailstable" Type="inventoryforwebappModel.Store.customerdetailstable" Multiplicity="0..1" />
+    <End Role="ClientMaster" Type="inventoryforwebappModel.Store.ClientMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customerdetailstable">
+        <PropertyRef Name="customeracno" />
+      </Principal>
+      <Dependent Role="ClientMaster">
+        <PropertyRef Name="customeracno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMasterothers_challanoutothers">
+    <End Role="challanoutothers" Type="inventoryforwebappModel.Store.challanoutothers" Multiplicity="0..1" />
+    <End Role="ClientMasterothers" Type="inventoryforwebappModel.Store.ClientMasterothers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="challanoutothers">
+        <PropertyRef Name="pkchallanid" />
+      </Principal>
+      <Dependent Role="ClientMasterothers">
+        <PropertyRef Name="fkchallanoutid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMasterothers_PurchaseEntryotherstab">
+    <End Role="PurchaseEntryotherstab" Type="inventoryforwebappModel.Store.PurchaseEntryotherstab" Multiplicity="1" />
+    <End Role="ClientMasterothers" Type="inventoryforwebappModel.Store.ClientMasterothers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntryotherstab">
+        <PropertyRef Name="IMEINO" />
+      </Principal>
+      <Dependent Role="ClientMasterothers">
+        <PropertyRef Name="imeino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LostSimData_PurchaseEntry">
+    <End Role="PurchaseEntry" Type="inventoryforwebappModel.Store.PurchaseEntry" Multiplicity="1" />
+    <End Role="LostSimData" Type="inventoryforwebappModel.Store.LostSimData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntry">
+        <PropertyRef Name="SimNo" />
+      </Principal>
+      <Dependent Role="LostSimData">
+        <PropertyRef Name="SimNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NewSimRequest_CountryList">
+    <End Role="CountryList" Type="inventoryforwebappModel.Store.CountryList" Multiplicity="0..1" />
+    <End Role="NewSimRequest" Type="inventoryforwebappModel.Store.NewSimRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="NewSimRequest">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pdffiles_CountryList">
+    <End Role="CountryList" Type="inventoryforwebappModel.Store.CountryList" Multiplicity="0..1" />
+    <End Role="pdffiles" Type="inventoryforwebappModel.Store.pdffiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="pdffiles">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseEntry_CountryList">
+    <End Role="CountryList" Type="inventoryforwebappModel.Store.CountryList" Multiplicity="0..1" />
+    <End Role="PurchaseEntry" Type="inventoryforwebappModel.Store.PurchaseEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="PurchaseEntry">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Add_Country" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="F" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="isdcode" Type="varchar" Mode="In" />
+    <Parameter Name="indcalling" Type="varchar" Mode="In" />
+    <Parameter Name="countrycode" Type="varchar" Mode="In" />
+    <Parameter Name="currency" Type="varchar" Mode="In" />
+    <Parameter Name="impnotice" Type="varchar(max)" Mode="In" />
+    <Parameter Name="impnotic" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="AddNewTableProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="AddNewId" Type="bigint" Mode="In" />
+    <Parameter Name="sdate" Type="date" Mode="In" />
+    <Parameter Name="Ldate" Type="date" Mode="In" />
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="execcode" Type="varchar" Mode="In" />
+    <Parameter Name="ExecName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="email" Type="varchar(max)" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="addtarif_Proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="F" Type="varchar" Mode="In" />
+    <Parameter Name="SNO" Type="bigint" Mode="In" />
+    <Parameter Name="TARIFF_CODE" Type="varchar" Mode="In" />
+    <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+    <Parameter Name="PLANTYPE" Type="varchar" Mode="In" />
+    <Parameter Name="CURRENCY" Type="varchar" Mode="In" />
+    <Parameter Name="CHARGESTYPE" Type="varchar" Mode="In" />
+    <Parameter Name="VALUE" Type="varchar" Mode="In" />
+    <Parameter Name="TALK_VALUE" Type="varchar" Mode="In" />
+    <Parameter Name="PER_MIN_CHARGE" Type="varchar" Mode="In" />
+    <Parameter Name="VALIDITY_DAYS" Type="varchar" Mode="In" />
+    <Parameter Name="COUNTRY_FROM" Type="varchar" Mode="In" />
+    <Parameter Name="COUNTRY_TO" Type="varchar" Mode="In" />
+    <Parameter Name="A" Type="varchar" Mode="In" />
+    <Parameter Name="B" Type="varchar" Mode="In" />
+    <Parameter Name="C" Type="varchar" Mode="In" />
+    <Parameter Name="D" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="billexcelproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="billexcel" Type="bigint" Mode="In" />
+    <Parameter Name="cafno" Type="varchar" Mode="In" />
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="mobileno" Type="varchar" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="excelfilename" Type="varchar(max)" Mode="In" />
+    <Parameter Name="total" Type="varchar" Mode="In" />
+    <Parameter Name="discount" Type="varchar" Mode="In" />
+    <Parameter Name="grandtotal" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="billsummaryproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="billsummaryid" Type="bigint" Mode="In" />
+    <Parameter Name="bdate" Type="varchar" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="BillNo" Type="varchar" Mode="In" />
+    <Parameter Name="AccountCode" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="Agreementno" Type="varchar" Mode="In" />
+    <Parameter Name="mobileno" Type="varchar" Mode="In" />
+    <Parameter Name="Billdate" Type="varchar" Mode="In" />
+    <Parameter Name="duedate" Type="varchar" Mode="In" />
+    <Parameter Name="billperiod" Type="varchar" Mode="In" />
+    <Parameter Name="currency1" Type="varchar" Mode="In" />
+    <Parameter Name="currency2" Type="varchar" Mode="In" />
+    <Parameter Name="Rental" Type="varchar" Mode="In" />
+    <Parameter Name="useges" Type="varchar" Mode="In" />
+    <Parameter Name="aopfubs" Type="varchar" Mode="In" />
+    <Parameter Name="totalamount" Type="varchar" Mode="In" />
+    <Parameter Name="Amountininr" Type="varchar" Mode="In" />
+    <Parameter Name="servicetax" Type="varchar" Mode="In" />
+    <Parameter Name="amountpayable" Type="varchar" Mode="In" />
+    <Parameter Name="Afterduedate" Type="varchar" Mode="In" />
+    <Parameter Name="conversion" Type="varchar" Mode="In" />
+    <Parameter Name="ExcelFile" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="loginuser" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="c_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Challanautobillno_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="Challanitemautobillno_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="challanoutitemcounter_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="challanoutothersproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="challanno" Type="varchar" Mode="In" />
+    <Parameter Name="cdate" Type="varchar" Mode="In" />
+    <Parameter Name="sno" Type="varchar" Mode="In" />
+    <Parameter Name="itemtype" Type="varchar" Mode="In" />
+    <Parameter Name="itemname" Type="varchar" Mode="In" />
+    <Parameter Name="Imeino" Type="varchar" Mode="In" />
+    <Parameter Name="executivenameto" Type="varchar" Mode="In" />
+    <Parameter Name="executivename" Type="varchar" Mode="In" />
+    <Parameter Name="pkchallanid" Type="bigint" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="partnername" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="challanoutreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="simno" Type="varchar" Mode="In" />
+    <Parameter Name="challanno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="check1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="citem_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Clientmasterautotfno_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="ClientMasterothersproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="cafno" Type="varchar" Mode="In" />
+    <Parameter Name="customeracno" Type="varchar" Mode="In" />
+    <Parameter Name="fkchallanoutid" Type="bigint" Mode="In" />
+    <Parameter Name="User_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Father_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="Payment_Mode" Type="varchar" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="Bank" Type="varchar" Mode="In" />
+    <Parameter Name="Cheque_No" Type="varchar" Mode="In" />
+    <Parameter Name="itemname" Type="varchar" Mode="In" />
+    <Parameter Name="imeino" Type="varchar" Mode="In" />
+    <Parameter Name="Plan" Type="varchar" Mode="In" />
+    <Parameter Name="Executive_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Executive_Code" Type="varchar" Mode="In" />
+    <Parameter Name="BRANCHCODE" Type="varchar" Mode="In" />
+    <Parameter Name="STATUS" Type="varchar" Mode="In" />
+    <Parameter Name="itemtype" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="clientmasterTFNO_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="consigneenameproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="cmpid" Type="bigint" Mode="In" />
+    <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ManagingDirector" Type="varchar" Mode="In" />
+    <Parameter Name="ContactNo" Type="varchar" Mode="In" />
+    <Parameter Name="CustSupportNo" Type="varchar" Mode="In" />
+    <Parameter Name="PunchLine" Type="varchar(max)" Mode="In" />
+    <Parameter Name="EmailID" Type="varchar" Mode="In" />
+    <Parameter Name="WebSite" Type="varchar" Mode="In" />
+    <Parameter Name="EnteredBy" Type="varchar" Mode="In" />
+    <Parameter Name="ButtonName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="contacttableproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="SNO" Type="bigint" Mode="In" />
+    <Parameter Name="NAME" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ADDRESS" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MOBILENO" Type="varchar(max)" Mode="In" />
+    <Parameter Name="EMAILID" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PRODUCT" Type="varchar" Mode="In" />
+    <Parameter Name="COMMENT" Type="varchar(max)" Mode="In" />
+    <Parameter Name="showstatus" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="customer_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="customerautobillno_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="customerdetailstableproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="customerdetailstableid" Type="bigint" Mode="In" />
+    <Parameter Name="customeracno" Type="varchar" Mode="In" />
+    <Parameter Name="customername" Type="varchar" Mode="In" />
+    <Parameter Name="customeraddress" Type="varchar" Mode="In" />
+    <Parameter Name="emailid" Type="varchar" Mode="In" />
+    <Parameter Name="website" Type="varchar" Mode="In" />
+    <Parameter Name="passportno" Type="varchar" Mode="In" />
+    <Parameter Name="mobileno" Type="varchar" Mode="In" />
+    <Parameter Name="alternateno" Type="varchar" Mode="In" />
+    <Parameter Name="loginusercode" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="databasebackproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="backuppath" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="E_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Exec_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Executiveautobillno_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="InsertCompanyProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="cmpid" Type="bigint" Mode="In" />
+    <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyName1" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="ManagingDirector" Type="varchar" Mode="In" />
+    <Parameter Name="ContactNo" Type="varchar" Mode="In" />
+    <Parameter Name="CustSupportNo" Type="varchar" Mode="In" />
+    <Parameter Name="PunchLine" Type="varchar(max)" Mode="In" />
+    <Parameter Name="EmailID" Type="varchar" Mode="In" />
+    <Parameter Name="WebSite" Type="varchar" Mode="In" />
+    <Parameter Name="bankdetail" Type="varchar" Mode="In" />
+    <Parameter Name="panno" Type="varchar" Mode="In" />
+    <Parameter Name="servicetax" Type="varchar" Mode="In" />
+    <Parameter Name="loginusercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="InsertPurchaseEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="sno" Type="bigint" Mode="In" />
+    <Parameter Name="BillNo" Type="varchar" Mode="In" />
+    <Parameter Name="Date" Type="varchar" Mode="In" />
+    <Parameter Name="rangeDate" Type="varchar" Mode="In" />
+    <Parameter Name="ItemType" Type="varchar" Mode="In" />
+    <Parameter Name="SimNo" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="PUK" Type="varchar" Mode="In" />
+    <Parameter Name="Validity" Type="varchar" Mode="In" />
+    <Parameter Name="loginuser" Type="varchar" Mode="In" />
+    <Parameter Name="aloatsimexeccode" Type="varchar" Mode="In" />
+    <Parameter Name="APN" Type="varchar" Mode="In" />
+    <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
+    <Parameter Name="SimCode" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="partnername" Type="varchar" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="InsertStockTransfer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+    <Parameter Name="SimNo" Type="numeric" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="Reasion" Type="varchar" Mode="In" />
+    <Parameter Name="Transferfrom" Type="varchar" Mode="In" />
+    <Parameter Name="Transferto" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="inv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="invoicetableproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="invoicedate" Type="date" Mode="In" />
+    <Parameter Name="companynamrid" Type="bigint" Mode="In" />
+    <Parameter Name="companynamrid1" Type="bigint" Mode="In" />
+    <Parameter Name="pono" Type="varchar" Mode="In" />
+    <Parameter Name="invoiceno" Type="varchar" Mode="In" />
+    <Parameter Name="invoicetableid" Type="bigint" Mode="In" />
+    <Parameter Name="countryofexport" Type="varchar" Mode="In" />
+    <Parameter Name="countryofmfg" Type="varchar" Mode="In" />
+    <Parameter Name="Destination" Type="varchar" Mode="In" />
+    <Parameter Name="Paymentthrough" Type="varchar" Mode="In" />
+    <Parameter Name="duedate" Type="varchar" Mode="In" />
+    <Parameter Name="noofpackage" Type="decimal" Mode="In" />
+    <Parameter Name="article" Type="varchar(max)" Mode="In" />
+    <Parameter Name="qty" Type="decimal" Mode="In" />
+    <Parameter Name="perunit" Type="decimal" Mode="In" />
+    <Parameter Name="totalvalue" Type="varchar" Mode="In" />
+    <Parameter Name="tax" Type="varchar" Mode="In" />
+    <Parameter Name="total" Type="varchar" Mode="In" />
+    <Parameter Name="comname" Type="varchar" Mode="In" />
+    <Parameter Name="grandtotal" Type="money" Mode="In" />
+  </Function>
+  <Function Name="IUDclientmaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="clmasterdate" Type="varchar" Mode="In" />
+    <Parameter Name="cafno" Type="varchar" Mode="In" />
+    <Parameter Name="customeracno" Type="varchar" Mode="In" />
+    <Parameter Name="fkchallanoutid" Type="bigint" Mode="In" />
+    <Parameter Name="pdffile" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="FatherName" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="PaymentMode" Type="varchar" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="Bank" Type="varchar" Mode="In" />
+    <Parameter Name="ChequeNo" Type="varchar" Mode="In" />
+    <Parameter Name="SimNo" Type="varchar" Mode="In" />
+    <Parameter Name="ItemType" Type="varchar" Mode="In" />
+    <Parameter Name="Plan" Type="varchar" Mode="In" />
+    <Parameter Name="Validity" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="varchar" Mode="In" />
+    <Parameter Name="EndDate" Type="varchar" Mode="In" />
+    <Parameter Name="SimReturnDate" Type="varchar" Mode="In" />
+    <Parameter Name="TariffDetail" Type="varchar" Mode="In" />
+    <Parameter Name="ExecutiveName" Type="varchar" Mode="In" />
+    <Parameter Name="ExecutiveCode" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="tfno" Type="varchar" Mode="In" />
+    <Parameter Name="opt" Type="varchar" Mode="In" />
+    <Parameter Name="itemname" Type="varchar" Mode="In" />
+    <Parameter Name="imeino" Type="varchar" Mode="In" />
+    <Parameter Name="amtstatus" Type="varchar" Mode="In" />
+    <Parameter Name="neft" Type="varchar" Mode="In" />
+    <Parameter Name="REMARK" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="live_stockreport_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="country" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="loaddata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="varchar" Mode="In" />
+    <Parameter Name="tname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="MAILSETTINGTABLE_PROC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MAILSETTING_ID" Type="bigint" Mode="In" />
+    <Parameter Name="F" Type="varchar" Mode="In" />
+    <Parameter Name="SMTP_ADDRESS" Type="varchar" Mode="In" />
+    <Parameter Name="PORT_NUMBER" Type="varchar" Mode="In" />
+    <Parameter Name="ENABLE_SSL" Type="bit" Mode="In" />
+    <Parameter Name="EMAIL_FROM" Type="varchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+    <Parameter Name="SUBJECT" Type="varchar" Mode="In" />
+    <Parameter Name="BODY" Type="varchar(max)" Mode="In" />
+    <Parameter Name="LOGINUSER" Type="varchar" Mode="In" />
+    <Parameter Name="BRANCHCODE" Type="varchar" Mode="In" />
+    <Parameter Name="A" Type="varchar" Mode="In" />
+    <Parameter Name="B" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="mobile_topup_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="topid" Type="bigint" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="mobileno" Type="varchar" Mode="In" />
+    <Parameter Name="plancode" Type="varchar" Mode="In" />
+    <Parameter Name="topup" Type="varchar" Mode="In" />
+    <Parameter Name="topup_data" Type="varchar" Mode="In" />
+    <Parameter Name="topup_sptopup" Type="varchar" Mode="In" />
+    <Parameter Name="total" Type="varchar" Mode="In" />
+    <Parameter Name="loginuser" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="newvoucher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="voucher_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="p_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Paymentsheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="usertype" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="userid" Type="varchar" Mode="In" />
+    <Parameter Name="vdate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pChallanin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chdate" Type="varchar" Mode="In" />
+    <Parameter Name="SimNo" Type="varchar" Mode="In" />
+    <Parameter Name="ChallanNo" Type="varchar" Mode="In" />
+    <Parameter Name="Option" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNo" Type="varchar" Mode="In" />
+    <Parameter Name="ExecName" Type="varchar" Mode="In" />
+    <Parameter Name="LoginUser" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="pChallanout" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="challanno" Type="varchar" Mode="In" />
+    <Parameter Name="cdate" Type="varchar" Mode="In" />
+    <Parameter Name="cdate1" Type="varchar" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="itemtype" Type="varchar" Mode="In" />
+    <Parameter Name="others" Type="varchar" Mode="In" />
+    <Parameter Name="execnameto" Type="varchar" Mode="In" />
+    <Parameter Name="loginusercode" Type="varchar" Mode="In" />
+    <Parameter Name="pkchallanid" Type="bigint" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="givento" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="pdffileproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partners" Type="varchar" Mode="In" />
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="pdffileid" Type="bigint" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="pdffilename" Type="varchar(max)" Mode="In" />
+    <Parameter Name="usernamecode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pitem_cout_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billno" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PLAN_PROC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="F" Type="varchar" Mode="In" />
+    <Parameter Name="PLANID" Type="bigint" Mode="In" />
+    <Parameter Name="PLANCODE" Type="varchar" Mode="In" />
+    <Parameter Name="PLANNAME" Type="varchar" Mode="In" />
+    <Parameter Name="PLANTYPE" Type="varchar" Mode="In" />
+    <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+    <Parameter Name="PLANVALUE" Type="varchar" Mode="In" />
+    <Parameter Name="TALKTIMEDATA" Type="varchar" Mode="In" />
+    <Parameter Name="BRANCHCODE" Type="varchar" Mode="In" />
+    <Parameter Name="LOGINUSER" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="prefixsettings_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="prefixid" Type="bigint" Mode="In" />
+    <Parameter Name="Prefixtype" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="prefixnumber" Type="varchar" Mode="In" />
+    <Parameter Name="startwith" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="status_s" Type="varchar" Mode="In" />
+    <Parameter Name="A" Type="varchar" Mode="In" />
+    <Parameter Name="B" Type="varchar" Mode="In" />
+    <Parameter Name="C" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PROFILE_TABLE_PROC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="F" Type="varchar" Mode="In" />
+    <Parameter Name="PROFILE_ID" Type="bigint" Mode="In" />
+    <Parameter Name="PROFILE_NAME" Type="varchar" Mode="In" />
+    <Parameter Name="A" Type="varchar" Mode="In" />
+    <Parameter Name="B" Type="varchar" Mode="In" />
+    <Parameter Name="C" Type="varchar" Mode="In" />
+    <Parameter Name="D" Type="varchar" Mode="In" />
+    <Parameter Name="E" Type="varchar" Mode="In" />
+    <Parameter Name="G" Type="varchar" Mode="In" />
+    <Parameter Name="H" Type="varchar" Mode="In" />
+    <Parameter Name="I" Type="varchar" Mode="In" />
+    <Parameter Name="BRANCHCODE" Type="varchar" Mode="In" />
+    <Parameter Name="LOGINUSERCODE" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ptodolist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="todolistid" Type="bigint" Mode="In" />
+    <Parameter Name="adate" Type="bigint" Mode="In" />
+    <Parameter Name="atime" Type="bigint" Mode="In" />
+    <Parameter Name="message" Type="varchar(max)" Mode="In" />
+    <Parameter Name="username" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="purchaseautobillno_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="purchaseautobillnoItem_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="PurchaseEntryotherstabproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="sno" Type="bigint" Mode="In" />
+    <Parameter Name="BillNo" Type="varchar" Mode="In" />
+    <Parameter Name="Date" Type="varchar" Mode="In" />
+    <Parameter Name="ItemType" Type="varchar" Mode="In" />
+    <Parameter Name="itemname" Type="varchar" Mode="In" />
+    <Parameter Name="loginusercode" Type="varchar" Mode="In" />
+    <Parameter Name="SimAlotexeccode" Type="varchar" Mode="In" />
+    <Parameter Name="IMEINO" Type="varchar" Mode="In" />
+    <Parameter Name="validity" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="partnername" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="RequestSim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="requerstid" Type="bigint" Mode="In" />
+    <Parameter Name="date" Type="varchar" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="NoOfSim" Type="varchar" Mode="In" />
+    <Parameter Name="priority" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="Executive_Code" Type="varchar" Mode="In" />
+    <Parameter Name="status_n" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="revenueamount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="caf" Type="varchar" Mode="In" />
+    <Parameter Name="sdate" Type="datetime" Mode="In" />
+    <Parameter Name="sdate1" Type="datetime" Mode="In" />
+    <Parameter Name="clientname" Type="varchar" Mode="In" />
+    <Parameter Name="ExecName" Type="varchar" Mode="In" />
+    <Parameter Name="countryname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="rolenametable_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="rosettingid" Type="bigint" Mode="In" />
+    <Parameter Name="rolesettingname" Type="varchar" Mode="In" />
+    <Parameter Name="rolesettingcode" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="cmpid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="rolesettings_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="id" Type="bigint" Mode="In" />
+    <Parameter Name="formname" Type="varchar" Mode="In" />
+    <Parameter Name="insert" Type="bit" Mode="In" />
+    <Parameter Name="view" Type="bit" Mode="In" />
+    <Parameter Name="edit" Type="bit" Mode="In" />
+    <Parameter Name="delete" Type="bit" Mode="In" />
+    <Parameter Name="all" Type="bit" Mode="In" />
+    <Parameter Name="rolesetting" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SENDMAIL_PROC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="F" Type="varchar" Mode="In" />
+    <Parameter Name="CAFNO" Type="varchar" Mode="In" />
+    <Parameter Name="BRANCHCODE" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SimConversionInsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fun" Type="varchar" Mode="In" />
+    <Parameter Name="SimConversionDate" Type="varchar" Mode="In" />
+    <Parameter Name="SimNo" Type="numeric" Mode="In" />
+    <Parameter Name="Reason" Type="varchar" Mode="In" />
+    <Parameter Name="SimType" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="ConvertTo" Type="varchar" Mode="In" />
+    <Parameter Name="tname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SimLost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="LostDate" Type="varchar" Mode="In" />
+    <Parameter Name="SimNo" Type="numeric" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="Reason" Type="varchar" Mode="In" />
+    <Parameter Name="DeleteInventry" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="partnername" Type="varchar" Mode="In" />
+    <Parameter Name="loginuser" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="simreplacementtabproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="simriplacementid" Type="bigint" Mode="In" />
+    <Parameter Name="date" Type="varchar" Mode="In" />
+    <Parameter Name="currentsimno" Type="varchar" Mode="In" />
+    <Parameter Name="cafno" Type="varchar" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="Aloatnewsimno" Type="varchar" Mode="In" />
+    <Parameter Name="execcode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="simreturnproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="cafno" Type="varchar" Mode="In" />
+    <Parameter Name="Sim_No" Type="varchar" Mode="In" />
+    <Parameter Name="mobileno" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="executive_name" Type="varchar" Mode="In" />
+    <Parameter Name="start_date" Type="datetime" Mode="In" />
+    <Parameter Name="ReturnDate" Type="datetime" Mode="In" />
+    <Parameter Name="SimReturnDate" Type="datetime" Mode="In" />
+    <Parameter Name="SimReturnDate1" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="simsearch_Proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="Exec_Code" Type="varchar" Mode="In" />
+    <Parameter Name="Branchcode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SimWiseSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="simno" Type="varchar" Mode="In" />
+    <Parameter Name="UserType" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="Usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="statusclient" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="simmno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="stockentry_prock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="stockreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ab" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="updatedataval_proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="usertype" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="date" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+    <Parameter Name="Partnername" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="usertype" Type="varchar" Mode="In" />
+    <Parameter Name="uname" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="newpassword" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="varchar" Mode="In" />
+    <Parameter Name="mobileno" Type="varchar" Mode="In" />
+    <Parameter Name="emailid" Type="varchar" Mode="In" />
+    <Parameter Name="rolesetting" Type="varchar" Mode="In" />
+    <Parameter Name="valueassign" Type="varchar" Mode="In" />
+    <Parameter Name="updatedata" Type="varchar" Mode="In" />
+    <Parameter Name="Msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="voucher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SimNo" Type="numeric" Mode="In" />
+    <Parameter Name="EnteredBy" Type="varchar" Mode="In" />
+    <Parameter Name="ButtonName" Type="varchar" Mode="In" />
+    <Parameter Name="Amount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="vouchertableproc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="voucher_id" Type="bigint" Mode="In" />
+    <Parameter Name="Voucherno" Type="varchar" Mode="In" />
+    <Parameter Name="Date" Type="varchar" Mode="In" />
+    <Parameter Name="Sno" Type="int" Mode="In" />
+    <Parameter Name="cafno" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Acno" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Name" Type="varchar(max)" Mode="In" />
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="paymentmode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Amount" Type="money" Mode="In" />
+    <Parameter Name="Chequeno" Type="varchar" Mode="In" />
+    <Parameter Name="Bank" Type="varchar" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="netbalance" Type="money" Mode="In" />
+    <Parameter Name="executivecode" Type="varchar" Mode="In" />
+    <Parameter Name="branchcode" Type="varchar" Mode="In" />
+  </Function>
+</Schema>

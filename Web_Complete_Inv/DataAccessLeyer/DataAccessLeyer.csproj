@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F28AF757-9E06-4744-842E-385726D2C74A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLeyer</RootNamespace>
+    <AssemblyName>DataAccessLeyer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DAL\Add_CountryInsert.cs" />
+    <Compile Include="DAL\Add_Fund.cs" />
+    <Compile Include="DAL\Add_TariffDAL.cs" />
+    <Compile Include="DAL\ADD_UserNameDAL.cs" />
+    <Compile Include="DAL\BILLDAL.cs" />
+    <Compile Include="DAL\BILLINSERT_DAL.cs" />
+    <Compile Include="DAL\ChallanDAL.cs" />
+    <Compile Include="DAL\ChallanInDAL.cs" />
+    <Compile Include="DAL\ChallanOutOthersDAL.cs" />
+    <Compile Include="DAL\ClientMasterDAL.cs" />
+    <Compile Include="DAL\ClientMasterOthersDAL.cs" />
+    <Compile Include="DAL\CompanyProfileDAL.cs" />
+    <Compile Include="DAL\ContactDAL.cs" />
+    <Compile Include="DAL\CustomerEntryDAL.cs" />
+    <Compile Include="DAL\InventoryDAL.cs" />
+    <Compile Include="DAL\Live_ReportDAL.cs" />
+    <Compile Include="DAL\Login.cs" />
+    <Compile Include="DAL\MobileTopupDAL.cs" />
+    <Compile Include="DAL\NewSimRequersDAL.cs" />
+    <Compile Include="DAL\PaymentReportDAL.cs" />
+    <Compile Include="DAL\PlanDAL.cs" />
+    <Compile Include="DAL\PurchaseEntryDal.cs" />
+    <Compile Include="DAL\PurchaseEntryOthersDAL.cs" />
+    <Compile Include="DAL\RolesettingDAL.cs" />
+    <Compile Include="DAL\SettingDAL.cs" />
+    <Compile Include="DAL\SimLostData.cs" />
+    <Compile Include="DAL\SimReplacementDAL.cs" />
+    <Compile Include="DAL\SimWiseSearchDal.cs" />
+    <Compile Include="DAL\TotalFundDAL.cs" />
+    <Compile Include="DAL\VoucherEntryDAL.cs" />
+    <Compile Include="EF\Inventory_ModelDatabase1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventory_ModelDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EF\Inventory_ModelDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Inventory_ModelDatabase1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessAccessLeyer\BusinessAccessLeyer.csproj">
+      <Project>{59868C50-0501-4FD7-9A6B-3E5B0AC3D05C}</Project>
+      <Name>BusinessAccessLeyer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

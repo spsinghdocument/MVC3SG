@@ -1,0 +1,62 @@
+﻿@using PresantationAccessLeyer.Models
+@model CustomerList
+           
+           vfnbnbvnvbnvbnvnvnvnvnvnvnbnvn
+
+ @foreach (Customer customer in Model)
+   {
+
+            <div id = "dd" style ="width:100%">
+    <img src="../../Images/new%20header%20logo.jpg" />
+    <div style =" float:right">challan no  : @customer.sno</div>
+    <div align="center">IMPORTANT INSTRUCTIONS  -</div>
+
+
+    <div style = "width:100% ; height:20px ; border-style:solid ; border-width:thin ">
+    <div style = "width:40% ; float:left ;font-family:Arial; font-size:small"> mobile no : @customer.sno</div>
+     <div style = "width:59% ; float:right ; font-family:Arial; font-size:small"> sim no : @customer.billno</div>
+    </div>
+
+  <div style="height:2px"></div>
+    <div style = "width:100% ; height:20px ; border-style:solid ; border-width:thin ">
+    <div style = "width:40% ; float:left ;font-family:Arial; font-size:small"> mobile no : @customer.Validity</div>
+     <div style = "width:59% ; float:right ; font-family:Arial; font-size:small"> sim no : @customer.itemtype</div>
+    </div>
+     <div style="height:2px"></div>
+    <div style = "width:100% ; height:20px ; border-style:solid ; border-width:thin ">
+    <div style = "width:40% ; float:left ;font-family:Arial; font-size:small"> mobile no : @customer.simno</div>
+     <div style = "width:59% ; float:right ; font-family:Arial; font-size:small"> sim no : @customer.country</div>
+    </div>
+     <div style="height:2px"></div>
+   <div style = "width:100% ; height:20px ; border-style:solid ; border-width:thin ">
+    <div style = "width:40% ; float:left ;font-family:Arial; font-size:small"> mobile no : @customer.sno</div>
+     <div style = "width:59% ; float:right ; font-family:Arial; font-size:small"> sim no : @customer.sno</div>
+    </div>
+
+    <div style = "width:100%  ">
+    <div align="center" style = "width:100% ;">SUPPORT</div>
+    <div style = "width:100% ; "><p>In case you are not able to log on to the network, please take out the SIM card and battery, re-insert them </p>
+    <p> in the phone and switch the phone back on. Kindly do a manual selection of the network through "Network Selection" option </p>
+    <p> on your handset select available network. You will be able to log onto the network successfully.</p></div>
+    </div>
+
+    <div style = "width:100%  ">
+    <div align="center" style = "width:100% ;">DIALING PROCESS</div>
+    <div style = "width:100% ; ">Dialing from India:<p>Prefix the international access code with "+" So your number would be +{1isdcode}-{2PhoneNo}</p>
+    <p>Dialing To India: : Prefix (+{1Indiacalling}) followed by the city code and local number Local number in Delhi,</p>
+    <p> +{2Indiacalling}</p></div>
+    </div>
+    <div style = "width:100%  ">
+    <div align="center" style = "width:100% ;">NETWORK SELECTION </div>
+    <div style = "width:100% ; "><p>In case you are not able to log on to the network, please take out the SIM card and battery, re-insert them in the phone and switch the phone back on. Kindly do a</p>
+    <p> manual selection of the network through "Network Selection" option on your handset select available network. You will be able to log onto the network successfully.
+</p></div>
+    </div>
+    <div></div>
+     <div></div>
+    <div>
+        <img src="../../Images/Address%20Img.jpg" />
+    </div>
+</div>
+   
+   }

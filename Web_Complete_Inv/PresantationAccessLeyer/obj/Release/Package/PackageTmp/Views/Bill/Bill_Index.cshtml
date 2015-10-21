@@ -1,0 +1,1053 @@
+﻿@{
+    ViewBag.Title = "Bill_Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="../../csvtotable/css/csvtable.css" rel="stylesheet" type="text/css" />
+<link href="../../autocomplete/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script src="../../csvtotable/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+
+<script src="../../csvtotable/js/jquery.csvToTable.js" type="text/javascript"></script>
+<script src="../../csvtotable/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+<script src="../../Scripts/dropzone.js" type="text/javascript"></script>
+<link href="../../CSS/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script  type="text/javascript">
+
+
+
+    function ad() {
+        $.get('/Bill/loaddata', null, function () { abc(data) });
+    }
+    function abc() {
+        alert("generates");
+    }
+</script>
+
+
+<script  type="text/javascript">
+    $(function () {
+        $("#txtfrom").datepicker({ dateFormat: 'dd-MM-yy', changeMonth: true, changeYear: true });
+
+    });
+    $(function () {
+        $("#txtto").datepicker({ dateFormat: 'dd-MM-yy', changeMonth: true, changeYear: true });
+
+    });
+
+    $(function () {
+
+        $("#txtBILLDATE").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+
+    function importexcel() {
+        var file_n = $("#txtCAF").val();
+        if (file_n == "") {
+            alert('PlZ ENTER CAF NO AND PRESS ENTER KEY .....');
+            return;
+        }
+        alert(file_n);
+        $.post('/Bill/excelimp', null, function (data) { chkShow(data); }).error(function (data) { chkShow(data); });
+    }
+
+    $(document).ready(function () { getCountry(); });
+
+    function getCountry() {
+
+        $.post('/ChallanOut/fillcombo', null,
+             function (data) { chkGetCountry(data); }).error(function (data) { chkGetCountry(data); });
+
+    }
+    function chkGetCountry(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].CountryName + " >" +
+                 abc[it].CountryName + "</option>";
+        }
+
+        $('#cmbCountry').html(data);
+        $('#rentaldiv').hide();
+        $('#2nddiv').show();
+    }
+
+
+    // =================================== cafno search=====================================================
+
+
+    $(function () {
+        $("#txtCAF").autocomplete({
+
+            source: function (request, response) {
+
+                $.ajax({
+                    url: "/Client_Master/Searchcafno",
+                    data: "{ 'empName': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.cafno
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    });
+
+    //================================================================================================================================================================================
+
+
+
+    function spalt() {
+
+        var caf = $("#txtCAF").val();
+        var phone = $("#txtPHONE").val();
+        var user = $("#txtUSER").val();
+        var address = $("#txtADDRESS").val();
+        var yoStayconnectno = $("#txtSTAYCONNECTNO").val();
+        var country = $("#txtCOUNTRY").val();
+        var agreementno = "a"; //  $("#txtAGREEMENTNO").val();
+        var billno = $("#txtBILLNO").val();
+        var billDate = $("#txtBILLDATE").val();
+        var paymentmode = $("#txtPAYMENTMODE option:selected").text();
+        var billPeyiod = $("#txtBILLPERIOD").val();
+        var seviceTaxno = $("#txtSERVICETAXNO").val();
+
+        var fixdcharges = $("#txtfixdcharges").val();
+        var rental = $("#txtrental").val();
+        var otherchg = $("#txtotherchg").val();
+        var total = $("#txt_total").val();
+        var servicet = $("#txtservice_tax").val();
+        var totalamtt = $("#txt_totalamt").val();
+        var from = $("#txtfrom").val();
+        var to = $("#txtto").val();
+        var cur_val = $('#txt_amt').val();
+        var smb = $("input[name=txtCompanyName]").val();   // $('#txtsymbol option:selected').val();  // $('#txtsymbol option:selected').text();
+        var dataaa = [];
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////validation//////////////////////////////////////////////////////////////////////
+
+        if (caf == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+        if (phone == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+        if (user == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+
+        if (address == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+        if (yoStayconnectno == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+        if (country == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+        if (billno == "") {
+
+            alert('Plz Enter billno ....');
+            return;
+        }
+
+        if (billDate == "") {
+
+            alert('Plz Enter billDate ....');
+            return;
+        }
+        if (from == "") {
+
+            alert('Plz Enter From Date ....');
+            return;
+        }
+        if (to == "") {
+
+            alert('Plz Enter TO Date ....');
+            return;
+        }
+
+        if (seviceTaxno == "") {
+
+            alert('Plz Enter SERVICE TAX NO ....');
+            return;
+        }
+
+        if (smb == "") {
+
+            alert('Plz Enter smb TAX NO ....');
+            return;
+        }
+
+        if (cur_val == "") {
+
+            alert('Plz Enter Price TAX NO ....');
+            return;
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////end///////////////////////////////////////////////////////////////////
+
+        //        var a = 0;
+        //        for (var a = 0; a < i; a++) {
+        //            dataaa[a] = $('#' + a + 'ad').html() + "," + $('#' + a + 'an').html() + "," + $('#' + a + 'at').html() + "," + $('#' + a + 'adu').html() + "," + $('#' + a + 'atu').val() + "," + $('#' + a + 'atrt').val() + "," + $('#' + a + 'atc').val();
+        //        }
+        $.post('/Bill/abc/', { caf: caf, phone: phone, user: user, address: address, yoStayconnectno: yoStayconnectno, country: country, agreementno: agreementno, billno: billno, billDate: billDate, paymentmode: paymentmode, billPeyiod: billPeyiod, seviceTaxno: seviceTaxno, fixdcharges: fixdcharges, rental: rental, otherchg: otherchg, total: total, servicet: servicet, totalamtt: totalamtt, from: from, to: to, currate: cur_val, symbol: smb });
+
+        //$.post('/Bill/abc/', $.param({ caf: caf, phone: phone, user: user, address: address, yoStayconnectno: yoStayconnectno, country: country, agreementno: agreementno, billno: billno, billDate: billDate, paymentmode: paymentmode, billPeyiod: billPeyiod, seviceTaxno: seviceTaxno, dataaa: dataaa, fixdcharges: fixdcharges, rental: rental, otherchg: otherchg, total: total, servicet: servicet, totalamtt: totalamtt, from: from, to: to }, true));
+        pw_call();
+
+    }
+
+
+    function pw_call() {
+        window.open("/Bill/Rend_ndex", "PopUpWindow");
+    }
+
+
+    function abc(bca) {
+
+    }
+
+
+    function IsEnter(e) {
+        try {
+
+            var keyCode = e.which ? e.which : e.keyCode
+            if (keyCode == 13) {
+                searchdata();
+            }
+        }
+        catch (e) { }
+
+    }
+
+    function searchdata() {
+        var cafno = $("#txtCAF").val();
+        $.post('/Bill/search_datawithcaf', { cafno: cafno }, function (data) { abc_caf(data); }).error(function (data) { abc_caf(data); });
+
+    }
+    function abc_caf(abc) {
+        txtADDRESS.value = abc[0].customeraddress;
+        txtCOUNTRY.value = abc[0].Country;
+        txtPHONE.value = abc[0].mobileno;
+        txtUSER.value = abc[0].customername;
+        txtSTAYCONNECTNO.value = abc[0].customeracno;
+    }
+
+
+    function excel_I() {
+        var vpath = "D:\\test.csv";
+        $('#CSVTable').CSVToTable(vpath,
+            {
+                loadingImage: '../../csvtotable/images/loading.gif',
+                startLine: 1,
+                headers: ['Album Title', 'Artist Name', 'Price ($USD)']
+            }
+        ).bind("loadComplete", function () {
+            $('#CSVTable').find('TABLE').tablesorter();
+        });
+    }
+
+    function excel_Iv() {
+
+        var file_n = $("#f_l").val();
+        if (file_n == "") {
+            alert("Please Select File Name...");
+        }
+        alert(file_n);
+        $.post('/Bill/excelemport', { file_n: file_n }, function (data) { ab(data); }).error(function (data) { ab(data); });
+
+    }
+    var GData = null;
+    function chkShow(abc) {
+        if (abc == "Please Download Exe than upload excel file ..") {
+            alert(abc);
+            return;
+        }
+        GData = abc;
+        BuildTable(GData, 0);
+    }
+    var i = 0;
+    function BuildTable(abc, eid) {
+        var table = "<table id=mytab><thead><tr>"
+              + "<th style=background-color:#FAEBD7;width:100px; >DATE & TIME</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >NUMBER</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >TYPE</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >DURATION</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >UNIT </th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >RATE </th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >TOTAL COST</th>"
+            + "</thead><tbody>";
+
+        for (var cd in abc) {
+
+            var row = "<tr >";
+            var datet;
+            var number = abc[cd][1];
+            var type;
+            var duration;
+            var unit;
+            var rate;
+            var totalcost;
+            if (abc[cd][0] == undefined) {
+                datet = 0;
+            }
+            else
+                datet = abc[cd][0];
+
+            if (number == undefined) {
+                number = 0;
+            }
+            else
+                number = abc[cd][1];
+            if (abc[cd][2] == undefined) {
+                type = 0;
+            }
+            else
+                type = abc[cd][2];
+            if (abc[cd][3] == undefined) {
+                duration = 0;
+            }
+            else
+                duration = abc[cd][3];
+            if (abc[cd][4] == undefined) {
+                unit = 0;
+            }
+            else
+                unit = abc[cd][4];
+            if (abc[cd][5] == undefined) {
+                rate = 0;
+            }
+            else
+                rate = abc[cd][5];
+            if (abc[cd][6] == undefined) {
+                totalcost = 0;
+            }
+            else
+                totalcost = abc[cd][6];
+
+
+            row += '<td id=' + i + 'ad   style=background-color:Silver;width:60px; >' + datet + '</td>';
+            row += '<td id=' + i + 'an style=background-color:Silver;width:100px; >' + number + '</td>';
+            row += '<td id=' + i + 'at style=background-color:Silver;width:100px; >' + type + '</td>';
+            row += '<td id=' + i + 'adu style=background-color:Silver;width:100px; >' + duration + '</td>';
+            row += '<td class=ephoneno_t style=width:100px; >'
+                   + ' <input id=' + i + 'atu type=text onclick = pv_call_c(id) value=' + unit + ' ></input></td>';
+            row += '<td class=erate_t style=width:100px; >'
+                   + ' <input id=' + i + 'atrt type=text  onchange = pv_call_c(id)   value=' + rate + ' ></input></td>';
+            row += '<td class=ecost_t style=width:100px; >'
+                     + ' <input id=' + i + 'atc  type=text  value=' + totalcost
+                      + '  ></input> </td>';
+            ++i;
+            row += '</tr>';
+            table += row;
+        }
+        //=============================================================================================================================
+        row += "</tr>";
+        row += "<tr>"
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; >TOTAL COST</td>";
+        row += '<td><input id="txttotal" type="text" /><td>'
+        row += "</tr>";
+        row += "</tr>";
+        row += "<tr>"
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += "<td  style=background-color:Silver;width:60px; ></td>";
+        row += '<td><input id="btncharges" type="button" onclick = "tariffselect()" value="Charges" /><td>'
+        row += "</tr>";
+
+        table += row;
+        table += "</tbody></table>";
+        $('#divedit').html(table);
+        $('#rentaldiv').show();
+        totalval(i);
+    }
+    function datapress(a) {
+        alert(a);
+    }
+
+    function totalval(cout) {
+        debugger;
+        var total = 0;
+        for (var t = 0; t < cout; t++) {
+            total += parseFloat(($('#' + t + 'atc').val() == undefined) || ($('#' + t + 'atc').val() == "COST") || ($('#' + t + 'atc').val() == "") ? 0 : $('#' + t + 'atc').val());
+        }
+        txttotal.value = total.toFixed(2);
+    }
+
+    function onchg() {
+
+
+        var simno;
+        var Country;
+        var vsum;
+
+        $('tr').filter(':has(:radio:checked)').each(function () {
+
+            simno = $(this).find('.ephoneno:first').val();    // $(this).find(".$(this).find('.ecost:first').val(vsum)").html();
+            Country = $(this).find('.erate:first').val();  // $(this).find(".erate_t .erate").html();
+            vsum = simno * Country;
+        });
+        $('tr').filter(':has(:radio:checked)').each(function () {
+            $(this).find('.ecost:first').val(vsum).css("background-color", "#FEFFB0");
+        });
+
+
+        var total = 0;
+        var Country = $(this).find('.ecost').val();
+        $('tr').each(function () {
+
+            total += parseFloat(($(this).find('.ecost').val() == undefined) ? 0 : $(this).find('.ecost').val());
+        });
+        txttotal.value = total.toFixed(2);
+
+    }
+    function cancelRecord() {
+        BuildTable(GData, 0);
+    }
+    function updateRecord(eid) {
+
+        var sno = eid;
+        var Bill_No = $('#txtbillno_U').val();
+        var SimNo = $('#txtsimno_U').val();
+        var Country = $('#txtcountry_U').val();
+        var PUK = $('#txtpuk_U').val();
+        var APN = $('#txtapn_U').val();
+        var PhoneNo = $('#txtphoneno_U').val();
+        var simcode = $('#txtsimcode_U').val();
+
+        $.post('/Purchase/purchaseentry_Update',
+           { sno: sno, BillNo: Bill_No, SimNo: SimNo, Country: Country, PUK: PUK, APN: APN, PhoneNo: PhoneNo, simcode: simcode },
+            function (data) { chkupdateRecord(data); }).error(function (data) { chkupdateRecord(data); });
+    }
+
+    function ab(abc) {
+        for (var cd in abc) {
+            var row = "";
+            row += '<tr>'
+            row += "<td class='eidbilno' style=width:200px; >" + abc[cd][0] + "</td>";
+            row += "<td class='eiditemtype' style=width:100px; >" + abc[cd][1] + "</td>";
+            row += "<td class='esimno' style=width:100px; >" + abc[cd][2] + "</td>";
+            row += "<td class='ecountry' style=width:100px; >" + abc[cd][3] + "</td>";
+            row += "<td class='ephoneno' style=width:100px; >" + abc[cd][4] + "</td>";
+            row += "<td class='eapn' style=width:100px; >" + abc[cd][5] + "</td>";
+            row += "<td class='esimcode' style=width:100px; >" + abc[cd][6] + "</td>";
+            row += '</tr>';
+            $('#myTable1').append(row);
+        }
+    }
+
+    function GETTARIFF() {
+
+        var country = $("#cmbCountry option:selected").text();
+
+        $.post('/Bill/SearchTariff', { country: country },
+         function (data) { TariffFill(data); }).error(function (data) { TariffFill(data); });
+
+    }
+    function TariffFill(abc) {
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].tariffcode + " >" +
+                 abc[it].tariffcode + "</option>";
+        }
+        $('#txttariff').html(data);
+    }
+
+    //===================================tariff select ====================================================
+    function tariffselect() {
+
+        //var VCOUNTRY = $('#cmbCountry option:selected').text();
+
+        var tarifcode = $("#txttariff").val();
+        if (tarifcode == null) {
+            alert("Please Select Tariff code ....");
+            return;
+        }
+        $.post('/Bill/tarifselect_code', { tcode: tarifcode }, function (data) { abc_tcode(data); }).error(function (data) { abc_tcode(data); });
+    }
+    function abc_tcode(abc) {
+
+        txtfixdcharges.value = abc[0].FIXED == null ? "0" : abc[0].FIXED;
+        txtrental.value = abc[0].RENTAL == null ? "0" : abc[0].RENTAL;
+        txtotherchg.value = abc[0].OTHERSCHG == null ? "0" : abc[0].OTHERSCHG;
+        var total = $('#txttotal').val();
+        var tval = parseFloat(txtfixdcharges.value == "null" ? 0 : txtfixdcharges.value)
+        + parseFloat(txtfixdcharges.value == "null" ? 0 : txtfixdcharges.value)
+        + parseFloat(txtrental.value == "null" ? 0 : txtrental.value)
+        + parseFloat(txtotherchg.value == "null" ? 0 : txtotherchg.value) + parseFloat(total == "null" ? 0 : total)
+        txt_total.value = tval.toFixed(2);
+
+        var val_withpercent = (parseFloat(tval) * 12.36) / 100;
+
+        txtservice_tax.value = val_withpercent.toFixed(2);
+        var v_totalval = parseFloat(val_withpercent.toFixed(2)) + parseFloat(tval.toFixed(2));
+        txt_totalamt.value = v_totalval.toFixed(2);
+    }
+
+
+
+    function transferdarta() {
+        var data = [];
+
+        var a = 0;
+        for (var i = 0; i < 20; i++) {
+            data[a++] = {
+                a: $('#' + i + 'ad').html(),
+                b: $('#' + i + 'an').html(),
+                c: $('#' + i + 'at').html(),
+                d: $('#' + i + 'adu').html(),
+                e: $('#' + i + 'atu').val(),
+                f: $('#' + i + 'atrt').val(),
+                g: $('#' + i + 'atc').val()
+            }
+        }
+        data;
+    }
+    function ab_g(abc) {
+
+    }
+
+
+    function pv_call() {
+
+        $('#div_pv').load('@Url.Action("RenderIndex", "Bill")');
+    }
+
+
+    function pv_call_refress() {
+
+        window.location.href = '@Url.Action("Bill_Index", "Bill")';
+    }
+
+    function pv_next() {
+        $.post('/Bill/nextval', null, function (data) { pv_next_v(data); }).error(function (data) { pv_next_v(data); });
+    }
+    function pv_next_v(abc) {
+
+        alert(abc);
+        f_l.value = abc;
+        //        $('#istdiv').show();
+        //        $('#2nddiv').hide();
+        $('#istdiv').show();
+        $('#2nddiv').show();
+    }
+
+    function pv_call_c(id) {
+
+        var spldata = id.split('a');
+        var val_t = $('#' + id).val();
+        var unit = $('#' + spldata[0] + 'atu').val();
+        var total_val = parseFloat(unit) * parseFloat(val_t);
+        $('#' + spldata[0] + 'atc').val(total_val)
+
+        totalval(i);
+    }
+    function cancel_all() {
+
+        window.location.href = '@Url.Action("Bill_Index","Bill")';
+    }
+
+    function spmank() {
+
+        var a = $("#f_l").val();
+        alert(a);
+
+
+    }
+
+    function validationmayank() {
+
+        var caf = $("#txtCAF").val();
+        var phone = $("#txtPHONE").val();
+        var user = $("#txtUSER").val();
+        var address = $("#txtADDRESS").val();
+        var yoStayconnectno = $("#txtSTAYCONNECTNO").val();
+        var country = $("#txtCOUNTRY").val();
+        var agreementno = $("#txtAGREEMENTNO").val();
+        var billno = $("#txtBILLNO").val();
+        var billDate = $("#txtBILLDATE").val();
+        var paymentmode = $("#txtPAYMENTMODE option:selected").text();
+        var billPeyiod = $("#txtBILLPERIOD").val();
+        var seviceTaxno = $("#txtSERVICETAXNO").val();
+
+        var fixdcharges = $("#txtfixdcharges").val();
+        var rental = $("#txtrental").val();
+        var otherchg = $("#txtotherchg").val();
+        var total = $("#txt_total").val();
+        var servicet = $("#txtservice_tax").val();
+        var totalamtt = $("#txt_totalamt").val();
+        var from = $("#txtfrom").val();
+        var to = $("#txtto").val();
+
+
+        if (caf == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+        if (phone == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+        if (user == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+
+        if (address == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+        if (yoStayconnectno == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+        if (country == "") {
+
+            alert('Plz Enter CAF and Press Enter ....');
+            return;
+        }
+
+
+
+    }
+
+    function profilesettings() {
+
+        var vcheck = $('#selectchenge').val();
+        if (vcheck == "NEW") {
+            $("#Profile_Create").dialog({
+                modal: true,
+                width: 'auto',
+                height: 'auto',
+                title: "CREATE PROFILE",
+                resizable: false,
+                position: 'center',
+                open: function () {
+                    $(".ui-dialog-titlebar-close").show();
+                }
+            }).load('@Url.Action("PV_Profile", "Bill")');
+        }
+    }
+
+
+    //    function LoadPage() {
+    //        $.get('~/Viewer/WebForm1.aspx', function (data) {
+    //            $('#YourDivId').html(data);
+    //        });
+    //    }
+
+    $(document).ready(function () { currency_val() });
+    function currency_val() {
+
+        $.post('/Bill/currencylist', null, function (data) { fillcurrency(data) }).error(function (data) { fillcurrency(data); });
+    }
+    function fillcurrency(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+
+
+        for (var it in abc) {
+            data += "<option value=" + abc[it] + " >" +
+                 abc[it] + "</option>";
+        }
+        $('#cmblist').html(data);
+        $('#cmb_list').html(data);
+    }
+
+    function currencyval() {
+
+        var istcountry = $('#cmblist option:selected').text();
+        var ist_country = $('#cmb_list option:selected').text();
+        $.post('/Bill/code_get', { from_val: istcountry, to_val: ist_country }, function (data) { fill_currency(data) }).error(function (data) { fill_currency(data); });
+    }
+    function fill_currency(abc) {
+        txt_amt.value = abc;
+
+    }
+
+</script>
+
+
+  <div align="center" style = "border-color:transparent; " >
+<div align="center" style=" width:95%; border:2; border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">BILLING </h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+
+
+
+</div>
+
+<br />
+<div  id = "istdiv">
+<div id="divENTRY">
+<table align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray; 
+         font-size: medium; margin :auto; width: 90%; height:100%">
+<tr>
+<td>
+<div id = "2nddiv" style = "display:none">
+ <form action = "" method = "post" enctype ="multipart/form-data">
+ <label for = "file" style = "width:90px"> File Name</label>
+ <input type = "file"  name = "file" id = "file" style= "width:40% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+ <input type ="submit"  style= "width:30% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+ </form>
+
+ </div>
+</td>
+
+@*<td>FILE PROFILE NAME</td>
+<td><select id = "selectchenge" onchange = "profilesettings()" style = "width:99%">
+<option >SELECT</option>
+<option value = "NEW">--NEW--</option>
+<option value = "PROFILE1">PROFILE1</option>
+<option>PROFILE2</option>
+</select>
+</td>*@
+
+<td style = "display:none">COUNTRY</td>
+<td><select id = "cmbCountry" onchange = "GETTARIFF()" style = "width:99% ;  display:none">
+</select></td>
+
+<td style = "display:none">TARIFF CODE</td>
+<td><select id = "txttariff" onchange = "tariffselect()" style = "width:99% ;display:none"">
+
+</select></td>
+</tr>
+</table>
+
+<table  align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray; 
+         font-size: medium; margin :auto; width: 90%; height:100%">
+
+        <tr><td align="center" style = "width:13%"> CAF : </td><td style = "width:25%">
+         <input id="txtCAF" onkeypress = "return IsEnter(event)" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR CAF NO." />     
+ 
+       </td>
+        <td align="center" style="width:13%"> PHONE NO : </td>
+        <td style = "width:25%">          
+            <input id="txtPHONE" onclick="validationmayank();" readonly="readonly" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR PHONE NO" />     
+      </td></tr>
+      
+       
+        <tr>
+         <td align="center" style = "width:13%"> USER : </td><td style = "width:25%">
+        <input id="txtUSER" type="text" onclick="validationmayank();" readonly="readonly"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR USER NAME" />     
+      
+      
+        </td>
+
+        
+        <td align="center" style = "width:13%"> ADDRESS : </td><td style = "width:25%" >
+         <input id="txtADDRESS" type="text" onclick="validationmayank();" readonly="readonly"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR ADDRESS NAME" />     
+      
+        </td>
+        
+        </tr>
+
+
+                <tr>
+         <td align="center" style = "width:13%"> CUSTOMER A/C NO. : </td><td style = "width:25%" >
+        <input id="txtSTAYCONNECTNO" type="text" onclick="validationmayank();" readonly="readonly"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR STAYCONNECT NO" />     
+      
+      
+        </td>
+
+        
+        <td align="center" style = "width:13%"> COUNTRY : </td><td style = "width:25%" >
+         <input id="txtCOUNTRY" type="text" onclick="validationmayank();" readonly="readonly"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR COUNTRY" />     
+      
+        </td>
+        
+        </tr>
+           <tr>
+        @*  <td align="center" class="style8"> AGREEMENT NO : </td><td class="style9" >
+         <input id="txtAGREEMENTNO" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR AGREEMENT NO" />     
+      
+        </td>  *@      
+           <td align="center" style = "width:13%"> BILL NO : </td><td style = "width:25%" >
+         <input id="txtBILLNO" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR BILL NO" />     
+      
+        </td>
+        
+        </tr>
+
+               <tr>
+       <td align="center" > BILL DATE : </td>
+       <td class="style9" >
+        <input id="txtBILLDATE" type="text" readonly="readonly"  style = "Width:90%;  font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR BILL DATE" />     
+          </td>
+        
+        
+        <td align="center"> PAYMENT MODE : </td>
+        <td>
+        <select id="txtPAYMENTMODE" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+        <option value = "CHEQUE">CHEQUE</option>
+         <option value = "ONLINE">ONLINE</option>
+          <option value = "CASh">CASh</option>
+        </select>
+        @* <input id="txtPAYMENTMODE" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR PAYMENT MODE" />           *@
+        </td>        
+        </tr>
+        
+        <tr>
+       <td align="center"> BILL PERIOD : </td>
+       <td >
+        FROM
+    <input id="txtfrom" type="text" readonly="readonly" style = " Width:35%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR BILL DATE" />     
+    TO
+     <input id="txtto" type="text" readonly="readonly" style = " Width:35%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR BILL DATE" />     
+    
+
+       
+      
+        </td>
+
+        
+        <td align="center"> SERVICE TAX NO : </td><td>
+         <input id="txtSERVICETAXNO" type="text" value="AASCS2053ESD001"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR SERVICE TAX NO" />     
+      
+        </td>
+       
+        </tr>
+        <tr>
+        <td align="center">    
+        </td>
+        </tr>
+
+          <tr>
+         <td  style ="display :none">FIXED CHARGES</td>
+         <td style ="display :none">
+           <input id="txtfixdcharges" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "FIXED CHARGES." />     
+         </td>
+      
+         <td style = "display:none">RENTAL</td>
+         <td style = "display:none">
+           <input id="txtrental"  type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "RENTAL" />     
+         </td>
+         </tr>
+         <tr style = "display:none">
+         <td>
+         OTHER CHG
+         </td>
+         <td>
+            <input id="txtotherchg"  type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "OTHER CHARGES" />     
+         </td>
+
+        
+         <td>TOTAL</td>
+         <td>
+            <input id="txt_total"   type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "TOTAL AMOUNT" />     
+         </td>
+         </tr>
+
+         <tr style = "display:none">
+         <td>SERVICE TAX 12.36%</td>
+         <td>
+            <input id="txtservice_tax"    type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "TOTAL AMOUNT" />     
+         </td>
+       
+         <td>TOTAL BILL AMOUNT</td>
+         <td>
+            <input id="txt_totalamt"   type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "TOTAL AMOUNT" />     
+         </td>
+         </tr>
+          <tr>
+      <td>FROM CURRENCY</td>
+      <td>
+      
+      <select id = "cmblist" style = "Width:40%; font-size: medium;font-family:'Rupee Foradian';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+      
+      </select>
+      SYB.
+      <input list="txtsymbol" name = "txtCompanyName"  name="txtsymb"   style = "Width:20%; text-transform:uppercase ; font-size: medium;font-family:'Rupee Foradian';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+<datalist id="txtsymbol" name = "txtCompanyName" style = "Width:20%; font-size: medium;font-family:'Rupee Foradian';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+  <option value=&#165;>
+  <option value="$">
+  <option value=&#8364;>
+  <option value=&#163;>
+  <option value=&#3647;>
+  <option value= &#x20B9;>
+    <option value= &#2352;>  
+ 
+</datalist>
+    @* SYB.   <select id = "txtsymbol" style = "Width:20%; font-size: medium;font-family:'Rupee Foradian';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+     <option>&#165;</option>
+      <option>$</option>
+       <option>&#8364;</option>  
+        <option>&#163;</option>  
+        <option>&#3647;</option>
+         <option><input type='text' /></option>
+     </select>*@ @* <input id="txtsymbol"   type="text"  style = "Width:30%; font-size: medium;font-family:'Rupee Foradian';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "SYMBOL" />     *@
+      </td>
+       <td>FROM CURRENCY</td> 
+       <td>
+        <select id = "cmb_list" onchange = "currencyval();" style = "Width:40%; text-transform:uppercase ; font-size: medium;font-family:'Rupee Foradian';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+      
+      </select>
+
+      EX. PRICE   <input id="txt_amt" style = "width:60px" type="text" />
+      </td>
+      </tr> 
+      @*<tr>
+      <td>ENTER VALUE</td>
+      <td>      
+          <input id="txt_amt" type="text" /></td>
+          <td>
+          <input id="bt" onclick = "currencyval();" type="button" value="Convert" />
+          </td>
+      </tr>*@  
+
+        <tr>
+        <td colspan ="6" align ="center"> 
+         <input id="btnseaexel" type="button"   onclick = "importexcel()" value="Preview" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;display:none " />
+            <input id="btnsearch" type="button" onclick="spalt();"  value="Print" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+         <input id="btncalcel"  onclick="pv_call_refress()" type="button"   value="Cancel" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+                
+        </td>    
+
+      </tr>   
+     
+    </table>
+    </div>
+
+
+   
+
+   
+
+
+<div id = "dsearchjquery"></div>
+
+<div align="center" id = "divedit"> 
+
+  
+</div>
+<div style="height:5%"></div>
+
+<div id = "rentaldiv" style = " margin-right:15%;">
+<table align="right"  cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;  
+         font-size: medium; margin :auto; width: 50%; height:100%">
+       @*  <tr>
+         <td>FIXED CHARGES</td>
+         <td>
+           <input id="txtfixdcharges" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "FIXED CHARGES." />     
+         </td>
+         </tr>
+         <tr>
+         <td>RENTAL</td>
+         <td>
+           <input id="txtrental"  type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "RENTAL" />     
+         </td>
+         </tr>
+         <tr>
+         <td>
+         OTHER CHG
+         </td>
+         <td>
+            <input id="txtotherchg"  type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "OTHER CHARGES" />     
+         </td>
+
+         </tr>
+         <tr>
+         <td>TOTAL</td>
+         <td>
+            <input id="txt_total"   type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "TOTAL AMOUNT" />     
+         </td>
+         </tr>
+
+         <tr>
+         <td>SERVICE TAX 12.36%</td>
+         <td>
+            <input id="txtservice_tax"    type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "TOTAL AMOUNT" />     
+         </td>
+         </tr>
+
+         <tr>
+         <td>TOTAL BILL AMOUNT</td>
+         <td>
+            <input id="txt_totalamt"   type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "TOTAL AMOUNT" />     
+         </td>
+         </tr>*@
+
+</table>
+</div>
+
+
+ </div>
+ 
+
+ <div id="sendmail_div">
+ 
+ </div>
+
+ <div id = "Profile_Create">
+ 
+ </div>
+@*<input id="Button1" type="button" onclick = "data_asp()" value="button" />*@
+
+   <div id = "ds_jquery"></div>
+
+   <br />
+   <div  align="center" style=" width:100%;">
+   
+   <div align="center"  style="width:90%;">
+   <iframe  src="../../Viewer/WebForm1.aspx" style="width:100%; height:600px; border:0; "  ></iframe>
+   </div>
+   </div>

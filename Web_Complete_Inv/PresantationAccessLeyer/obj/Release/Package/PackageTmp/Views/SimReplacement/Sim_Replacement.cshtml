@@ -1,0 +1,216 @@
+﻿@{
+    ViewBag.Title = "Sim_Replacement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<link href="../../autocomplete/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+<script  type="text/javascript">
+    var GData = null;
+    //====================auto complete ==================================================================
+   
+    function auto_comwithsim() {
+
+   
+        $("#txtsimno_u").autocomplete({
+
+            source: function (request, response) {
+               
+                var c_country = $("#txtcountry_C").val();
+                $.ajax({
+                    url: "/Client_Master/SearchSimch_no",
+                    data: "{ 'empName': '" + request.term + "' , 'country': '" + c_country + "'  }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.simno
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    }
+    //===============================================================================================================
+
+    $(function () {
+        $("#txtdate").datepicker({ dateFormat: 'dd-MM-yy' });
+      
+    });
+    function challannosearch(challanno) {
+        var simno = $('#txtcursimno').val();
+        $.post('/Client_Master/CAFSERACH', { simno: simno }, function (data) { challannosearch_1(data) }).error(function (data) { challannosearch_1(data) });
+    }
+    function challannosearch_1(abc) {
+       
+        BuildTable2(abc , 0);
+    }
+    function BuildTable2(msg, eid) {
+    
+        GData = msg;
+        var table = "<table><thead><tr>"
+              + "<th style=background-color:#FAEBD7;width:100px; >ID</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >CAF NO</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >USER NAME</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >COUNTRY</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >ALOT NEW SIM No. </th>"           
+             + "<th style=background-color:#FAEBD7;width:100px; >Operation</th>"
+            + "</thead><tbody>";
+        //     
+        //=======================================================================================================================================
+        var sno = 0;
+        for (var cd in msg) {
+            var row = "<tr ondblclick=Dialog(" + ++sno + "," + msg[cd].cafno + ",'" + msg[cd].User_Name + "','" + msg[cd].Country + "')  >";
+            row += '<td style=background-color:Silver;width:100px; >' + ++sno + '</td>';
+
+
+            if (eid != sno) {
+                row += "<td id='eidcafno' style=background-color:Silver;width:60px; >" + msg[cd].cafno + "</td>";
+                row += "<td id='eidusername' style=background-color:Silver;width:100px; >" + msg[cd].User_Name + "</td>";
+                row += "<td class='eidcountry' style=background-color:Silver;width:100px; >" + msg[cd].Country + "</td>";
+                row += "<td class='enewsimno' style=background-color:Silver;width:100px; ></td>";               
+                row += "<td style=background-color:Silver;width:100px; >"
+                   + "<input onclick=editRecord(" + sno + ") id='btnEdit' type='button' value='Edit' /> </td>";
+
+            }
+            else {
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtcaf_C type=text readonly="readonly" value =' + msg[cd].cafno + ' /></td>';
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtusername_u type=text readonly="readonly" value =' + msg[cd].User_Name + ' /></td>';     
+
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtcountry_C type=text readonly="readonly" value =' + msg[cd].Country + ' /></td>';    
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtsimno_u type=text PlaceHolder = ENTER NEW SIM /></td>';         
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                + "<input onclick=updateRecord(" + sno + ") id='btnUpdate' type='button' value='Update' />"
+                + " <input onclick=cancelRecord() id='btnCancel' type='button' value='Cancel' /> </td>";
+                
+            }
+            row += '</tr>';
+            table += row;
+
+            
+        }
+        //==============================================================================================================================
+        var row = "<tr >";
+        row += "<td colspan=7 style=background-color:Silver;width:100px; >";
+        for (var i = 1; i <= msg.noOfPages; i++) {
+            row += "<a href=# onclick='show(" + i + ")'>" + i + "</a> &nbsp;";
+        }
+        //  row += '<td colspan=8 style=background-color:Silver;width:100px; ><input id="btnSave" onClick="deleteChkRecord();" type="button" value="Save" /></td>';
+
+        row += "</td>";
+        row += "</tr>";
+        table += row;
+        table += "</tbody></table>";
+        $('#dsearchjquery').html(table);
+    }
+
+
+    function editRecord(eid) {
+    
+        BuildTable2(GData, eid);
+        auto_comwithsim();
+    }
+    function cancelRecord() {
+        BuildTable2(GData, 0);
+    }
+    function updateRecord(eid) {
+       
+        var date = $('#txtdate').val();
+        var oldsimno = $('#txtcursimno').val();
+        var cafno = $('#txtcaf_C').val();
+        var Username = $('#txtusername_u').val();
+        var SimNo = $('#txtcountry_C').val();
+        var newsimno = $('#txtsimno_u').val();
+        insertdata()
+//        $.post('/Purchase/purchaseentry_Update',
+//           { date: date, currentsimno: oldsimno, cafno: cafno, name: Username, alotnewsim: newsimno },
+//            function (data) { chkupdateRecord(data); }).error(function (data) { chkupdateRecord(data); });
+    }
+
+    function chkupdateRecord(abc) {
+        insertdata();
+//        alert(abc);
+        show(0);
+      
+    }
+
+    function insertdata() {
+       
+        var date = $('#txtdate').val();
+        var oldsimno = $('#txtcursimno').val();
+        var cafno = $('#txtcaf_C').val();
+        var Username = $('#txtusername_u').val();
+        var country = $('#txtcountry_C').val();
+        var newsimno = $('#txtsimno_u').val();
+
+        $.post('/SimReplacement/insert_data',
+           { date: date, currentsimno: oldsimno, cafno: cafno, name: Username, alotnewsim: newsimno },
+            function (data) { FillData(data); }).error(function (data) { FillData(data); });
+    }
+
+    function FillData(abc) {
+        alert("SIM REPLACE SUCCESSFULLY..");
+        show(0);
+
+    }
+</script>
+
+<div align="center" style = "border-color:transparent;" >
+
+<div align="center" style=" width:95%; border:2;  border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">SIM REPLACEMENT</h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+
+</div>
+
+
+<table   border = "2" cellpadding="5px" ; cellspacing="5px" id="tbl"  align="center"         
+            style="font-style:normal;   font-size: medium; margin :auto; width: 75%" >
+
+
+        <tr><td style="width:15%;border-color:transparent;font-size:large;font-family: 'Arial';">DATE. * : </td>
+        <td style="width:30%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+            <input id="txtdate" type="text" style = "Width:90% ;font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;""  PlaceHolder = "ENTER DATE"  />       
+          
+       </td>
+       
+        <td style="width:24%;border-color:transparent;font-size: large;font-family:'Arial';">CURRENT SIM NO. * : </td>
+        <td style="width:30%;border-color:transparent;font-size: large;font-family: 'Arial';">
+         <input  id="txtcursimno" type="text"  style = "Width:90% ;font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;""  PlaceHolder = "ENTER CURRENT SIM NO."  />     
+        </td>
+          </tr>             
+        <tr>
+        <td align="center" colspan ="4" style="width:25%;border-color:transparent;font-size: large;font-family: 'Arial';">
+            <input id="btn_search" onclick ="challannosearch(0);" type="button" value="SEARCH" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+             <input id="btn_cancel"  type="button" value="CANCEL" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+        </td>
+        </tr>             
+        <tr>
+        </tr>
+  
+     
+      
+       </table>
+
+       <div align = "center" id="dsearchjquery">
+       
+       </div>

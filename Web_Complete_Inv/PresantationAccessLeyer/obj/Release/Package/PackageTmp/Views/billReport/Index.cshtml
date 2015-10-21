@@ -1,0 +1,284 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+   <div align="center" style=" width:95%;">
+
+<div align="center" style=" width:80%;">
+<h2 align="center">BILL (Cancelled Bill)</h2>
+<hr align="center" style=" width:100%;  height:2px; background-color:Blue;"/> 
+<div style=" height:20%;">
+<div align="center" style="float:left; width:50%;">
+
+<table>
+<tr><td colspan="2">
+<label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["address"]</b> </label><br /></td></tr>
+<tr><td align="left">
+<label><b style=" font-size: medium; font-family: 'Arial Narrow';">Phone : </b> </label></td><td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["phone"]</b> </label></td></tr>
+<tr><td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">User : </b> </label></td><td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["user"] </b> </label></td>
+</tr>
+</table>
+<br />
+<img src="../../Images/barcode.png" / style="height:50px; width:40%;">
+</div>
+<div style="float:left; width:50%;">
+<table>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">CAF : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["caf"]</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Your Stayconnect NO. : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["yoStayconnectno"]</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Country : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["country"]</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Agreement NO. : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["agreementno"]</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Bill NO : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["billno"]</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Bill Date : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["billDate"]</b> </label></td>
+</tr>
+@*<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Bill Date : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">1-Oct-2014</b> </label></td>
+</tr>*@
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Payment Mode : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["paymentmode"]</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Bill Period : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["billPeyiod"]</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Service Tax No : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@TempData["seviceTaxno"]</b> </label></td>
+</tr>
+</table>
+</div>
+<br />
+
+<div align="center" style=" width:100%; color:White; height:20px; background-color:#000066; margin-top:220PX; ">TO Know more visit us at - WWW.demo.sgtelecom.org</div>
+
+
+
+@*<hr align="center" style=" width:100%; color:White; height:20px; background-color:Blue; " />*@
+
+
+
+</div>
+<br />
+<div>
+<div align="center" style="width:90%;">
+<div  style="width:250px; margin-left:3%; float:left; height:70px; border-radius:20px; font-size:18px; color:#fff; line-height:30px;text-align:center;background:#888;">
+<b>Previous Balance</b><br />
+<label>2221333.25</label></div>
+
+<div style=" float:left; margin-left:4%;"><h1><b>+</b></h1></div>
+
+<div  style="width:250px; float:left; height:70px; margin-left:6%; border-radius:20px; font-size:18px; color:#fff; line-height:30px;text-align:center;background:#888;">
+<b>Current Month Charges</b><br />
+<label>2221333.25</label></div>
+
+<div style=" float:left; margin-left:4%;"><h1><b>=</b></h1></div>
+
+<div  style="width:250px; float:right; height:70px;  border-radius:20px; font-size:18px; color:#fff; line-height:30px;text-align:center;background:#888;">
+<b>Total Due Amount</b><br />
+<label>2221333.25</label></div><br />
+</div>
+
+
+<div  style="width:40%; float:left; height:270px; margin-top:20px; margin-left:3%; border-radius:20px; font-size:18px; color:Black; line-height:30px;text-align:center; border-color:#888; border:2px; border-style:solid;">
+<table align="center">
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Rental  </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">140.41</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Airtime  </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">3340.41</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Surcharge  </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">0.00</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Service Tax 12 %  </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">515.41</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Education cess(on service tax) 2%  </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">10.41</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Secondary and Higher Education cess(on service tax) 1%  </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">10.41</b> </label></td>
+</tr>
+<tr style=" color:White; background-color:#000066;">
+<td colspan="2"><table><tr>
+
+<td align="left" style=" width:350px;"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Total Due Amount  </b> </label></td>
+<td align="left" style=" width:100px;"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">48250.41</b> </label></td>
+</tr></table></td>
+</tr>
+</table>
+
+</div><div style="width:60%; float:right;  margin-top:-200px; margin-left:3%; border-radius:20px; font-size:18px; color:Black; line-height:10px;">  
+<img src="../../Images/slide_01.jpg" / style="width:50%;">
+
+</div>
+<div align="center" style=" width:100%; float:left;">
+
+<h3 align="center" style=" width:50%;"><b>Note : </b>There may be usage during the bill period which is not reflecting in your current bill.
+Any such will be billed and charged for at a later date</h3>
+</div>
+<div align="center" style=" width:100%; padding-top:auto; color:White; height:30px; background-color:#000066; margin-top:430PX; text-align:center; ">For bill enquiries call +91-9555147147</div>
+
+<div align="left" style=" width:100%; float:left;">
+<img src="../../Images/cut.jpg" style="height:30px; width:30px;">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<div style=" width:50%; float:left;" >
+<h2>Patment Slip :</h2></div>
+<div style=" width:50%; float:right;"><img src="../../Images/barcode.png" / style="height:50px; width:40%;"></div>
+</div>
+<div align="center" style=" float:left; width:100%; ">
+<table  border="2" style=" width:100%; background-color:#888; ">
+<tr>
+<td style=" color:White;"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Account Code :  </b> </label><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@Session["caf"] </b> </label></td>
+<td style=" color:White;"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Amount due :  </b> </label><label><b style=" font-size: medium; font-family: 'Arial Narrow';">22616159 </b> </label></td>
+<td style=" color:White;"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Bill Date :  </b> </label><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@Session["billDate"] </b> </label></td>
+<td style=" color:White;"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Due Date :  </b> </label><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@Session["billDate"] </b> </label></td>
+
+</tr>
+</table>
+
+<div style=" width:100%;">
+<div style=" width:50%; float:left; border-right-color:Black;  ">
+<div align="center" ><h3><b>Pay by Cheque : make payable to</b></h3><h3><b>SNSGAP International Services (P) Ltd.</b></h3></div>
+<div> 
+<table style="width:80%;">
+<tr>
+<td ><h3><b>Cheque/DD NO</b></h3></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:2px; background-color:Black;"/></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><h3><b>Date</b></h3></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:2px; background-color:Black;"/></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><h3><b>Bank</b></h3></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:2px; background-color:Black;"/></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><h3><b>Branch</b></h3></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:2px; background-color:Black;"/></td>
+</tr>
+</table>
+</div>
+</div>
+<div style=" width:49%; float:right; border-left-color:Black; border-left-style:solid;">
+<div align="center" ><h3><b>Pay by credit : fill in the details below-</b></h3></div>
+<div> 
+<table style="width:80%;">
+<tr>
+<td ><h3><b>Please Charge</b></h3></td>
+<td style="width:300px;"><input value="र"  type="text" style="  width:100%; height:25Px;" /></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr style=" width:100%;">
+<td ><h3><b>Card no.</b></h3></td>
+<td style="width:300px;"><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /><input type="text" style=" width:4%; height:25Px;" /></td>
+</tr>
+<tr>
+<td></td><td style="width:300px;"><table style="width:100%;"><tr><td><h3><b>VISAMASTER</b></h3></td><td><input type="text" style=" width:20px; height:25Px;" /></td><td><h3><b>DINERS</b></h3></td><td><input type="text" style=" width:20px; height:25Px;" /></td><td><h3><b>AMEX</b></h3></td><td><input type="text" style=" width:20px; height:25Px;" /></td></tr></table></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><h3><b>Card holder's name</b></h3></td>
+<td style="width:300px;"></td>
+</tr>
+
+</table>
+<hr align="right" style=" width:100%; height:2px; background-color:Black;"/>
+<table style="width:80%;">
+<tr>
+<td ><table>
+<caption>Valid Upto</caption>
+<tr>
+<td><input type="text" style=" width:20px; height:25Px;" /></td>
+<td><input type="text" style=" width:20px; height:25Px;" /></td>
+<td><input type="text" style=" width:20px; height:25Px;" /></td>
+<td><input type="text" style=" width:20px; height:25Px;" /></td>
+</tr>
+</table></td>
+<td style="width:300px;"><table>
+<tr>
+<td ><h3><b >Signature</b></h3></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:2px; background-color:Black;"/></td>
+
+
+</tr>
+
+</table></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+<hr align="center" style=" width:100%; float:left;  height:20px; background-color:#000066;"/> 
+<div style=" width:100%; float:left;">
+<div align="center" style=" height:100px;">
+<h3><b>SNSGAP International Services (P) Ltd.</b></h3>
+<h4><b>H-43, Sector - 63,Noida (UP), India - 201301</b></h4>
+<h4><b>Tell NO +91-9555147147</b></h4>
+</div>
+</div>
+<hr align="center" style=" width:100%; float:left;   height:2px; background-color:Blue;"/> 
+<table border="2" cellpadding="4" cellspacing="2" style=" width:100%;">
+
+<caption > Call Datails</caption>
+<tr>
+<td   style="background-color:#888; color:White; width:12.5%;"> Date </td>
+<td   style="background-color:#888; color:White; width:12.5%;"> Client Name </td>
+<td   style="background-color:#888; color:White;width:12.5%;">Cus Acc No</td>
+<td   style="background-color:#888; color:White;width:12.5%;">Bill No</td>
+<td   style="background-color:#888; color:White;width:12.5%;">Bill Date</td>
+<td   style="background-color:#888; color:White;width:12.5%;">Amount</td>
+<td   style="background-color:#888; color:White;width:12.5%;">Due Date</td>
+<td   style="background-color:#888; color:White;width:12.5%;">Due Date</td>
+
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

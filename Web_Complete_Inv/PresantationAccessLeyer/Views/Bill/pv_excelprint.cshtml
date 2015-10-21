@@ -1,0 +1,462 @@
+﻿@using PresantationAccessLeyer.Models
+@model CustomerList
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+    <script src="../../Scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+
+
+    <script  type="text/javascript">
+        debugger;
+        $(document).ready(function () { printdata(); });
+        function printdata() {
+
+            var RENTAL = parseFloat($("#lavelRENTAL").text());
+            var USAGE = parseFloat($("#lavelUSAGE").text());
+            var DATAPACK = parseFloat($("#lavelDATAPACK").text() == "" ? "0" : $("#lavelDATAPACK").text());
+
+
+            var d = 5;
+            var a = RENTAL + USAGE + DATAPACK;
+            $("#lavelAMOUNT").text(a.toFixed(2));
+
+            var serviceCharge = ((a * 10) / 100);
+
+            $("#lavelSERCHARGE").text(serviceCharge.toFixed(2));
+            var totalam = a + serviceCharge;
+
+            $("#lavelTotalAmount").text(totalam.toFixed(2));
+            var totalamSERVICcharge = ((totalam * 12.36) / 100);
+            $("#lavelSeviceTaxaa").text(totalamSERVICcharge.toFixed(2));
+            var toAmount = totalam + totalamSERVICcharge;
+            $("#lavelamountPayble").text(toAmount.toFixed(2));
+            var c = 200 + toAmount;
+            $("#lavelAfterDueDate").text(c.toFixed(2));
+            $("#lavelTotalDueAmount").text(toAmount.toFixed(2));
+            $("#lavelTotalDueAmoun").text(toAmount.toFixed(2));
+            $("#lavelTotalDueAmounn").text(toAmount.toFixed(2));
+
+        }
+
+        
+</script>
+    </head>
+<body>
+
+
+<div>
+<div  id= "verify">
+
+</div>
+</div>
+
+
+
+
+
+
+   <div align="center" style=" width:95%;">
+
+<div id  = "a_print" align="center" style=" width:80%;">
+<table style="width:100%"><tr><td align="left"><h2>BILL (Cancelled Bill)</h2></td><td align="right"><img src="../../Images/sgnew logo.jpg" style="width:100px; height:100px; "></td></tr></table>
+@*<h2 align="left">BILL (Cancelled Bill)<img src="../../Images/sgnew logo.jpg" style="width:100px; height:100px; "></h2>*@
+<hr align="center" style=" width:100%;  height:2px; background-color:Blue;"/> 
+<div style=" height:20%;">
+<div align="center" style="float:left; width:48%;">
+
+<table>
+<tr><td colspan="2">
+<label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.d</b> </label><br /></td></tr>
+<tr><td align="left">
+<label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Phone : </b> </label></td><td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.b</b> </label></td></tr>
+<tr><td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">User : </b> </label></td><td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.c </b> </label></td>
+</tr>
+</table>
+<br />
+@*<img src="../../Images/barcode.png" / style="height:50px; width:40%;">*@
+</div>
+<div style="float:left; width:50%;">
+<table style="height:10px;">
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">CAF : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.a</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">CUSTOMER A/C NO : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.e</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Country : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.f</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Agreement NO. : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.g</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Bill NO : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.h</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Bill Date : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.i</b> </label></td>
+</tr>
+@*<tr>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">Bill Date : </b> </label></td>
+<td align="left"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">1-Oct-2014</b> </label></td>
+</tr>*@
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Payment Mode : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.j</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Bill Period : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.s TO @Model.t</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Service Tax No : </b> </label></td>
+<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.l</b> </label></td>
+</tr>
+</table>
+</div>
+<br />
+
+<div align="center" style=" width:100%; color:White; height:20px; background-color:#000066; margin-top:220PX; font-size:x-small; ">TO Know more visit us at - WWW.demo.sgtelecom.org</div>
+
+
+
+@*<hr align="center" style=" width:100%; color:White; height:20px; background-color:Blue; " />*@
+
+
+
+</div>
+<br />
+<div>
+
+<div align="center" style="width:100%; ">
+
+<table style="width:100%; ">
+<tr>
+
+<td style="width:150px; height:10px; border-radius:10px; font-size:x-small; color:#fff; line-height:20px;text-align:center;background:#888;">
+
+<p style="font-size:x-small;">Previous Balance</p>
+<p style="font-size:x-small;"><label>0.00</label></p>
+
+</td>
+
+<td>
+<h1><b>&nbsp;&nbsp;+&nbsp;&nbsp;</b></h1>
+</td>
+<td style="width:150px;  height:10px;  border-radius:10px; font-size:smaller; color:#fff; line-height:20px;text-align:center;background:#888;">
+
+<b style="font-size:x-small;">Current Month Charges</b>
+@*<p style="font-size:x-small;"><label>@Model.u</label></p>*@
+<p style="font-size:x-small;"><label id="lavelTotalDueAmounn">@Model.u</label></p>
+</td>
+<td>
+
+<h1><b>&nbsp;&nbsp;=&nbsp;&nbsp;</b></h1>
+</td>
+
+<td style="width:150px;  height:10px;  border-radius:10px; font-size:smaller; color:#fff; line-height:20px;text-align:center;background:#888;">
+
+<b style="font-size:x-small;">Total Due Amount</b><br />
+@*<label style="font-size:x-small;">@Model.u</label>*@
+<label id="lavelTotalDueAmoun" style="font-size:x-small;">@Model.u</label>
+</td>
+</tr>
+</table>
+</div>
+<div align="left" style = "width:99% ; height:378px ;">
+<div align="left"  style="width:40%; float:left;   height:98%; margin-top:10px; margin-left:3%; border-radius:20px; font-size:18px; color:Black; line-height:30px;text-align:center; border-color:#888; border:2px; border-style:solid;">
+
+<table align="left" cellspacing="1" cellpadding="0">
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">USAGE  </b> </label></td>
+<td align="left"><label id="lavelRENTAL" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b>@Convert.ToString(Math.Round(Convert.ToDecimal(Model.m == "" ? "0" : Model.m), 2))</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">RENTAL  </b> </label></td>
+<td align="left"><label id="lavelUSAGE" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b>@Convert.ToString(Math.Round(Convert.ToDecimal(Model.n == "" ? "0" : Model.n), 2))</b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">DATA PACK  </b> </label></td>
+<td align="left"><label id="lavelDATAPACK" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b>@Convert.ToString(Math.Round(Convert.ToDecimal(Model.o == "" ? "0" : Model.o), 2)) </b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">AMOUNT  </b> </label></td>
+
+<td align="left"><label id="lavelAMOUNT" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b></b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">SURCHARGES (10% ) </b> </label></td>
+
+<td align="left"><label id="lavelSERCHARGE" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b></b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">TOTAL  AMOUNT  </b> </label></td>
+
+<td align="left"><label id="lavelTotalAmount" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b></b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">SERVICE TAX (12.36%)  </b> </label></td>
+
+<td align="left"><label id="lavelSeviceTaxaa" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b></b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">AMOUNT PAYBLE  </b> </label></td>
+
+<td align="left"><label id="lavelamountPayble" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b></b> </label></td>
+</tr>
+<tr>
+<td align="left"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">AFTER DUE DATE (200 Rs)  </b> </label></td>
+@*<td align="left"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.u</b> </label></td>*@
+<td align="left"><label id="lavelAfterDueDate" style=" font-size:xx-small; font-family: 'Arial Narrow';"><b style=" font-size:xx-small; font-family: 'Arial Narrow';"></b> </label></td>
+</tr>
+<tr style=" color:White; background-color:#000066;">
+<td colspan="2"><table><tr>
+
+<td align="left" style=" width:350px;"><label><b style=" font-size:xx-small; font-family: 'Arial Narrow';">Total Due Amount  </b> </label></td>
+@*<td align="left" style=" width:100px;"><label><b style=" font-size: medium; font-family: 'Arial Narrow';">@Model.u</b> </label></td>*@
+<td align="left" style=" width:100px;"><label id="lavelTotalDueAmount" style=" font-size:xx-small; font-family: 'Arial Narrow';" ><b style=" font-size:xx-small; font-family: 'Arial Narrow';"></b> </label></td>
+</tr></table></td>
+</tr>
+</table>
+<div style = "font-size:x-small">Conversion Rate 1 @Model.z  = @Model.w INR </div>
+</div>
+<div align="right" style="width:53%; float:right;    margin-top:20px; margin-left:3%; border-radius:20px; font-size:18px; color:Black; line-height:10px;">  
+<div align = "center" style= "margin-top:50px">
+<img align = "center" src="../../Images/BILL OFFER.jpg" style="width:96%;  height:200px;">
+</div>
+</div>
+
+</div>
+<div  style=" width:100%; float:left;">
+
+<p align="left"  style=" font-size:x-small; width:100%;"><b>Note :</b>There may be usage during the bill period which is not reflecting in your current bill.
+Any such will be billed and charged for at a later date </p>
+</div>
+<div align="center" style=" float:left; width:100%; padding-top:auto; color:White; height:30px; background-color:#000066; margin-top:33PX; text-align:center; ">For bill enquiries call +91-9555147147</div>
+
+<div align="left" style=" width:100%; float:left;">
+@*<img src="../../Images/cut.jpg" style="height:30px; width:30px;">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*@
+
+<div style=" width:50%; float:left;" >
+<h4>Payment Slip :</h4></div>
+<div style=" width:50%; float:right;">@*<img src="../../Images/barcode.png" / style="height:50px; width:40%;">*@</div>
+</div>
+<div align="center" style=" float:left; width:100%; ">
+<table  border="2" style=" width:100%; background-color:#888;  ">
+<tr>
+<td style=" color:White;"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Account Code :  </b> </label><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Model.a </b> </label></td>
+<td style=" color:White;"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Amount due :  </b> </label><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">22616159 </b> </label></td>
+<td style=" color:White;"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Bill Date :  </b> </label><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Convert.ToDateTime(Model.i).ToShortDateString() </b> </label></td>
+<td style=" color:White;"><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">Due Date :  </b> </label><label><b style=" font-size:x-small; font-family: 'Arial Narrow';">@Convert.ToDateTime(Model.i).AddDays(2).ToShortDateString() </b> </label></td>
+
+</tr>
+</table>
+
+<div style=" width:100%;">
+<div style=" width:50%; float:left; border-right-color:Black;  ">
+<div align="center" ><p style="font-size:x-small">Pay by Cheque : make payable to</p><p style=" font-size:x-small;">SNSGAP International Services (P) Ltd.</p></div>
+<div> 
+<table style="width:80%;">
+<tr>
+<td ><p style="font-size:x-small">Cheque/DD NO</p></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:1px; background-color:Black;"/></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><p style="font-size:x-small">Date</p></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:1px; background-color:Black;"/></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><p style="font-size:x-small">Bank</p></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:1px; background-color:Black;"/></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><p style="font-size:x-small">Branch</p></td>
+<td style="width:300px;"><hr align="right" style=" width:100%; height:1px; background-color:Black;"/></td>
+</tr>
+</table>
+</div>
+</div>
+<div style=" width:49%; float:right; border-left-color:Black; border-left-style:solid;">
+<div align="center" ><p style="font-size:x-small"><b>Pay by credit : fill in the details below-</b></p></div>
+<div> 
+<table style="width:80%;">
+<tr>
+<td ><p style="font-size:x-small" >Please Charge</p></td>
+<td style="width:300px;"> <input class = "search"  type="text" style=" background:url(../../Images/rupees.jpeg) no-repeat;  width:100%; height:25Px;" /> </td>
+@*<td style="width:300px;"><input   type="text" style="  width:100%; height:25Px;" /></td>*@
+</tr>
+</table>
+<table style="width:80%;">
+<tr style=" width:100%;">
+<td ><p style="font-size:x-small">Card no.</p></td>
+<td style="width:300px;"><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /><input type="text" style=" width:4%; height:10Px;" /></td>
+</tr>
+<tr>
+<td></td><td style="width:300px;"><table style="width:100%;"><tr><td><p style="font-size:x-small">VISAMASTER</p></td><td><input type="text" style=" width:20px; height:10Px;" /></td><td><p style="font-size:x-small">DINERS</p></td><td><input type="text" style=" width:20px; height:10Px;" /></td><td><p style="font-size:x-small">AMEX</p></td><td><input type="text" style=" width:20px; height:10Px;" /></td></tr></table></td>
+</tr>
+</table>
+<table style="width:80%;">
+<tr>
+<td ><p style="font-size:x-small">Card holder's name</p></td>
+<td style="width:300px;"></td>
+</tr>
+
+</table>
+<hr align="right" style=" width:100%; height:1px; background-color:Black;"/>
+<table style="width:80%;">
+<tr>
+<td ><table>
+<caption style="font-size:x-small">Valid Upto</caption>
+<tr>
+<td><input type="text" style=" width:10px; height:20Px;" /></td>
+<td><input type="text" style=" width:10px; height:20Px;" /></td>
+<td><input type="text" style=" width:10px; height:20Px;" /></td>
+<td><input type="text" style=" width:10px; height:20Px;" /></td>
+</tr>
+</table></td>
+<td style="width:300px;"><table>
+<tr>
+<td ><p style="font-size:x-small">Signature</p></td>
+<td style="width:300px;"><hr align="right"  style=" width:100%; height:1px; background-color:Black;"/></td>
+
+
+</tr>
+
+</table></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+<hr align="center" style=" width:100%; float:left;  height:20px; background-color:#000066;"/> 
+<div style=" width:100%; float:left;">
+<div align="center" style = "height:100px" >
+<p style = "font-size:x-small">SNSGAP International Services (P) Ltd.
+H-43, Sector - 63,Noida (UP), India - 201301
+Tell NO +91-9555147147</p>
+</div>
+</div>
+<hr align="center" style=" width:100%; float:left;   height:2px; background-color:Blue;"/> 
+<table border="2" cellpadding="4" cellspacing="0" style=" width:100%;">
+
+<caption > Call Details</caption>
+@foreach (Customer customer in Model)
+{
+   
+<tr>
+<td   style="background-color:#888; color:White; width:12.5%;"> Date & TIME </td>
+<td   style="background-color:#888; color:White; width:12.5%;"> NUMBER </td>
+
+ @if (customer.TYPE == "")
+ {
+      <td   style="background-color:#888; color:White;width:12.5%;display:none">TYPE</td>   
+ }
+ else
+ {
+  <td   style="background-color:#888; color:White;width:12.5%;">TYPE</td>   
+ }
+<td   style="background-color:#888; color:White;width:12.5%;">DURATION</td>
+<td   style="background-color:#888; color:White;width:12.5%;">UNIT</td>
+<td   style="background-color:#888; color:White;width:12.5%;">RATE</td>
+<td   style="background-color:#888; color:White;width:12.5%;">TOTAL COST</td>
+</tr>
+ break;
+}
+
+@foreach (Customer customer in Model)
+{
+    <tr>
+
+     @if (customer.RATE == "" && customer.DATETIME =="")
+     {
+         continue;
+     }
+         @if (customer.DATETIME.Trim() == "DATE & TIME")
+         {
+             <td  style="background-color:#888; color:White;width:12.5%;"><b>@customer.DATETIME</b></td>
+         <td   style="background-color:#888; color:White;width:12.5%;"><b> @customer.NUMBER </b></td>
+              if (customer.TYPE == "")
+              {
+      
+    <td   style="width:12.5%; display:none"><b>@customer.TYPE </b></td>
+              }
+              else
+              {
+<td   style="background-color:#888; color:White;width:12.5%;"><b>@customer.TYPE </b></td>
+              }
+         <td   style="background-color:#888; color:White;width:12.5%;"><b>@customer.DURATION</b></td>
+        <td   style="background-color:#888; color:White;width:12.5%;"><b>@customer.UNITS</b></td>
+        <td   style="background-color:#888; color:White;width:12.5%;"><b>@customer.RATE</b></td>
+        <td  style="background-color:#888; color:White;width:12.5%;"><b>@customer.COST</b></td>
+             continue;
+         }
+          @if (@customer.DATETIME.Trim() == "SUMMARY")
+          {
+    <td   style="background-color:#888; color:White;width:12.5%;"><b>@customer.DATETIME</b></td>
+              continue;
+          }
+    @if (@customer.DATETIME.Trim() == "GRAND TOTAL")
+    {
+    <td   style="background-color:#888; color:White;width:12.5%;"><b>@customer.DATETIME</b></td>
+    <td   style="background-color:#888; color:White;width:12.5%;"><b> @customer.NUMBER </b></td>
+        <td  colspan = "5"></td>
+        break;
+    }
+    else
+    {
+        
+        
+       <td  style=" width:12.5%;"><b>@customer.DATETIME</b></td>
+    <td   style=" width:12.5%;"><b> @customer.NUMBER </b></td>
+        
+    }
+    @if (customer.TYPE == "")
+    {
+      
+    <td   style="width:12.5%; display:none"><b>@customer.TYPE </b></td>
+    }
+    else
+    {
+<td   style="width:12.5%;"><b>@customer.TYPE </b></td>
+    }
+
+<td   style="width:12.5%;"><b>@customer.DURATION</b></td>
+<td   style="width:12.5%;"><b>@customer.UNITS</b></td>
+<td   style="width:12.5%;"><b>@customer.RATE</b></td>
+<td   style="width:12.5%;"><b>@customer.COST</b></td>
+@*<td   style="background-color:#888; color:White;width:12.5%;">@customer.sp</td>
+<td   style="background-color:#888; color:White;width:12.5%;">@customer.mayank</td>*@
+    </tr>
+ 
+}
+
+</table>
+</br>
+@*<div align = "left"><b style = "font-size:medium">GRAND TOTAL  :  @Model.m </b></div>*@
+<div id="d2"></div>
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

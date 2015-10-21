@@ -1,0 +1,712 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Customer Entry</h2>*@
+<link href="../../CSS/jquery-ui.css" rel="stylesheet" type="text/css" />
+@*<link href="../../CSS/jquery-ui.css" rel="stylesheet" type="text/css" />*@
+
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>*@
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+@*<script src="../../Scripts/jquery-1.5.1.js" type="text/javascript"></script>*@
+
+
+<script  type="text/javascript">
+
+    var vemailmsg = "";
+
+
+    //==================auto complete mode ====================================================//
+
+
+    $(function () {
+
+        $("#txtcustname").autocomplete({
+
+            source: function (request, response) {
+
+                $.ajax({
+                    url: "/CustomerEntry/searchautocomcustname",
+                    data: "{ 'empName': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.user_name
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    });
+    $(function () {
+
+        $("#txtcustacno").autocomplete({
+
+            source: function (request, response) {
+
+                $.ajax({
+                    url: "/CustomerEntry/searchautocomcustacno",
+                    data: "{ 'empName': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.user_name
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    });
+
+
+
+    function autocomsearch() {
+
+        var opt = $('#cmboption').val();
+        var outval = "";
+        var u_rl = "";
+        if (opt == "CUSTOMER ACNO SEARCH") {
+            $('#lbltxt').show();
+            $('#lbltxt').text("Customer A/c");
+            $('#txtval').show();
+            u_rl = "/CustomerEntry/searchautocomcustacno"
+
+        }
+        else if (opt == "CUSTOMER NAME SEARCH") {
+            $('#txtval').show();
+            $('#lbltxt').show();
+            $('#lbltxt').text("Customer Name");
+            u_rl = "/CustomerEntry/searchautocomcustname"
+
+        }
+        else if (opt == "MOBILE NO SEARCH") {
+            $('#txtval').show();
+            $('#lbltxt').show();
+            $('#lbltxt').text("Mobile No");
+            u_rl = "/CustomerEntry/searchautocomcustmobile"
+        }
+        else if (opt == "ALL") {
+            $('#txtval').hide();
+            $('#lbltxt').hide();
+            
+        }
+
+        $("#txtval").autocomplete({
+            source: function (request, response) {
+
+                $.ajax({
+                    url: u_rl,
+                    data: "{ 'empName': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            if (opt == "CUSTOMER ACNO SEARCH") {
+                                return {
+                                    value: item.customeracno
+                                }
+                            }
+                            else if (opt == "CUSTOMER NAME SEARCH") {
+                                return {
+                                    value: item.customername
+                                }
+                            }
+                            else if (opt == "MOBILE NO SEARCH") {
+                                return {
+                                    value: item.mobileno
+                                }
+                            }
+                            else if (opt == "ALL") {
+                                return false;
+                            }
+
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    }
+
+
+    $(document).ready(function () { autonum(); });
+
+    function autonum() {
+
+        $.post('/CustomerEntry/auto_number', null,
+             function (data) { chkGetauto(data); }).error(function (data) { chkGetauto(data); });
+    }
+
+    function chkGetauto(abc) {
+        txtcustacno.value = abc;
+        $('#txtval').hide();
+        $('#lbltxt').hide();
+    }
+
+
+    $(function () {
+        $("#txtdate").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    //=========================================================================================================================================================
+    function email() {
+       
+        var email_name = $('#txtemailid').val();
+        $.post('/CustomerEntry/Emailvalidate', { email: email_name }, function (data) { chkemail(data); }).error(function (data) { chkemail(data); });
+    }
+
+    function chkemail(abc) {
+
+        if (abc == "Email id Not Valid") {
+
+            alert(abc);
+            return;
+
+        }
+
+    }
+
+
+
+    function insertdata() {
+    
+        var customeracno = $('#txtcustacno').val();
+        if (customeracno == "") {
+            alert("Please Enter Customer Ac/ no..");
+            return;
+        }
+
+        var customername = $('#txtcustname').val();
+        if (customername == "") {
+            alert("Please Enter Customer Name..");
+            return;
+        }
+        if ($('#txtdate').val() == "") {
+            alert('Plz Select Date..');
+            return;
+        }
+
+
+        var customername = $('#txtcustname').val();
+        if (customername == "") {
+            alert("Please Enter Customer Name..");
+            return;
+        }
+
+        var customeraddress = $('#txtaddress').val();
+
+        var emailid = $('#txtemailid').val();
+
+
+        var passportno = $('#txtpassportno').val();
+
+
+        var mobileno = $('#txtmobileno').val();
+
+
+        if (isNaN($('#txtmobileno').val())) {
+            alert("Mobile No Should be Numeric....");
+            return;
+        }
+
+        if ($('#txtmobileno').val().length != 10 && $('#txtmobileno').val().length != 0) {
+            alert("Mobile No Not vailid");
+            return;
+        }
+
+          var alternateno = $('#txtalternetno').val();
+//        if (isNaN($('#txtalternetno').val())) {
+//            alert("Mobile No Should be Numeric....");
+//            return;
+//        }
+//        if ($('#txtalternetno').val().length != 10 && $('#txtalternetno').val().length != 0) {
+//            alert("Alternet  No Not vailid");
+//            return;
+//        }
+
+
+        $.post('/CustomerEntry/insertcustomervalidate', { customeracno: customeracno, customername: customername, customeraddress: customeraddress,
+            emailid: emailid, passportno: passportno, mobileno: mobileno, alternateno: alternateno
+        }, function (data) { chk(data); }).error(function (data) { chk(data); });
+    }
+    function chk(abc) {
+      
+        alert(abc);
+        if (abc == "Record Inserted Successfully....") {
+            clearr();
+            autonum();
+        }
+    }
+
+    // ============================================= ==  Edit  25 aug ==================================================================
+
+
+    function SearchChk() {
+       
+        if ($('#txtdatefrom').val() == "") {
+            alert('Plz Select Date...');
+            return;
+        }
+        if ($('#txtdateto').val() == "") {
+            alert('Plz Select Date..');
+            return;
+        }
+
+        if ($('#cmboption').val() == "All") {
+            alert('Plz Select Option..');
+            return;
+        }
+
+        show(1);
+    }
+    function show(PageIndex) {
+       
+        var optn = $('#cmboption').val();
+
+        if (optn == "CUSTOMER ACNO SEARCH") {
+            var country = $('#txtval').val();
+            if (country == "") {
+                alert('Plz Enter Value..');
+                return;
+            }
+            $.post('/CustomerEntry/Customerentry_Search', { pageIndex: PageIndex, strval: country, option: optn }, function (data) { chkShow(data) });
+        }
+        else if (optn == "CUSTOMER NAME SEARCH") {
+            var country = $('#txtval').val();
+            if (country == "") {
+                alert('Plz Enter Value..');
+                return;
+            }
+            $.post('/CustomerEntry/Customerentry_Search', { pageIndex: PageIndex, strval: country, option: optn }, function (data) { chkShow(data) });
+        }
+        else if (optn == "MOBILE NO SEARCH") {
+            var country = $('#txtval').val();
+            if (country == "") {
+                alert('Plz Enter Value..');
+                return;
+            }
+            $.post('/CustomerEntry/Customerentry_Search', { pageIndex: PageIndex, strval: country, option: optn }, function (data) { chkShow(data) });
+        }
+        else if (optn == "ALL") {
+            var country = $('#txtval').val();
+            $.post('/CustomerEntry/Customerentry_Search', { pageIndex: PageIndex, strval: country, option: optn }, function (data) { chkShow(data) });
+        }
+    }
+    function chkShow(abc) {
+        GData = abc;
+        BuildTable(GData, 0);
+    }
+    function BuildTable(msg, eid) {
+       
+        var table = "<table><thead><tr>"
+              + "<th style=background-color:#FAEBD7;width:100px; >ID</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >CUSTOMER AC/NO</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >CUSTOMER NAME</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >ADDRESS</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >E-MAIL ID</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >PASSPORT NO</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >MOBILE NO </th>"
+                + "<th style=background-color:#FAEBD7;width:100px; >ALTERNATE NO</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >BRANCH CODE</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >Opration</th>"
+            + "</thead><tbody>";
+        //     
+        //=======================================================================================================================================
+
+        var v = 0;
+        for (var cd in msg) {
+            var row = "<tr ondblclick=Dialog(" + v + "," + msg[cd].customeracno + ",'" + msg[cd].customername + "','" + msg[cd].customeraddress + "'," + msg[cd].emailid + ",'" + msg[cd].passportno + "','" + msg[cd].mobileno + "','" + msg[cd].alternateno + "'  ,'" + msg[cd].branchcode + "')  >";
+            row += '<td style=background-color:Silver;width:100px; >' + ++v + '</td>';
+
+
+            if (eid != v) {
+                //  row += "<td class='eid' style=background-color:Silver;width:100px; >" + msg[cd].sno + "</td>";
+                row += "<td class='eidcustomeracno' style=background-color:Silver;width:60px; >" + msg[cd].customeracno + "</td>";
+                row += "<td class='eiditemtype' style=background-color:Silver;width:100px; >" + msg[cd].customername + "</td>";
+                row += "<td class='esimno' style=background-color:Silver;width:100px; >" + msg[cd].customeraddress + "</td>";
+                row += "<td class='ecountry' style=background-color:Silver;width:100px; >" + msg[cd].emailid + "</td>";
+                row += "<td class='ephoneno' style=background-color:Silver;width:100px; >" + msg[cd].passportno + "</td>";
+                row += "<td class='eapn' style=background-color:Silver;width:70px; >" + msg[cd].mobileno + "</td>";
+                row += "<td class='esimcode' style=background-color:Silver;width:70px; >" + msg[cd].alternateno + "</td>";
+                row += "<td class='epuk' style=background-color:Silver;width:60px; >" + msg[cd].branchcode + "</td>";
+                row += "<td style=background-color:Silver;width:100px; >"
+                   + "<input onclick=editRecord(" + v + ") id='btnEdit' type='button' value='Edit' /> </td>";
+
+            }
+            else {
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtcustomeracno_U type=text disabled="disabled" value=' + msg[cd].customeracno + ' /></td>';
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtcustomername_U type=text value=' + msg[cd].customername + ' /></td>';
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtcustomeraddress_U type=text value=' + msg[cd].customeraddress + ' /></td>';
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtemailid_U type=text value=' + msg[cd].emailid
+                      + ' /> </td>';
+
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtpassportno_U type=text value=' + msg[cd].passportno
+                      + ' /> </td>';
+
+                row += '<td style=background-color:Silver;width:100px; >'
+        + ' <input id=txtmobileno_U type=text value=' + msg[cd].mobileno + ' /></td>';
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtalternateno_U type=text value=' + msg[cd].alternateno
+                      + ' /> </td>';
+
+
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                + "<input onclick=updateRecord(" + v + ") id='btnUpdate' type='button' value='Update' />"
+                + " <input onclick=cancelRecord() id='btnCancel' type='button' value='Cancel' /> </td>";
+            }
+            row += '</tr>';
+            table += row;
+        }
+        //==============================================================================================================================
+        var row = "<tr >";
+        row += "<td colspan=7 style=background-color:Silver;width:100px; >";
+        for (var i = 1; i <= msg.noOfPages; i++) {
+            row += "<a href=# onclick='show(" + i + ")'>" + i + "</a> &nbsp;";
+        }
+        //  row += '<td colspan=8 style=background-color:Silver;width:100px; ><input id="btnSave" onClick="deleteChkRecord();" type="button" value="Save" /></td>';
+
+        row += "</td>";
+        row += "</tr>";
+        table += row;
+        table += "</tbody></table>";
+        $('#d1').html(table);
+    }
+
+
+    function editRecord(eid) {
+        BuildTable(GData, eid);
+    }
+    function cancelRecord() {
+        BuildTable(GData, 0);
+    }
+    function updateRecord(eid) {
+       
+        var acno = $('#txtcustomeracno_U').val();
+        var customername = $('#txtcustomername_U').val();
+
+        if (customername == "") {
+            alert("Please Enter Customer Name..");
+            return;
+        }
+        var customeraddress = $('#txtcustomeraddress_U').val();
+        var txtemailid = $('#txtemailid_U').val();
+        var passportno = $('#txtpassportno_U').val();
+        var mobileno = $('#txtmobileno_U').val();
+
+        if (isNaN($('#txtmobileno_U').val())) {
+            alert("Mobile No Should be Numeric....");
+            return;
+        }
+
+        if ($('#txtmobileno_U').val().length != 10 && $('#txtmobileno').val().length != 0) {
+            alert("Mobile No Not vailid");
+            return;
+        }
+        var alternateno = $('#txtalternateno_U').val();
+        if (isNaN($('#txtalternateno_U').val())) {
+            alert("Alternate No Should be Numeric....");
+            return;
+        }
+
+        if ($('#txtalternateno_U').val().length != 10 && $('#txtmobileno').val().length != 0) {
+            alert("Alternate No Not vailid");
+            return;
+        }
+
+
+
+        $.post('/CustomerEntry/Updatecustomervalidate',
+           { customeracno: acno, customername: customername, customeraddress: customeraddress, emailid: txtemailid, passportno: passportno, mobileno: mobileno, alternateno: alternateno },
+            function (data) { chkupdateRecord(data); }).error(function (data) { chkupdateRecord(data); });
+    }
+    function chkupdateRecord(abc) {
+       
+        alert(abc);
+        show(0);
+    }
+
+
+    function clearr() {
+        txtaddress.value = ""; txtalternetno.value = ""; txtcustacno.value = ""; txtdate.value = "";
+        txtemailid.value = ""; txtmobileno.value = ""; txtpassportno.value = "";
+        txtcustname.value = "";
+    }
+
+    //======================================================end =======================================================================
+
+
+    $(document).ready(function () { chop(); });
+
+    function chop() {
+        rdentry.checked = true;
+        chredioop();
+    }
+    function chredioop() {
+        if ($("#rdentry").is(":checked")) {
+            $("#divENTRY").show();
+            $("#d3").hide();
+        }
+        else if ($("#rdsearch").is(":checked")) {
+            //        $("#d2").hide();
+            $("#d3").show();
+            $("#divENTRY").hide();
+        }
+
+    }
+
+
+
+
+    </script>
+
+    <script type="text/javascript">
+//        $(function () {
+//            $("#tbxNumber").bind("keypress", function (e) {
+//                var keyCode = e.which ? e.which : e.keyCode
+//                // Checking value weather the key between the 0-9 or not! If not we are restricting 
+//                var result = (keyCode >= 48 && keyCode <= 57);
+//                $("#lblMsgNumbers").css("display", result ? "none" : "inline");
+//                return result;
+//            });
+//            // Restricting the Paste into textbox
+//            $(".tbxClass").bind("paste", function (e) {
+//                return false;
+//            });
+//            // Restricting the Cut from textbox
+//            $("#tbxClass").bind("cut", function (e) {
+//                return false;
+//            });
+//            // Restricting the Copy from textbox
+//            $("#tbxClass").bind("copy", function (e) {
+//                return false;
+//            });
+//            // Restricting the drag and drop any value into textbox
+//            $("#tbxClass").bind("drop", function (e) {
+//                return false;
+//            });
+//            $("#tbxText").bind("keypress", function (e) {
+//                var keyCode = e.which ? e.which : e.keyCode
+//                // Checking value weather the key between the 0-9 or not! If not we are restricting 
+//                var result = ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122));
+//                $("#lblMsgText").css("display", result ? "none" : "inline");
+//                return result;
+//            });
+//        });
+
+//        function IsDigit(e) {
+//            var keyCode = e.which ? e.which : e.keyCode
+//            var result = (keyCode >= 48 && keyCode <= 57);
+//            document.getElementById("lblMsgNumberJS").style.display = result ? "none" : "inline";
+//            return result;
+//        }
+
+//        function IsText(e) {
+//            var keyCode = e.which ? e.which : e.keyCode
+//            var result = ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122));
+//            document.getElementById("lblMsgTextJS").style.display = result ? "none" : "inline";
+//            return result;
+//        }
+
+        function IsEnter(e) {
+            try {
+              
+                var keyCode = e.which ? e.which : e.keyCode
+                if (keyCode == 13) {
+                    searchdata();
+                }
+            }
+            catch (e) { }
+           
+        }
+
+        function searchdata() {
+    
+            var country = $('#txtcustname').val();
+            var optn = "CUSTOMER NAME SEARCH";
+            $.post('/CustomerEntry/Customerentry_Search', {strval: country, option: optn }, function (data) { chwdata(data) });
+
+        }
+        function chwdata(abc) {
+ 
+           
+            txtaddress.value = abc[0].customeraddress;
+            txtalternetno.value = abc[0].alternateno;
+           
+            txtemailid.value = abc[0].emailid;
+            txtmobileno.value = abc[0].mobileno;
+            txtpassportno.value = abc[0].passportno;
+            
+        }
+    </script>
+
+    <div align="center" style = "border-color:transparent;" >
+
+<div align="center" style=" width:95%; border:2; border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">CUSTOMER ENTRY</h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+
+</div>
+
+<div align="center" style= "width:95% ;  ">
+
+    <input id="rdentry" onclick="chredioop()" type="radio" name ="a" >CUSTOMER ENTRY   </input>
+    
+    <input id="rdsearch" type="radio" onclick="chredioop()" name = "a" /> SEARCH</input>
+    </div>
+
+    <br />
+    <div id ="divENTRY">
+<table  align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;border-collapse:collapse; 
+         font-size: medium; margin :auto; width: 90%">
+
+        <tr><td class="style8">Customer A/c No. * : </td><td class="style2">
+         <input id="txtcustacno"  type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER A/C NO." />         
+                   
+       </td>
+        <td style="width:13%">Date * : </td><td>
+           
+          <input id="txtdate" readonly="readonly" autocomplete ="off" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER DATE" />          
+       
+             </td>
+           </tr>
+       
+        <tr><td class="style8">Customer Name * : </td><td class="style9">
+         <input id="txtcustname" onkeypress="return IsEnter(event);" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER NAME" />         
+       
+      
+        </td>
+        <td class="style11">Address * : </td><td class="style7">
+         <input id="txtaddress" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER ADDRESS" />         
+       
+     
+        </td>
+      </tr> <tr> 
+     
+       <td class="style13">&nbsp;E-Mail Id&nbsp; * : </td>
+         
+         <td>
+        
+  <input id="txtemailid"  onchange = "email()" class="required email" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER E-MAIL ID" />         
+  
+        </td>   
+      
+
+        <td class="style8">Mobile No.* : </td><td class="style10">
+         <input id="txtmobileno" maxlength="10"  type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER MOBILE NO" />         
+       
+      
+        </td>
+
+        </tr><tr>
+        <td class="style6">Passport No * : </td><td class="style12">
+         <input id="txtpassportno" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER PASSPORT NO." />         
+       
+     
+         
+        </td>
+         <td>Alternate No * : </td><td>
+          <input id="txtalternetno" maxlength="10"  type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER ALTERNATE NO." />         
+       
+      
+               
+        </td>
+        </tr><tr>
+     
+
+            <td class="style1" align ="center" colspan="4" rowspan="1">
+                <input id="btnSubmit" type="button" onclick = "insertdata()" value="Submit" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+           
+          <input id="btncalcel" type="button" onclick = "clearr()" value="Cancel" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" /></td>
+           
+                </tr>
+                <tr><td colspan="4" style = "color:Red">
+                * Please Press Enter For Search custumer Records
+                </td></tr>
+    </table>
+
+    </div>
+ 
+       @*========================================update code   mayank dubey ======================================================================*@
+
+  
+
+   <div id="d3">
+   
+    <table align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;border-collapse:collapse; 
+         font-size: medium; margin :auto; width: 80%; ">
+    
+       <tr>
+     <td style="width:15%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+       Select Option </td>
+        <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+       <select id ="cmboption" onchange="autocomsearch()"  style= "width:93% ;border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+        <option value="-1">SELECT</option>
+        <option>ALL</option>
+       <option>CUSTOMER ACNO SEARCH</option>
+        <option>CUSTOMER NAME SEARCH </option>
+          <option>MOBILE NO SEARCH </option>
+       </select> </td>
+    <td><label id ="lbltxt" for ="text">Enter Value</label>
+        </td>
+         <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+        <input id="txtval" type="text" style= "width:90% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" /> </td>
+        </tr>
+        <tr>
+      <td align="center" colspan="4" style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+         <input id="Submit1" onclick = "SearchChk()" type="submit" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" value="submit" />
+       @Html.ActionLink("Print All", "PrintCustomers", "PDFCustomerentry", new { target = "_blank" }, new { target = "_blank" }) 
+        </td>
+    </tr>
+    </table>
+     <div id = "d1"  align ="center" >
+
+    </div>
+    </div>
+   
+     @*========================================End update code    ======================================================================*@
+
+   
+
+    </br>
+    

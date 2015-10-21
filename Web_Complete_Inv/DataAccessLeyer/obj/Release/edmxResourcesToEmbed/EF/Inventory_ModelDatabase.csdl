@@ -1,0 +1,1514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="inventoryforwebappModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="inventoryforwebappEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Add_CountryInsert_tab">
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="isdcode" Mode="In" Type="String" />
+      <Parameter Name="indcalling" Mode="In" Type="String" />
+      <Parameter Name="countrycode" Mode="In" Type="String" />
+      <Parameter Name="currency" Mode="In" Type="String" />
+      <Parameter Name="impnotice" Mode="In" Type="String" />
+      <Parameter Name="impnotic" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertPurchaseEntry_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="sno" Mode="In" Type="Int64" />
+      <Parameter Name="BillNo" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="rangeDate" Mode="In" Type="String" />
+      <Parameter Name="ItemType" Mode="In" Type="String" />
+      <Parameter Name="SimNo" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="PUK" Mode="In" Type="String" />
+      <Parameter Name="Validity" Mode="In" Type="String" />
+      <Parameter Name="loginuser" Mode="In" Type="String" />
+      <Parameter Name="aloatsimexeccode" Mode="In" Type="String" />
+      <Parameter Name="APN" Mode="In" Type="String" />
+      <Parameter Name="PhoneNo" Mode="In" Type="String" />
+      <Parameter Name="SimCode" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="partnername" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="pChallanout_insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="challanno" Mode="In" Type="String" />
+      <Parameter Name="cdate" Mode="In" Type="String" />
+      <Parameter Name="cdate1" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="itemtype" Mode="In" Type="String" />
+      <Parameter Name="others" Mode="In" Type="String" />
+      <Parameter Name="execnameto" Mode="In" Type="String" />
+      <Parameter Name="loginusercode" Mode="In" Type="String" />
+      <Parameter Name="pkchallanid" Mode="In" Type="Int64" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="givento" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="IUDclientmaster">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="clmasterdate" Mode="In" Type="String" />
+      <Parameter Name="cafno" Mode="In" Type="String" />
+      <Parameter Name="customeracno" Mode="In" Type="String" />
+      <Parameter Name="fkchallanoutid" Mode="In" Type="Int64" />
+      <Parameter Name="pdffile" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="FatherName" Mode="In" Type="String" />
+      <Parameter Name="Category" Mode="In" Type="String" />
+      <Parameter Name="PaymentMode" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="Bank" Mode="In" Type="String" />
+      <Parameter Name="ChequeNo" Mode="In" Type="String" />
+      <Parameter Name="SimNo" Mode="In" Type="String" />
+      <Parameter Name="ItemType" Mode="In" Type="String" />
+      <Parameter Name="Plan" Mode="In" Type="String" />
+      <Parameter Name="Validity" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="String" />
+      <Parameter Name="EndDate" Mode="In" Type="String" />
+      <Parameter Name="SimReturnDate" Mode="In" Type="String" />
+      <Parameter Name="TariffDetail" Mode="In" Type="String" />
+      <Parameter Name="ExecutiveName" Mode="In" Type="String" />
+      <Parameter Name="ExecutiveCode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="tfno" Mode="In" Type="String" />
+      <Parameter Name="opt" Mode="In" Type="String" />
+      <Parameter Name="itemname" Mode="In" Type="String" />
+      <Parameter Name="imeino" Mode="In" Type="String" />
+      <Parameter Name="amtstatus" Mode="In" Type="String" />
+      <Parameter Name="neft" Mode="In" Type="String" />
+      <Parameter Name="REMARK" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="IUDclientmaster_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="clmasterdate" Mode="In" Type="String" />
+      <Parameter Name="cafno" Mode="In" Type="String" />
+      <Parameter Name="customeracno" Mode="In" Type="String" />
+      <Parameter Name="fkchallanoutid" Mode="In" Type="Int64" />
+      <Parameter Name="pdffile" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="FatherName" Mode="In" Type="String" />
+      <Parameter Name="Category" Mode="In" Type="String" />
+      <Parameter Name="PaymentMode" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="Bank" Mode="In" Type="String" />
+      <Parameter Name="ChequeNo" Mode="In" Type="String" />
+      <Parameter Name="SimNo" Mode="In" Type="String" />
+      <Parameter Name="ItemType" Mode="In" Type="String" />
+      <Parameter Name="Plan" Mode="In" Type="String" />
+      <Parameter Name="Validity" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="String" />
+      <Parameter Name="EndDate" Mode="In" Type="String" />
+      <Parameter Name="SimReturnDate" Mode="In" Type="String" />
+      <Parameter Name="TariffDetail" Mode="In" Type="String" />
+      <Parameter Name="ExecutiveName" Mode="In" Type="String" />
+      <Parameter Name="ExecutiveCode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="tfno" Mode="In" Type="String" />
+      <Parameter Name="opt" Mode="In" Type="String" />
+      <Parameter Name="itemname" Mode="In" Type="String" />
+      <Parameter Name="imeino" Mode="In" Type="String" />
+      <Parameter Name="amtstatus" Mode="In" Type="String" />
+      <Parameter Name="neft" Mode="In" Type="String" />
+      <Parameter Name="REMARK" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserNameInsert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="Partnername" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="usertype" Mode="In" Type="String" />
+      <Parameter Name="uname" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="newpassword" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="mobileno" Mode="In" Type="String" />
+      <Parameter Name="emailid" Mode="In" Type="String" />
+      <Parameter Name="rolesetting" Mode="In" Type="String" />
+      <Parameter Name="valueassign" Mode="In" Type="String" />
+      <Parameter Name="updatedata" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertCompanyProfile_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="cmpid" Mode="In" Type="Int64" />
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="CompanyName1" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="ManagingDirector" Mode="In" Type="String" />
+      <Parameter Name="ContactNo" Mode="In" Type="String" />
+      <Parameter Name="CustSupportNo" Mode="In" Type="String" />
+      <Parameter Name="PunchLine" Mode="In" Type="String" />
+      <Parameter Name="EmailID" Mode="In" Type="String" />
+      <Parameter Name="WebSite" Mode="In" Type="String" />
+      <Parameter Name="bankdetail" Mode="In" Type="String" />
+      <Parameter Name="panno" Mode="In" Type="String" />
+      <Parameter Name="servicetax" Mode="In" Type="String" />
+      <Parameter Name="loginusercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="customerdetailstableproc_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="customerdetailstableid" Mode="In" Type="Int64" />
+      <Parameter Name="customeracno" Mode="In" Type="String" />
+      <Parameter Name="customername" Mode="In" Type="String" />
+      <Parameter Name="customeraddress" Mode="In" Type="String" />
+      <Parameter Name="emailid" Mode="In" Type="String" />
+      <Parameter Name="website" Mode="In" Type="String" />
+      <Parameter Name="passportno" Mode="In" Type="String" />
+      <Parameter Name="mobileno" Mode="In" Type="String" />
+      <Parameter Name="alternateno" Mode="In" Type="String" />
+      <Parameter Name="loginusercode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PurchaseEntryotherstabproc_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="sno" Mode="In" Type="Int64" />
+      <Parameter Name="BillNo" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="ItemType" Mode="In" Type="String" />
+      <Parameter Name="itemname" Mode="In" Type="String" />
+      <Parameter Name="loginusercode" Mode="In" Type="String" />
+      <Parameter Name="SimAlotexeccode" Mode="In" Type="String" />
+      <Parameter Name="IMEINO" Mode="In" Type="String" />
+      <Parameter Name="validity" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="partnername" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="challanoutothersproc_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="challanno" Mode="In" Type="String" />
+      <Parameter Name="cdate" Mode="In" Type="String" />
+      <Parameter Name="sno" Mode="In" Type="String" />
+      <Parameter Name="itemtype" Mode="In" Type="String" />
+      <Parameter Name="itemname" Mode="In" Type="String" />
+      <Parameter Name="Imeino" Mode="In" Type="String" />
+      <Parameter Name="executivenameto" Mode="In" Type="String" />
+      <Parameter Name="executivename" Mode="In" Type="String" />
+      <Parameter Name="pkchallanid" Mode="In" Type="Int64" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="partnername" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SimWiseSearch_Data" ReturnType="Collection(inventoryforwebappModel.SimWiseSearch_Data_Result)">
+      <Parameter Name="simno" Mode="In" Type="String" />
+      <Parameter Name="UserType" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="Usercode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ClientMasterothersproc">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="cafno" Mode="In" Type="String" />
+      <Parameter Name="customeracno" Mode="In" Type="String" />
+      <Parameter Name="fkchallanoutid" Mode="In" Type="Int64" />
+      <Parameter Name="User_Name" Mode="In" Type="String" />
+      <Parameter Name="Father_Name" Mode="In" Type="String" />
+      <Parameter Name="Category" Mode="In" Type="String" />
+      <Parameter Name="Payment_Mode" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="Bank" Mode="In" Type="String" />
+      <Parameter Name="Cheque_No" Mode="In" Type="String" />
+      <Parameter Name="itemname" Mode="In" Type="String" />
+      <Parameter Name="imeino" Mode="In" Type="String" />
+      <Parameter Name="Plan" Mode="In" Type="String" />
+      <Parameter Name="Executive_Name" Mode="In" Type="String" />
+      <Parameter Name="Executive_Code" Mode="In" Type="String" />
+      <Parameter Name="BRANCHCODE" Mode="In" Type="String" />
+      <Parameter Name="STATUS" Mode="In" Type="String" />
+      <Parameter Name="itemtype" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addtarif_Proc_INSERT">
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="SNO" Mode="In" Type="Int64" />
+      <Parameter Name="TARIFF_CODE" Mode="In" Type="String" />
+      <Parameter Name="COUNTRY" Mode="In" Type="String" />
+      <Parameter Name="PLANTYPE" Mode="In" Type="String" />
+      <Parameter Name="CURRENCY" Mode="In" Type="String" />
+      <Parameter Name="CHARGESTYPE" Mode="In" Type="String" />
+      <Parameter Name="VALUE" Mode="In" Type="String" />
+      <Parameter Name="TALK_VALUE" Mode="In" Type="String" />
+      <Parameter Name="PER_MIN_CHARGE" Mode="In" Type="String" />
+      <Parameter Name="VALIDITY_DAYS" Mode="In" Type="String" />
+      <Parameter Name="COUNTRY_FROM" Mode="In" Type="String" />
+      <Parameter Name="COUNTRY_TO" Mode="In" Type="String" />
+      <Parameter Name="A" Mode="In" Type="String" />
+      <Parameter Name="B" Mode="In" Type="String" />
+      <Parameter Name="C" Mode="In" Type="String" />
+      <Parameter Name="D" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="simsearch_Proc_Search" ReturnType="Collection(inventoryforwebappModel.simsearch_Proc_SimSearch_Result)">
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="Exec_Code" Mode="In" Type="String" />
+      <Parameter Name="Branchcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RequestSim_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="requerstid" Mode="In" Type="Int64" />
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="NoOfSim" Mode="In" Type="String" />
+      <Parameter Name="priority" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="Executive_Code" Mode="In" Type="String" />
+      <Parameter Name="status_n" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="rolesettings_proc_insert" ReturnType="Collection(inventoryforwebappModel.rolesettings_proc_insert_Result)">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int64" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="insert" Mode="In" Type="Boolean" />
+      <Parameter Name="view" Mode="In" Type="Boolean" />
+      <Parameter Name="edit" Mode="In" Type="Boolean" />
+      <Parameter Name="delete" Mode="In" Type="Boolean" />
+      <Parameter Name="all" Mode="In" Type="Boolean" />
+      <Parameter Name="rolesetting" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="customerautobillno_proc_search">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="AddNewTables" EntityType="inventoryforwebappModel.AddNewTable" />
+    <EntitySet Name="ADDTARIFs" EntityType="inventoryforwebappModel.ADDTARIF" />
+    <EntitySet Name="BillUploads" EntityType="inventoryforwebappModel.BillUpload" />
+    <EntitySet Name="ChallanIns" EntityType="inventoryforwebappModel.ChallanIn" />
+    <EntitySet Name="challanouts" EntityType="inventoryforwebappModel.challanout" />
+    <EntitySet Name="challanoutcounters" EntityType="inventoryforwebappModel.challanoutcounter" />
+    <EntitySet Name="challanoutitemcounters" EntityType="inventoryforwebappModel.challanoutitemcounter" />
+    <EntitySet Name="challanoutothers" EntityType="inventoryforwebappModel.challanoutother" />
+    <EntitySet Name="ClientMasterothers" EntityType="inventoryforwebappModel.ClientMasterother" />
+    <EntitySet Name="CompanyProfiles" EntityType="inventoryforwebappModel.CompanyProfile" />
+    <EntitySet Name="consigneenames" EntityType="inventoryforwebappModel.consigneename" />
+    <EntitySet Name="CountryLists" EntityType="inventoryforwebappModel.CountryList" />
+    <EntitySet Name="customeraccounters" EntityType="inventoryforwebappModel.customeraccounter" />
+    <EntitySet Name="customerdetailstables" EntityType="inventoryforwebappModel.customerdetailstable" />
+    <EntitySet Name="Executivecounters" EntityType="inventoryforwebappModel.Executivecounter" />
+    <EntitySet Name="LostSimDatas" EntityType="inventoryforwebappModel.LostSimData" />
+    <EntitySet Name="pdffiles" EntityType="inventoryforwebappModel.pdffile" />
+    <EntitySet Name="prefixsettings" EntityType="inventoryforwebappModel.prefixsetting" />
+    <EntitySet Name="PurchaseEntries" EntityType="inventoryforwebappModel.PurchaseEntry" />
+    <EntitySet Name="Purchaseentrycounters" EntityType="inventoryforwebappModel.Purchaseentrycounter" />
+    <EntitySet Name="Purchaseentryitemcounters" EntityType="inventoryforwebappModel.Purchaseentryitemcounter" />
+    <EntitySet Name="PurchaseEntryotherstabs" EntityType="inventoryforwebappModel.PurchaseEntryotherstab" />
+    <EntitySet Name="RoleSettings_Tab" EntityType="inventoryforwebappModel.RoleSettings_Tab" />
+    <EntitySet Name="simreplacementtabs" EntityType="inventoryforwebappModel.simreplacementtab" />
+    <EntitySet Name="Todolists" EntityType="inventoryforwebappModel.Todolist" />
+    <EntitySet Name="User_Name" EntityType="inventoryforwebappModel.User_Name" />
+    <EntitySet Name="userdetailstables" EntityType="inventoryforwebappModel.userdetailstable" />
+    <EntitySet Name="vouchertables" EntityType="inventoryforwebappModel.vouchertable" />
+    <AssociationSet Name="FK_challanout_CountryList" Association="inventoryforwebappModel.FK_challanout_CountryList">
+      <End Role="CountryList" EntitySet="CountryLists" />
+      <End Role="challanout" EntitySet="challanouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_challanout_PurchaseEntry" Association="inventoryforwebappModel.FK_challanout_PurchaseEntry">
+      <End Role="PurchaseEntry" EntitySet="PurchaseEntries" />
+      <End Role="challanout" EntitySet="challanouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_challanoutothers_PurchaseEntryotherstab" Association="inventoryforwebappModel.FK_challanoutothers_PurchaseEntryotherstab">
+      <End Role="PurchaseEntryotherstab" EntitySet="PurchaseEntryotherstabs" />
+      <End Role="challanoutother" EntitySet="challanoutothers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMasterothers_challanoutothers" Association="inventoryforwebappModel.FK_ClientMasterothers_challanoutothers">
+      <End Role="challanoutother" EntitySet="challanoutothers" />
+      <End Role="ClientMasterother" EntitySet="ClientMasterothers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMasterothers_PurchaseEntryotherstab" Association="inventoryforwebappModel.FK_ClientMasterothers_PurchaseEntryotherstab">
+      <End Role="PurchaseEntryotherstab" EntitySet="PurchaseEntryotherstabs" />
+      <End Role="ClientMasterother" EntitySet="ClientMasterothers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pdffiles_CountryList" Association="inventoryforwebappModel.FK_pdffiles_CountryList">
+      <End Role="CountryList" EntitySet="CountryLists" />
+      <End Role="pdffile" EntitySet="pdffiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseEntry_CountryList" Association="inventoryforwebappModel.FK_PurchaseEntry_CountryList">
+      <End Role="CountryList" EntitySet="CountryLists" />
+      <End Role="PurchaseEntry" EntitySet="PurchaseEntries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LostSimData_PurchaseEntry" Association="inventoryforwebappModel.FK_LostSimData_PurchaseEntry">
+      <End Role="PurchaseEntry" EntitySet="PurchaseEntries" />
+      <End Role="LostSimData" EntitySet="LostSimDatas" />
+    </AssociationSet>
+    <EntitySet Name="Rollsetting_subtab" EntityType="inventoryforwebappModel.Rollsetting_subtab" />
+    <AssociationSet Name="FK_Rollsetting_subtab_RoleSettings_Tab" Association="inventoryforwebappModel.FK_Rollsetting_subtab_RoleSettings_Tab">
+      <End Role="RoleSettings_Tab" EntitySet="RoleSettings_Tab" />
+      <End Role="Rollsetting_subtab" EntitySet="Rollsetting_subtab" />
+    </AssociationSet>
+    <FunctionImport Name="pChallanin_Proc">
+      <Parameter Name="chdate" Mode="In" Type="String" />
+      <Parameter Name="SimNo" Mode="In" Type="String" />
+      <Parameter Name="ChallanNo" Mode="In" Type="String" />
+      <Parameter Name="Option" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="MobileNo" Mode="In" Type="String" />
+      <Parameter Name="ExecName" Mode="In" Type="String" />
+      <Parameter Name="LoginUser" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="vouchertableproc_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="voucher_id" Mode="In" Type="Int64" />
+      <Parameter Name="Voucherno" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="Sno" Mode="In" Type="Int32" />
+      <Parameter Name="cafno" Mode="In" Type="String" />
+      <Parameter Name="Acno" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="paymentmode" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="Chequeno" Mode="In" Type="String" />
+      <Parameter Name="Bank" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="netbalance" Mode="In" Type="Decimal" />
+      <Parameter Name="executivecode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="vouchertableproc_SaveAndSearch" ReturnType="Collection(inventoryforwebappModel.vouchertableproc_SaveAndSearch_Result)">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="voucher_id" Mode="In" Type="Int64" />
+      <Parameter Name="Voucherno" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="Sno" Mode="In" Type="Int32" />
+      <Parameter Name="cafno" Mode="In" Type="String" />
+      <Parameter Name="Acno" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="paymentmode" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="Chequeno" Mode="In" Type="String" />
+      <Parameter Name="Bank" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="netbalance" Mode="In" Type="Decimal" />
+      <Parameter Name="executivecode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="PlanTables" EntityType="inventoryforwebappModel.PlanTable" />
+    <FunctionImport Name="PLAN_PROC_INSERT">
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="PLANID" Mode="In" Type="Int64" />
+      <Parameter Name="PLANCODE" Mode="In" Type="String" />
+      <Parameter Name="PLANNAME" Mode="In" Type="String" />
+      <Parameter Name="PLANTYPE" Mode="In" Type="String" />
+      <Parameter Name="COUNTRY" Mode="In" Type="String" />
+      <Parameter Name="PLANVALUE" Mode="In" Type="String" />
+      <Parameter Name="TALKTIMEDATA" Mode="In" Type="String" />
+      <Parameter Name="BRANCHCODE" Mode="In" Type="String" />
+      <Parameter Name="LOGINUSER" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="ClientMasters" EntityType="inventoryforwebappModel.ClientMaster" />
+    <AssociationSet Name="FK_BillUpload_ClientMaster" Association="inventoryforwebappModel.FK_BillUpload_ClientMaster">
+      <End Role="ClientMaster" EntitySet="ClientMasters" />
+      <End Role="BillUpload" EntitySet="BillUploads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMaster_challanout" Association="inventoryforwebappModel.FK_ClientMaster_challanout">
+      <End Role="challanout" EntitySet="challanouts" />
+      <End Role="ClientMaster" EntitySet="ClientMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMaster_ClientMaster" Association="inventoryforwebappModel.FK_ClientMaster_ClientMaster">
+      <End Role="CountryList" EntitySet="CountryLists" />
+      <End Role="ClientMaster" EntitySet="ClientMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientMaster_customerdetailstable" Association="inventoryforwebappModel.FK_ClientMaster_customerdetailstable">
+      <End Role="customerdetailstable" EntitySet="customerdetailstables" />
+      <End Role="ClientMaster" EntitySet="ClientMasters" />
+    </AssociationSet>
+    <EntitySet Name="ClientmasterTFNOes" EntityType="inventoryforwebappModel.ClientmasterTFNO" />
+    <FunctionImport Name="Clientmasterautotfno_proc">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SimLost_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="LostDate" Mode="In" Type="String" />
+      <Parameter Name="SimNo" Mode="In" Type="Decimal" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="Reason" Mode="In" Type="String" />
+      <Parameter Name="DeleteInventry" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="partnername" Mode="In" Type="String" />
+      <Parameter Name="loginuser" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="purchaseautobillno_proc">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Challanautobillno_proc">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="prefixsettings_proc_insert">
+      <Parameter Name="prefixid" Mode="In" Type="Int64" />
+      <Parameter Name="Prefixtype" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="prefixnumber" Mode="In" Type="String" />
+      <Parameter Name="startwith" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="status_s" Mode="In" Type="String" />
+      <Parameter Name="A" Mode="In" Type="String" />
+      <Parameter Name="B" Mode="In" Type="String" />
+      <Parameter Name="C" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="rolenametable_proc_insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="rosettingid" Mode="In" Type="Int64" />
+      <Parameter Name="rolesettingname" Mode="In" Type="String" />
+      <Parameter Name="rolesettingcode" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="cmpid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Executiveautobillno_proc">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Paymentsheet" ReturnType="Collection(inventoryforwebappModel.Paymentsheet_Result)">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="usertype" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="userid" Mode="In" Type="String" />
+      <Parameter Name="vdate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="live_stockreport_proc" ReturnType="Collection(inventoryforwebappModel.live_stockreport_proc_Result)">
+      <Parameter Name="country" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="simreplacementtabproc_insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="simriplacementid" Mode="In" Type="Int64" />
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="currentsimno" Mode="In" Type="String" />
+      <Parameter Name="cafno" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="Aloatnewsimno" Mode="In" Type="String" />
+      <Parameter Name="execcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="mobile_topup" EntityType="inventoryforwebappModel.mobile_topup" />
+    <FunctionImport Name="mobile_topup_proc_insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="topid" Mode="In" Type="Int64" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="mobileno" Mode="In" Type="String" />
+      <Parameter Name="plancode" Mode="In" Type="String" />
+      <Parameter Name="topup" Mode="In" Type="String" />
+      <Parameter Name="topup_data" Mode="In" Type="String" />
+      <Parameter Name="topup_sptopup" Mode="In" Type="String" />
+      <Parameter Name="total" Mode="In" Type="String" />
+      <Parameter Name="loginuser" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="billsummaryproc_Insert">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="billsummaryid" Mode="In" Type="Int64" />
+      <Parameter Name="bdate" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="BillNo" Mode="In" Type="String" />
+      <Parameter Name="AccountCode" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="Agreementno" Mode="In" Type="String" />
+      <Parameter Name="mobileno" Mode="In" Type="String" />
+      <Parameter Name="Billdate" Mode="In" Type="String" />
+      <Parameter Name="duedate" Mode="In" Type="String" />
+      <Parameter Name="billperiod" Mode="In" Type="String" />
+      <Parameter Name="currency1" Mode="In" Type="String" />
+      <Parameter Name="currency2" Mode="In" Type="String" />
+      <Parameter Name="Rental" Mode="In" Type="String" />
+      <Parameter Name="useges" Mode="In" Type="String" />
+      <Parameter Name="aopfubs" Mode="In" Type="String" />
+      <Parameter Name="totalamount" Mode="In" Type="String" />
+      <Parameter Name="Amountininr" Mode="In" Type="String" />
+      <Parameter Name="servicetax" Mode="In" Type="String" />
+      <Parameter Name="amountpayable" Mode="In" Type="String" />
+      <Parameter Name="Afterduedate" Mode="In" Type="String" />
+      <Parameter Name="conversion" Mode="In" Type="String" />
+      <Parameter Name="ExcelFile" Mode="In" Type="String" />
+      <Parameter Name="Branchcode" Mode="In" Type="String" />
+      <Parameter Name="loginuser" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="contacttableproc">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="SNO" Mode="In" Type="Int64" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="ADDRESS" Mode="In" Type="String" />
+      <Parameter Name="MOBILENO" Mode="In" Type="String" />
+      <Parameter Name="EMAILID" Mode="In" Type="String" />
+      <Parameter Name="PRODUCT" Mode="In" Type="String" />
+      <Parameter Name="COMMENT" Mode="In" Type="String" />
+      <Parameter Name="showstatus" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updatedataval_proc" ReturnType="Collection(inventoryforwebappModel.updatedataval_proc_Result)">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="usertype" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="billexcels" EntityType="inventoryforwebappModel.billexcel" />
+    <FunctionImport Name="billexcelproc">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="billexcel" Mode="In" Type="Int64" />
+      <Parameter Name="cafno" Mode="In" Type="String" />
+      <Parameter Name="billno" Mode="In" Type="String" />
+      <Parameter Name="mobileno" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="excelfilename" Mode="In" Type="String" />
+      <Parameter Name="total" Mode="In" Type="String" />
+      <Parameter Name="discount" Mode="In" Type="String" />
+      <Parameter Name="grandtotal" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="purchaseautobillnoItem_proc">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="challanoutitemcounter_proc">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="citem_cout_proc">
+      <Parameter Name="billno" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="MAILSETTINGTABLEs" EntityType="inventoryforwebappModel.MAILSETTINGTABLE" />
+    <FunctionImport Name="MAILSETTINGTABLE_PROC">
+      <Parameter Name="MAILSETTING_ID" Mode="In" Type="Int64" />
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="SMTP_ADDRESS" Mode="In" Type="String" />
+      <Parameter Name="PORT_NUMBER" Mode="In" Type="String" />
+      <Parameter Name="ENABLE_SSL" Mode="In" Type="Boolean" />
+      <Parameter Name="EMAIL_FROM" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="SUBJECT" Mode="In" Type="String" />
+      <Parameter Name="BODY" Mode="In" Type="String" />
+      <Parameter Name="LOGINUSER" Mode="In" Type="String" />
+      <Parameter Name="BRANCHCODE" Mode="In" Type="String" />
+      <Parameter Name="A" Mode="In" Type="String" />
+      <Parameter Name="B" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SENDMAIL_PROC" ReturnType="Collection(inventoryforwebappModel.SENDMAIL_PROC_Result)">
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="CAFNO" Mode="In" Type="String" />
+      <Parameter Name="BRANCHCODE" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="PROFILE_TABLE" EntityType="inventoryforwebappModel.PROFILE_TABLE" />
+    <FunctionImport Name="PROFILE_TABLE_PROC">
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="PROFILE_ID" Mode="In" Type="Int64" />
+      <Parameter Name="PROFILE_NAME" Mode="In" Type="String" />
+      <Parameter Name="A" Mode="In" Type="String" />
+      <Parameter Name="B" Mode="In" Type="String" />
+      <Parameter Name="C" Mode="In" Type="String" />
+      <Parameter Name="D" Mode="In" Type="String" />
+      <Parameter Name="E" Mode="In" Type="String" />
+      <Parameter Name="G" Mode="In" Type="String" />
+      <Parameter Name="H" Mode="In" Type="String" />
+      <Parameter Name="I" Mode="In" Type="String" />
+      <Parameter Name="BRANCHCODE" Mode="In" Type="String" />
+      <Parameter Name="LOGINUSERCODE" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="NewSimRequests" EntityType="inventoryforwebappModel.NewSimRequest" />
+    <AssociationSet Name="FK_NewSimRequest_CountryList" Association="inventoryforwebappModel.FK_NewSimRequest_CountryList">
+      <End Role="CountryList" EntitySet="CountryLists" />
+      <End Role="NewSimRequest" EntitySet="NewSimRequests" />
+    </AssociationSet>
+    <FunctionImport Name="newvoucher">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="voucher_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Voucherautobillno_proc">
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+      <Parameter Name="formname" Mode="In" Type="String" />
+      <Parameter Name="usercode" Mode="In" Type="String" />
+      <Parameter Name="Msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="paymentSearch" ReturnType="Collection(inventoryforwebappModel.paymentSearch_Result1)">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="Acno" Mode="In" Type="String" />
+      <Parameter Name="branchcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="allvoDelete">
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="ALvoucher_Id" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SimWiseSearch_Data_Result">
+    <Property Type="DateTime" Name="SimDate" Nullable="true" />
+    <Property Type="String" Name="Sim_No" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TName" Nullable="false" MaxLength="13" />
+    <Property Type="String" Name="LoginCode" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PUK" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="vouchertableproc_SaveAndSearch_Result">
+    <Property Type="Int64" Name="voucher_id" Nullable="false" />
+    <Property Type="String" Name="Voucherno" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Date" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Sno" Nullable="false" />
+    <Property Type="String" Name="cafno" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Acno" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="paymentmode" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="String" Name="Chequeno" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Bank" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Decimal" Name="netbalance" Nullable="true" Precision="19" />
+    <Property Type="String" Name="executivecode" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="branchcode" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="simsearch_Proc_SimSearch_Result">
+    <Property Type="String" Name="others" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Validity" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="rolesettings_proc_insert_Result">
+    <Property Type="Int64" Name="id" Nullable="false" />
+    <Property Type="String" Name="formname" Nullable="false" MaxLength="200" />
+    <Property Type="Boolean" Name="view" Nullable="true" />
+    <Property Type="Boolean" Name="edit" Nullable="true" />
+    <Property Type="String" Name="rolsetingname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="usercode" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="insert" Nullable="true" />
+    <Property Type="Boolean" Name="all" Nullable="true" />
+    <Property Type="String" Name="branchcode" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="delete_1" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="AddNewTable">
+    <Key>
+      <PropertyRef Name="ExecCode" />
+    </Key>
+    <Property Type="Int64" Name="AddNewid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="SDate" />
+    <Property Type="DateTime" Name="LDate" />
+    <Property Type="String" Name="type" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ExecCode" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ExecName" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Address" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="email" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Phone" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ADDTARIF">
+    <Key>
+      <PropertyRef Name="SNO" />
+    </Key>
+    <Property Type="Int64" Name="SNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="TARIFF_CODE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COUNTRY" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PLANTYPE" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CURRENCY" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CHARGESTYPE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="VALUE" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TALK_VALUE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PERMINCHARGES" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="VALIDITY_DAYS" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COUNTRY_FROM" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COUNTRY_TO" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="A" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="B" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="C" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="D" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BillUpload">
+    <Key>
+      <PropertyRef Name="billid" />
+    </Key>
+    <Property Type="Int64" Name="billid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="cafno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="type" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="amount" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="particulars" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="date" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="caffile" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="billfile" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="execcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientMaster" Relationship="inventoryforwebappModel.FK_BillUpload_ClientMaster" FromRole="BillUpload" ToRole="ClientMaster" />
+  </EntityType>
+  <EntityType Name="ChallanIn">
+    <Key>
+      <PropertyRef Name="pkchallanin" />
+    </Key>
+    <Property Type="String" Name="chdate" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="pkchallanin" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="fkchallanoutid" />
+    <Property Type="String" Name="ChallanNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SimNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Country" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MobileNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ExecName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LoginUsercode" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="challanout">
+    <Key>
+      <PropertyRef Name="pkchallanid" />
+    </Key>
+    <Property Type="String" Name="challanno" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="cdate" />
+    <Property Type="String" Name="country" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="itemtype" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="others" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="executivenameto" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="executivename" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="pkchallanid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CountryCode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CountryList" Relationship="inventoryforwebappModel.FK_challanout_CountryList" FromRole="challanout" ToRole="CountryList" />
+    <NavigationProperty Name="PurchaseEntry" Relationship="inventoryforwebappModel.FK_challanout_PurchaseEntry" FromRole="challanout" ToRole="PurchaseEntry" />
+    <NavigationProperty Name="ClientMasters" Relationship="inventoryforwebappModel.FK_ClientMaster_challanout" FromRole="challanout" ToRole="ClientMaster" />
+    <Property Type="String" Name="givento" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="challanoutcounter">
+    <Key>
+      <PropertyRef Name="challanoutid" />
+    </Key>
+    <Property Type="Int64" Name="challanoutid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="challanoutitemcounter">
+    <Key>
+      <PropertyRef Name="challanoutitemid" />
+    </Key>
+    <Property Type="Int64" Name="challanoutitemid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="challanoutother">
+    <Key>
+      <PropertyRef Name="pkchallanid" />
+    </Key>
+    <Property Type="String" Name="challanno" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="cdate" />
+    <Property Type="String" Name="sno" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="itemtype" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="itemname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Imeino" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="executivenameto" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="executivename" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="pkchallanid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="partnersname" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PurchaseEntryotherstab" Relationship="inventoryforwebappModel.FK_challanoutothers_PurchaseEntryotherstab" FromRole="challanoutother" ToRole="PurchaseEntryotherstab" />
+    <NavigationProperty Name="ClientMasterothers" Relationship="inventoryforwebappModel.FK_ClientMasterothers_challanoutothers" FromRole="challanoutother" ToRole="ClientMasterother" />
+  </EntityType>
+  <EntityType Name="ClientMasterother">
+    <Key>
+      <PropertyRef Name="cafno" />
+    </Key>
+    <Property Type="String" Name="cafno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customeracno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="fkchallanoutid" />
+    <Property Type="String" Name="User_Name" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Father_Name" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Category" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Payment_Mode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Amount" Precision="18" Scale="3" />
+    <Property Type="String" Name="Bank" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Cheque_No" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="itemname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="imeino" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Plan" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Executive_Name" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Executive_Code" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STATUS" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="challanoutother" Relationship="inventoryforwebappModel.FK_ClientMasterothers_challanoutothers" FromRole="ClientMasterother" ToRole="challanoutother" />
+    <NavigationProperty Name="PurchaseEntryotherstab" Relationship="inventoryforwebappModel.FK_ClientMasterothers_PurchaseEntryotherstab" FromRole="ClientMasterother" ToRole="PurchaseEntryotherstab" />
+    <Property Type="String" Name="itemtype" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CompanyProfile">
+    <Key>
+      <PropertyRef Name="cmpid" />
+    </Key>
+    <Property Type="Int64" Name="cmpid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CompanyName" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ManagingDirector" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContactNo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CustSupportNo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PunchLine" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmailID" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="WebSite" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="bankdetails" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="panno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="servicetax" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginusercode" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="consigneename">
+    <Key>
+      <PropertyRef Name="cmpid" />
+    </Key>
+    <Property Type="Int64" Name="cmpid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CompanyName" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ManagingDirector" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ContactNo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CustSupportNo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PunchLine" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmailID" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="WebSite" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="loginusercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CountryList">
+    <Key>
+      <PropertyRef Name="Country" />
+    </Key>
+    <Property Type="String" Name="Country" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="isdcode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Indiacalling" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="countrycode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="currency" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="importantnotice" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="impnotice" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="challanouts" Relationship="inventoryforwebappModel.FK_challanout_CountryList" FromRole="CountryList" ToRole="challanout" />
+    <NavigationProperty Name="pdffiles" Relationship="inventoryforwebappModel.FK_pdffiles_CountryList" FromRole="CountryList" ToRole="pdffile" />
+    <NavigationProperty Name="PurchaseEntries" Relationship="inventoryforwebappModel.FK_PurchaseEntry_CountryList" FromRole="CountryList" ToRole="PurchaseEntry" />
+    <NavigationProperty Name="ClientMasters" Relationship="inventoryforwebappModel.FK_ClientMaster_ClientMaster" FromRole="CountryList" ToRole="ClientMaster" />
+    <NavigationProperty Name="NewSimRequests" Relationship="inventoryforwebappModel.FK_NewSimRequest_CountryList" FromRole="CountryList" ToRole="NewSimRequest" />
+  </EntityType>
+  <EntityType Name="customeraccounter">
+    <Key>
+      <PropertyRef Name="customeracid" />
+    </Key>
+    <Property Type="Int64" Name="customeracid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="customerdetailstable">
+    <Key>
+      <PropertyRef Name="customeracno" />
+    </Key>
+    <Property Type="Int64" Name="customerdetailstableid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="customeracno" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customername" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customeraddress" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="emailid" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="website" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="passportno" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mobileno" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="alternateno" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginusercode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientMasters" Relationship="inventoryforwebappModel.FK_ClientMaster_customerdetailstable" FromRole="customerdetailstable" ToRole="ClientMaster" />
+  </EntityType>
+  <EntityType Name="Executivecounter">
+    <Key>
+      <PropertyRef Name="Executiveid" />
+    </Key>
+    <Property Type="Int64" Name="Executiveid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LostSimData">
+    <Key>
+      <PropertyRef Name="SimNo" />
+    </Key>
+    <Property Type="DateTime" Name="LostDate" />
+    <Property Type="String" Name="SimNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="country" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Reason" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DeleteInventry" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="partnername" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginuser" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PurchaseEntry" Relationship="inventoryforwebappModel.FK_LostSimData_PurchaseEntry" FromRole="LostSimData" ToRole="PurchaseEntry" />
+  </EntityType>
+  <EntityType Name="pdffile">
+    <Key>
+      <PropertyRef Name="pdffileid" />
+    </Key>
+    <Property Type="Int64" Name="pdffileid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="country" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="pdffile1" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usernamecode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CountryList" Relationship="inventoryforwebappModel.FK_pdffiles_CountryList" FromRole="pdffile" ToRole="CountryList" />
+  </EntityType>
+  <EntityType Name="prefixsetting">
+    <Key>
+      <PropertyRef Name="prefixid" />
+    </Key>
+    <Property Type="Int64" Name="prefixid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Prefixtype" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="formname" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="prefixnumber" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="startwith" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="status_s" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="A" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="B" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="C" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PurchaseEntry">
+    <Key>
+      <PropertyRef Name="SimNo" />
+    </Key>
+    <Property Type="Int64" Name="sno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="BillNo" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Date" />
+    <Property Type="String" Name="ItemType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SimNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Country" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IndCallCode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PUK" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Validity" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="APN" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginusercode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SimAlotexeccode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PhoneNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="simcode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="partnername" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="challanouts" Relationship="inventoryforwebappModel.FK_challanout_PurchaseEntry" FromRole="PurchaseEntry" ToRole="challanout" />
+    <NavigationProperty Name="CountryList" Relationship="inventoryforwebappModel.FK_PurchaseEntry_CountryList" FromRole="PurchaseEntry" ToRole="CountryList" />
+    <NavigationProperty Name="LostSimData" Relationship="inventoryforwebappModel.FK_LostSimData_PurchaseEntry" FromRole="PurchaseEntry" ToRole="LostSimData" />
+    <Property Type="String" Name="username" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="password" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Purchaseentrycounter">
+    <Key>
+      <PropertyRef Name="Purchaseid" />
+    </Key>
+    <Property Type="Int64" Name="Purchaseid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Purchaseentryitemcounter">
+    <Key>
+      <PropertyRef Name="Purchaseitemid" />
+    </Key>
+    <Property Type="Int64" Name="Purchaseitemid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PurchaseEntryotherstab">
+    <Key>
+      <PropertyRef Name="IMEINO" />
+    </Key>
+    <Property Type="Int64" Name="sno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="BillNo" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Date" />
+    <Property Type="String" Name="ItemType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="itemname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginusercode" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SimAlotexeccode" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IMEINO" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="partnername" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="validity" />
+    <Property Type="String" Name="country" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="challanoutothers" Relationship="inventoryforwebappModel.FK_challanoutothers_PurchaseEntryotherstab" FromRole="PurchaseEntryotherstab" ToRole="challanoutother" />
+    <NavigationProperty Name="ClientMasterothers" Relationship="inventoryforwebappModel.FK_ClientMasterothers_PurchaseEntryotherstab" FromRole="PurchaseEntryotherstab" ToRole="ClientMasterother" />
+  </EntityType>
+  <EntityType Name="RoleSettings_Tab">
+    <Key>
+      <PropertyRef Name="rolesettingname" />
+    </Key>
+    <Property Type="Int64" Name="rolesettiungid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="rolesettingname" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usertype" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CMPID" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="rolesettingcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rollsetting_subtab" Relationship="inventoryforwebappModel.FK_Rollsetting_subtab_RoleSettings_Tab" FromRole="RoleSettings_Tab" ToRole="Rollsetting_subtab" />
+  </EntityType>
+  <EntityType Name="simreplacementtab">
+    <Key>
+      <PropertyRef Name="simriplacementid" />
+    </Key>
+    <Property Type="Int64" Name="simriplacementid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="date" />
+    <Property Type="String" Name="currentsimno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="cafno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Aloatnewsimno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="execcode" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Todolist">
+    <Key>
+      <PropertyRef Name="todolistid" />
+    </Key>
+    <Property Type="Int64" Name="todolistid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Alertdate" />
+    <Property Type="Int64" Name="Alerttime" />
+    <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="username" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="User_Name">
+    <Key>
+      <PropertyRef Name="UserType" />
+      <PropertyRef Name="User_Code" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Type="DateTime" Name="date" />
+    <Property Type="String" Name="UserType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="partnername" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="User_Code" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="address" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mobileno" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="emailid" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="rolesetting" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="valueassign" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="updatedata" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="userdetailstable">
+    <Key>
+      <PropertyRef Name="userdetailstableid" />
+    </Key>
+    <Property Type="Int64" Name="userdetailstableid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="fkcompid" Nullable="false" />
+    <Property Type="String" Name="username" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="fathersname" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mobileno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="address" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="emailid" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vouchertable">
+    <Key>
+      <PropertyRef Name="voucher_id" />
+    </Key>
+    <Property Type="Int64" Name="voucher_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Voucherno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Date" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Sno" Nullable="false" />
+    <Property Type="String" Name="cafno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Acno" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="type" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="paymentmode" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Amount" Precision="19" Scale="4" />
+    <Property Type="String" Name="Chequeno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Bank" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="netbalance" Precision="19" Scale="4" />
+    <Property Type="String" Name="executivecode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_challanout_CountryList">
+    <End Type="inventoryforwebappModel.CountryList" Role="CountryList" Multiplicity="1" />
+    <End Type="inventoryforwebappModel.challanout" Role="challanout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="challanout">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_challanout_PurchaseEntry">
+    <End Type="inventoryforwebappModel.PurchaseEntry" Role="PurchaseEntry" Multiplicity="1" />
+    <End Type="inventoryforwebappModel.challanout" Role="challanout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntry">
+        <PropertyRef Name="SimNo" />
+      </Principal>
+      <Dependent Role="challanout">
+        <PropertyRef Name="others" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_challanoutothers_PurchaseEntryotherstab">
+    <End Type="inventoryforwebappModel.PurchaseEntryotherstab" Role="PurchaseEntryotherstab" Multiplicity="1" />
+    <End Type="inventoryforwebappModel.challanoutother" Role="challanoutother" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntryotherstab">
+        <PropertyRef Name="IMEINO" />
+      </Principal>
+      <Dependent Role="challanoutother">
+        <PropertyRef Name="Imeino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMasterothers_challanoutothers">
+    <End Type="inventoryforwebappModel.challanoutother" Role="challanoutother" Multiplicity="0..1" />
+    <End Type="inventoryforwebappModel.ClientMasterother" Role="ClientMasterother" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="challanoutother">
+        <PropertyRef Name="pkchallanid" />
+      </Principal>
+      <Dependent Role="ClientMasterother">
+        <PropertyRef Name="fkchallanoutid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMasterothers_PurchaseEntryotherstab">
+    <End Type="inventoryforwebappModel.PurchaseEntryotherstab" Role="PurchaseEntryotherstab" Multiplicity="1" />
+    <End Type="inventoryforwebappModel.ClientMasterother" Role="ClientMasterother" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntryotherstab">
+        <PropertyRef Name="IMEINO" />
+      </Principal>
+      <Dependent Role="ClientMasterother">
+        <PropertyRef Name="imeino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pdffiles_CountryList">
+    <End Type="inventoryforwebappModel.CountryList" Role="CountryList" Multiplicity="0..1" />
+    <End Type="inventoryforwebappModel.pdffile" Role="pdffile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="pdffile">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseEntry_CountryList">
+    <End Type="inventoryforwebappModel.CountryList" Role="CountryList" Multiplicity="0..1" />
+    <End Type="inventoryforwebappModel.PurchaseEntry" Role="PurchaseEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="PurchaseEntry">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LostSimData_PurchaseEntry">
+    <End Type="inventoryforwebappModel.PurchaseEntry" Role="PurchaseEntry" Multiplicity="1" />
+    <End Type="inventoryforwebappModel.LostSimData" Role="LostSimData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseEntry">
+        <PropertyRef Name="SimNo" />
+      </Principal>
+      <Dependent Role="LostSimData">
+        <PropertyRef Name="SimNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Rollsetting_subtab">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="formname" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="view" />
+    <Property Type="Boolean" Name="edit" />
+    <Property Type="String" Name="rolsetingname" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="insert" />
+    <Property Type="Boolean" Name="all" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="delete_1" />
+    <NavigationProperty Name="RoleSettings_Tab" Relationship="inventoryforwebappModel.FK_Rollsetting_subtab_RoleSettings_Tab" FromRole="Rollsetting_subtab" ToRole="RoleSettings_Tab" />
+  </EntityType>
+  <Association Name="FK_Rollsetting_subtab_RoleSettings_Tab">
+    <End Type="inventoryforwebappModel.RoleSettings_Tab" Role="RoleSettings_Tab" Multiplicity="1" />
+    <End Type="inventoryforwebappModel.Rollsetting_subtab" Role="Rollsetting_subtab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleSettings_Tab">
+        <PropertyRef Name="rolesettingname" />
+      </Principal>
+      <Dependent Role="Rollsetting_subtab">
+        <PropertyRef Name="rolsetingname" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PlanTable">
+    <Key>
+      <PropertyRef Name="PLANID" />
+    </Key>
+    <Property Type="Int64" Name="PLANID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PLAN_CODE" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PLAN_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PLAN_TYPE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COUNTRY" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PLAN_VALUE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TALKTIMEDATA" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRANCHCODE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LOGINUSER" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ClientMaster">
+    <Key>
+      <PropertyRef Name="cafno" />
+    </Key>
+    <Property Type="DateTime" Name="clmasterdate" />
+    <Property Type="String" Name="cafno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customeracno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="fkchallanoutid" />
+    <Property Type="String" Name="pdffile" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="User_Name" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Father_Name" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Category" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Payment_Mode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Amount" Precision="18" Scale="3" />
+    <Property Type="String" Name="Bank" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Cheque_No" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Sim_No" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mobileno" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ItemType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Plan" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Validity" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Country" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Start_Date" />
+    <Property Type="DateTime" Name="End_Date" />
+    <Property Type="DateTime" Name="Sim_Return_Date" />
+    <Property Type="String" Name="Tarrif_Detail" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Executive_Name" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Executive_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BillUploads" Relationship="inventoryforwebappModel.FK_BillUpload_ClientMaster" FromRole="ClientMaster" ToRole="BillUpload" />
+    <NavigationProperty Name="challanout" Relationship="inventoryforwebappModel.FK_ClientMaster_challanout" FromRole="ClientMaster" ToRole="challanout" />
+    <NavigationProperty Name="CountryList" Relationship="inventoryforwebappModel.FK_ClientMaster_ClientMaster" FromRole="ClientMaster" ToRole="CountryList" />
+    <NavigationProperty Name="customerdetailstable" Relationship="inventoryforwebappModel.FK_ClientMaster_customerdetailstable" FromRole="ClientMaster" ToRole="customerdetailstable" />
+    <Property Type="String" Name="tfno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="itemname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="imeino" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="amtstatus" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="neft" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_BillUpload_ClientMaster">
+    <End Type="inventoryforwebappModel.ClientMaster" Role="ClientMaster" Multiplicity="1" />
+    <End Type="inventoryforwebappModel.BillUpload" Role="BillUpload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientMaster">
+        <PropertyRef Name="cafno" />
+      </Principal>
+      <Dependent Role="BillUpload">
+        <PropertyRef Name="cafno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMaster_challanout">
+    <End Type="inventoryforwebappModel.challanout" Role="challanout" Multiplicity="0..1" />
+    <End Type="inventoryforwebappModel.ClientMaster" Role="ClientMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="challanout">
+        <PropertyRef Name="pkchallanid" />
+      </Principal>
+      <Dependent Role="ClientMaster">
+        <PropertyRef Name="fkchallanoutid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMaster_ClientMaster">
+    <End Type="inventoryforwebappModel.CountryList" Role="CountryList" Multiplicity="0..1" />
+    <End Type="inventoryforwebappModel.ClientMaster" Role="ClientMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="ClientMaster">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientMaster_customerdetailstable">
+    <End Type="inventoryforwebappModel.customerdetailstable" Role="customerdetailstable" Multiplicity="0..1" />
+    <End Type="inventoryforwebappModel.ClientMaster" Role="ClientMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customerdetailstable">
+        <PropertyRef Name="customeracno" />
+      </Principal>
+      <Dependent Role="ClientMaster">
+        <PropertyRef Name="customeracno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ClientmasterTFNO">
+    <Key>
+      <PropertyRef Name="ClientmasterTFNO1" />
+    </Key>
+    <Property Type="Int64" Name="ClientmasterTFNO1" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="usercode" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="Paymentsheet_Result">
+    <Property Type="String" Name="ACCOUNTNO" Nullable="true" />
+    <Property Type="Decimal" Name="R_AMOUNT" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="P_AMOUNT" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="NETVALUE" Nullable="true" Precision="19" />
+    <Property Type="String" Name="Name" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="live_stockreport_proc_Result">
+    <Property Type="Int32" Name="PUR" Nullable="true" />
+    <Property Type="Int32" Name="EXE" Nullable="true" />
+    <Property Type="Int32" Name="CLI" Nullable="true" />
+    <Property Type="String" Name="country" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="total" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="mobile_topup">
+    <Key>
+      <PropertyRef Name="topid" />
+    </Key>
+    <Property Type="Int64" Name="topid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="country" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mobileno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="topup" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="topup_data" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="topup_sptopup" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="total" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginuser" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="plancode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="request_date" />
+    <Property Type="String" Name="statu_s" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="updatedataval_proc_Result">
+    <Property Type="String" Name="user_code" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="valueassign" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Fund" Nullable="true" MaxLength="300" />
+    <Property Type="Int64" Name="UserdFund" Nullable="true" />
+    <Property Type="String" Name="updatedata" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="billexcel">
+    <Key>
+      <PropertyRef Name="cafno" />
+    </Key>
+    <Property Type="Int64" Name="billexcel1" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="cafno" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mobileno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="username" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="country" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="excelfilename" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="total" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="discount" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="grandtotal" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginuser" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="billno" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MAILSETTINGTABLE">
+    <Key>
+      <PropertyRef Name="MAILSETTING_ID" />
+    </Key>
+    <Property Type="Int64" Name="MAILSETTING_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="SMTP_ADDRESS" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PORT_NUMBER" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="ENABLE_SSL" />
+    <Property Type="String" Name="EMAIL_FROM" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PASSWORD" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SUBJECT" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BODY" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LOGINUSER" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRANCHCODE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="A" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="B" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="SENDMAIL_PROC_Result">
+    <Property Type="String" Name="ACCOUNTNO" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EMAILID" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="SUBJECT" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="BODY" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="PROFILE_TABLE">
+    <Key>
+      <PropertyRef Name="PROFILE_NAME" />
+    </Key>
+    <Property Type="Int64" Name="PROFILE_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PROFILE_NAME" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="A" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="B" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="C" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="D" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="E" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="F" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="G" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="H" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRANCHCODE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LOGINUSERCODE" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="NewSimRequest">
+    <Key>
+      <PropertyRef Name="requestid" />
+    </Key>
+    <Property Type="Int64" Name="requestid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Date" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Country" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SimNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Priority" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branchcode" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Executive_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UniqueValue" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="status_n" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CountryList" Relationship="inventoryforwebappModel.FK_NewSimRequest_CountryList" FromRole="NewSimRequest" ToRole="CountryList" />
+  </EntityType>
+  <Association Name="FK_NewSimRequest_CountryList">
+    <End Type="inventoryforwebappModel.CountryList" Role="CountryList" Multiplicity="0..1" />
+    <End Type="inventoryforwebappModel.NewSimRequest" Role="NewSimRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryList">
+        <PropertyRef Name="Country" />
+      </Principal>
+      <Dependent Role="NewSimRequest">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="paymentSearch_Result">
+    <Property Type="String" Name="Voucher_no" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="V_NETVALUE" Nullable="true" Precision="19" />
+    <Property Type="String" Name="Voucher_date" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="voucher_cafno" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="V_CAMOUNT" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="V_DAMOUNT" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="paymentSearch_Result1">
+    <Property Type="String" Name="Voucher_date" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="voucher_cafno" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Voucher_no" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="V_CAMOUNT" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="V_DAMOUNT" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="V_NETVALUE" Nullable="true" Precision="19" />
+  </ComplexType>
+</Schema>

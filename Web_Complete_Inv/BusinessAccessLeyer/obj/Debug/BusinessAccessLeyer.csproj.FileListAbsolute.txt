@@ -1,0 +1,38 @@
+C:\Users\mayankji\Documents\Visual Studio 2010\Projects\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.dll
+C:\Users\mayankji\Documents\Visual Studio 2010\Projects\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.pdb
+C:\Users\mayankji\Documents\Visual Studio 2010\Projects\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.dll
+C:\Users\mayankji\Documents\Visual Studio 2010\Projects\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.pdb
+C:\Users\mayankji\Documents\Visual Studio 2010\Projects\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.csprojResolveAssemblyReference.cache
+J:\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.dll
+J:\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.pdb
+J:\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.dll
+J:\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Dropbox\mayank\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Dropbox\mayank\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Dropbox\mayank\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Dropbox\mayank\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Dropbox\mayank\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.csprojResolveAssemblyReference.cache
+D:\Dropboxdata\Dropbox\MASTER\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Dropbox\MASTER\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Dropbox\MASTER\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Dropbox\MASTER\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\LinqToExcel.dll
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\Remotion.Data.Linq.dll
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\Remotion.dll
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\Remotion.Interfaces.dll
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\LinqToExcel.xml
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Dropbox\mayankmvc\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.csprojResolveAssemblyReference.cache
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\BusinessAccessLeyer.pdb
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\LinqToExcel.dll
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\Remotion.Data.Linq.dll
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\Remotion.dll
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\Remotion.Interfaces.dll
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\bin\Debug\LinqToExcel.xml
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.csprojResolveAssemblyReference.cache
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.dll
+D:\Dropboxdata\Saurabh singh\new 27 aug\25 december\Web_Complete_Inv\BusinessAccessLeyer\obj\Debug\BusinessAccessLeyer.pdb

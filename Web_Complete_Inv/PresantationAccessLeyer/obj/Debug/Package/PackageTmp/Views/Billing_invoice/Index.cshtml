@@ -1,0 +1,423 @@
+﻿ @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="../../Scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+<script  type="text/javascript">
+
+    $(document).ready(function () { chop(); });
+
+    function chop() {
+        rdentry.checked = true;
+        chredioop();
+    }
+    function chredioop() {
+
+        if ($("#rdentry").is(":checked")) {
+            
+            $("#lavel1").text('EXCEL FILLE UPLOAD');
+        }
+        else if ($("#rdsearch").is(":checked")) {
+            $("#lavel1").text('PDF FILLE UPLOAD');
+        }
+
+    }
+    function validation() {
+        var caf = $("#txtCaf").val();
+        var Username = $("#txtUSER_NAME").val();
+        var mobileNo = $("#txtMOBILENO").val();
+        var date = $("#txtDATE").val();
+        var billNo = $("#txtBILLNO").val();
+        var country = $("#txtCOUNTRY").val();
+        var agreementno = $("#txtAGREEMENT_NO").val();
+        var EmailID = $("#txtEMAILID").val();
+        var user = $("#txtUser").val();
+        var billDate = $("#txtBILLDATE").val();
+        var billPeriod = $("#txtBILLPERIOD").val();
+        var dueDate = $("#txtDUEDATE").val();
+        var address = $("#txtADDRESS").val();
+
+
+
+
+
+        if (caf == "") {
+            alert("Please Fill CAF ");
+            return;
+        }
+
+        if (Username == "") {
+            alert("Please Fill User name");
+            return;
+        }
+
+        if (mobileNo == "") {
+            alert("Please Fill mobile No");
+            return;
+        }
+
+        $.post('/Billing_invoice/abc/', { caf: caf, Username: Username, mobileNo: mobileNo, date: date, billNo: billNo, country: country, agreementno: agreementno, EmailID: EmailID, user: user, billDate: billDate, billPeriod: billPeriod, dueDate: dueDate, address: address }, function (data) { abc(data); }).error(function (data) { abc(data); });
+       
+
+
+    }
+
+    function abc(bca) {
+        
+        window.location.href = '@Url.Action("Index", "Bill_inv_REP")';
+
+    } 
+    ////////////////////////////////////////////////////////////////Radio button chk//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $(document).ready(function () { divhide(); });
+    function divhide() {
+        $("#SAVEENTRY_div").hide();
+//        rdHeld_with_client.checked = true;
+    }
+    function chredioopp() {
+        if ($("#rdHeld_with_client").is(":checked")) {
+
+            $("#SAVEENTRY_div").show();
+             $("#FILLENTRY_div").hide();
+            //validation();
+
+
+        }
+//        else if ($("#rd_held_with_Executive").is(":checked")) {
+//            $("#SAVEENTRY_div").show();
+//            $("#FILLENTRY_div").hide();
+
+//           
+//        }
+
+    }
+    function firstpage() {
+
+        $("#FILLENTRY_div").show();
+        $("#SAVEENTRY_div").hide();
+        rdHeld_with_client.checked = false;
+    
+    }
+
+    ///////////////////////////////////////////////////////////////////End//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function printt() {
+        
+        window.location.href = '@Url.Action("Index", "Bill_inv_REP")';
+       
+    
+    }
+</script>
+
+
+
+
+
+<style>
+input:hover {
+   
+    @*background-color:#F5F5DC;*@
+    background-color:#E0FFFF;
+}
+
+</style>
+
+
+    <div align="center" style = "border-color:transparent;" >
+
+<div align="center" style=" width:95%; border:2;  border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">Bill INVOICE</h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+</div>
+<div  align="center" style= "width:95% ;  " >
+<div>
+
+    @*<input id="rdHeld_with_client"  onclick="chredioopp();" checked="checked" type="radio" name ="a" /> FILLENTRY
+    
+    <input id="rd_held_with_Executive" onclick="chredioopp();" type="radio"  name = "a" /> SAVEENTRY*@
+
+      
+      
+      <br />
+    </div   ></div>
+    <div id="FILLENTRY_div">
+
+         <table  align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray; 
+         font-size: medium; margin :auto; width: 90%; height:100%">
+          <tr><td class="style8">Caf  </td><td class="style2">
+         <input id="txtCaf" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR CAF NO." />     
+ 
+       </td>
+        <td style="width:13%">USER NAME  </td><td>
+          
+            <input id="txtUSER_NAME"  type="text"   style = "Width:90%;  font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR USER NAME" />     
+      
+          
+               
+      </td></tr>
+      
+       
+        <tr>
+        <td class="style8">MOBILE NO  </td><td class="style2">
+         <input id="txtMOBILENO"  type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR MOBILE NO" />     
+ 
+       </td>
+
+        
+        <td class="style8">DATE  </td><td class="style9" >
+         <input id="txtDATE" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR DATE" />     
+      
+        </td>
+        </tr>  
+
+          <tr>
+        <td class="style8">BILL NO  </td><td class="style2">
+         <input id="txtBILLNO" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR BILL NO" />     
+ 
+       </td>
+
+        
+        <td class="style8">COUNTRY </td><td class="style9" >
+         <input id="txtCOUNTRY" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR COUNTRY " />     
+      
+        </td>
+        </tr>  
+
+           <tr>
+        <td class="style8">AGREEMENT NO  </td><td class="style2">
+         <input id="txtAGREEMENT_NO" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR AGREEMENT NO " />     
+ 
+       </td>
+
+        
+        <td class="style8">EMAIL ID </td><td class="style9" >
+         <input id="txtEMAILID" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR EMAIL ID " />     
+      
+        </td>
+        </tr>  
+
+               <tr>
+        <td class="style8">USER  </td><td class="style2">
+         <input id="txtUser" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR USER " />     
+ 
+       </td>
+
+        
+        <td class="style8">BILL DATE </td><td class="style9" >
+         <input id="txtBILLDATE" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR BILL DATE " />     
+      
+        </td>
+        </tr> 
+                <tr>
+        <td class="style8">BILL PERIOD  </td><td class="style2">
+         <input id="txtBILLPERIOD" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR BILL PERIOD " />     
+ 
+       </td>
+
+        
+        <td class="style8">DUE DATE </td><td class="style9" >
+         <input id="txtDUEDATE" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR DUE DATE " />     
+      
+        </td>
+        </tr> 
+        
+        <tr>
+         <td class="style8">ADDRESS </td>
+       
+
+        <td colspan ="6" align ="center"> 
+          
+             <input id="txtADDRESS" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR ADDRESS " />     
+          
+                  </td>             
+
+      </tr> 
+      
+      
+     <tr>
+         <td class="style8"><label id="lavel1">EXCEL FILLE UPLOAD</label> </td>
+       
+
+        <td colspan ="6" align ="center"> 
+          
+             <input id="txtEXCEL_FILLE_UPLOAD" type="file"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR EXCEL FILLE UPLOAD " />     
+          
+                  </td>             
+
+      </tr>         
+
+  <tr>
+         <td class="style8"> </td>
+       
+
+        <td colspan ="6" align ="center"> 
+          
+             <input id="rdentry" onclick="chredioop();" type="radio" name ="a" /> EXCEL FILLE UPLOAD   
+    
+    <input id="rdsearch" onclick="chredioop();" type="radio"  name = "a" /> PDF FILLE UPLOAD
+          
+                  </td>             
+
+      </tr> 
+      <tr>
+      <td style="margin-left:10%;" colspan ="6" >
+      <input type="checkbox" id="rdHeld_with_client" style="width:20px; height:20px;"  onclick="chredioopp();" /> Please check this box to confirm that you are NEXT FORM
+      
+      </td>
+      
+      </tr>
+ 
+</table>
+</div>
+<div id="SAVEENTRY_div">
+
+<table  align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray; 
+         font-size: medium; margin :auto; width: 90%; height:100%">
+         
+ <tr><td class="style8">CURRENCV1  </td><td class="style2">
+         <input id="txtCURRENCV1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR CURRENCV1" />     
+ 
+       </td>
+        <td style="width:13%">CURRENCV2 </td><td>
+          
+            <input id="txtCURRENCV2"  type="text"   style = "Width:90%;  font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTR CURRENCV2" />     
+      
+          
+               
+      </td></tr>
+          <tr><td colspan="2" class="style8">RENTAL  </td>
+
+       
+         <td class="style2">
+         <input id="txtRENTAL1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>
+                <td class="style2">
+         <input id="txtRENTAL2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>       
+      </tr>
+
+             <tr><td colspan="2" class="style8">USAGE  </td>
+
+       
+         <td class="style2">
+         <input id="txtUSAGE1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>
+                <td class="style2">
+         <input id="txtUSAGE2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>       
+      </tr>
+                     <tr><td colspan="2" class="style8">ADD ON PACK FOR UNLIMITED BB SERVICES  </td>
+
+       
+         <td class="style2">
+         <input id="txtAOPFUBS1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>
+                <td class="style2">
+         <input id="txtAOPFUBS2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>       
+      </tr>
+
+
+        <tr><td colspan="2" class="style8">TOTAL AMOUNT  </td>
+
+       
+         <td class="style2">
+         <input id="txtTOTALAMOUNT1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>
+                <td class="style2">
+         <input id="txtTOTALAMOUNT2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>       
+      </tr>
+
+            <tr><td colspan="2" class="style8">CONVERSION </td>
+
+       
+         <td class="style2">
+         <input id="textCONVERSION1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>
+                <td class="style2">
+         <input id="textCONVERSION2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>       
+      </tr>
+
+               <tr><td colspan="2" class="style8">AMOUNT IN INR</td>
+
+       
+         <td class="style2">
+         <input id="textAMOUNTININR1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>
+                <td class="style2">
+         <input id="textAMOUNTININR2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>       
+      </tr>
+
+       <tr><td class="style8">SERVICE TAX(%)  </td><td class="style2">
+         <input id="txtSERVICETAX1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  />     
+ 
+       </td>
+        <td style="width:13%"> <input id="txtSERVICETAX2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+  </td><td>
+          
+            <input id="txtSERVICETAX3" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+      
+      
+          
+               
+      </td></tr>
+
+        <tr><td colspan="2" class="style8">AMOUNT PAYBLE</td>
+
+       
+         <td class="style2">
+         <input id="textAMOUNTPAYBLE1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>
+                <td class="style2">
+         <input id="textAMOUNTPAYBLE2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+ 
+       </td>       
+      </tr>
+
+           <tr><td class="style8">AFTER DUE DATE </td><td class="style2">
+         <input id="txtAFTERDUEDATE1" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  />     
+ 
+       </td>
+        <td style="width:13%"> <input id="txtAFTERDUEDATE2" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+  </td><td>
+          
+            <input id="txtAFTERDUEDATE3" type="text"   style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   />     
+      
+      
+          
+               
+      </td></tr>
+      <tr>
+      <td align="center" colspan="4" class="style8">
+      <input id="btncalce" type="button"  value="Cancel" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+         <input id="btncalcel" type="button"  value="Save" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+          <input onclick="printt();" id="btncalcele" type="button"  value="Print" style= "width:20% ;  border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />    
+<a href="#" onclick="firstpage();" style="color:Blue; margin-left:90%;">Back</a>
+    
+      </td>
+      </tr>
+
+         </table>
+
+
+ 
+</div>

@@ -1,0 +1,1034 @@
+﻿@using System;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Client Master</h2>
+
+<link href="../../autocomplete/jquery-ui.css" rel="stylesheet" type="text/css" />*@
+<link href="../../CSS/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+<script  type="text/javascript">
+
+    $(function () {
+        $("#txtstartdate").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    $(function () {
+        $("#txtenddate").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    $(function () {
+        $("#txtsimreturndate").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    $(document).ready(function () { Alotuser(); });
+
+    function Alotuser() {
+
+        $.post('/ChallanOut/GetAloat_User', null,
+         function (data) { Alot_user(data); }).error(function (data) { Alot_user(data); });
+    }
+    function Alot_user(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].user_name + " >" +
+                 abc[it].usercode + "</option>";
+        }
+
+        $('#txtexecname').html(data);
+
+    }
+
+    function getu_name() {
+
+        var execname = $("#txtexecname option:selected").text();
+        $.post('/ChallanIn/GetUsername_Onselect', { execcode: execname },
+             function (data) { chk_Get(data); }).error(function (data) { chk_Get(data); });
+
+    }
+   
+    function chk_Get(abc) {
+
+        txtexecutivecode.value = abc[0].user_name;
+    }
+
+    $(document).ready(function () { autonum(); });
+
+    function autonum() {
+        $.post('/Client_Master/auto_number', null,
+             function (data) { chkGetauto(data); }).error(function (data) { chkGetauto(data); });
+    }
+
+    function chkGetauto(abc) {
+        txttfno.value = abc;
+    }
+
+    $(document).ready(function () { getCountry(); });
+
+    function getCountry() {
+
+        try {
+            $.post('/ChallanOut/fillcombo', null,
+         function (data) { chkGetCountry(data); }).error(function (data) { chkGetCountry(data); });
+        }
+        catch (Error)
+         { }
+    }
+    function chkGetCountry(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].CountryName + " >" +
+                 abc[it].CountryName + "</option>";
+        }
+
+        $('#cmbcountry').html(data);
+
+    }
+
+    ///===================================auto complete mode =============================================================//
+
+    $(function () {
+
+        $("#txtacno").autocomplete({
+
+            source: function (request, response) {
+
+                $.ajax({
+                    url: "/Client_Master/searchautocomcustname",
+                    data: "{ 'empName': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.customeracno
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    });
+
+
+
+    function auto_comwithsim() {
+        GETPLAN();
+        GETTARIFF();
+
+        $("#txtsimno").autocomplete({
+
+            source: function (request, response) {
+               
+                var c_country = $("#cmbcountry option:selected").text();
+                $.ajax({
+                    url: "/Client_Master/SearchSimch_no",
+                    data: "{ 'empName': '" + request.term + "' , 'country': '" + c_country + "'  }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.simno
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    }
+
+
+
+
+
+    function GETPLAN() {
+
+        try {
+            $.post('/Client_Master/SearchPlan', null,
+         function (data) { PlanFill(data); }).error(function (data) { PlanFill(data); });
+        }
+        catch (Error)
+         { }
+    }
+    function PlanFill(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].plancode + " >" +
+                 abc[it].plancode + "</option>";
+        }
+
+        $('#txtplan').html(data);
+
+    }
+
+
+    function GETTARIFF() {
+
+        var county = $('#cmbcountry option:selected').text();
+
+        $.post('/Client_Master/SearchTariff', { county: county },
+         function (data) { TariffFill(data); }).error(function (data) { TariffFill(data); });
+
+    }
+    function TariffFill(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].tariffcode + " >" +
+                 abc[it].tariffcode + "</option>";
+        }
+
+        $('#txttariff').html(data);
+
+    }
+
+    //=====================================end auto mcomplete================================================================//
+
+
+
+    function SaveRecord() {
+     
+      //  if ($('#txtbank').val() == "") { alert('Plz enter bank..'); return; }
+       // if ($('#txtchequeno').val() == "") { alert('Plz enter cheque no..'); return; }
+
+
+        if ($('#txtacno').val() == "") { alert('Plz enter account no..'); return; }
+        if ($('#txtcustname').val() == "") { alert('Plz enter Customer name..'); return; }
+        if ($('#txtcafno').val() == "") { alert('Plz enter caf No...'); return; }
+        if ($('#cmbOption').val() == -1) { alert('Plz select Payment Mode...'); return; }
+
+        if ($('#txttfno').val() == "") { alert('Plz enter T.F. NO..'); return; }
+        if ($('#txtusername').val() == "") { alert('Plz enter user name..'); return; }
+
+        if ($('#txtfathername').val() == "") { alert('Plz enter father name..'); return; }
+        if ($('#cmbcountry').val() == -1) { alert('Plz select Country..'); return; }
+        if ($('#txtsimno').val() == "") { alert('Plz enter sim no..'); return; }
+        if ($('#txtplan').val() == "") { txtplan.value = "New Plan"; return; }
+        if ($('#txtvalidity').val() == "") { alert('Plz enter validity...'); return; }
+        if ($('#txtstartdate').val() == "") { alert('Plz Select Start date..'); return; }
+        if ($('#txtenddate').val() == " ") { alert('Plz Select end date..'); return; }
+        if ($('#txtsimreturndate').val() == "") { alert('Plz Select sim return date..'); return; }
+        if ($('#txttariff').val() == "") { alert('Plz Select tariff..'); return; }
+
+        if ($('#txtamt').val() == "") { txtamt.value = 0; return; }
+         
+
+        var vchk = "";
+        if ($('#onetime').is(":checked")) {
+            vchk = "ONETIME";
+        }
+        else if ($('#LifeTime').is(":checked")) {
+            vchk = "LIFETIME";
+        }
+        else {
+            alert("Please AtLeast One Checked Optin (Life Time Or One Time");
+            return;
+        }
+        alert(vchk);
+
+       
+
+        abc(vchk);
+    }
+
+
+    function abc(val) {
+       
+        var date = '11/11/2014';
+        var caf_no = $('#txtcafno').val();
+        var customerac_no = $('#txtacno').val();
+        var User_Name = $('#txtusername').val();
+        var Father_Name = $('#txtfathername').val();
+        var Payment_Mode = $('#cmbOption').val();
+        var Amount = $('#txtamt').val();
+        var Bank = $('#txtbank').val();
+        var Cheque_No = $('#txtchequeno').val();
+        var Sim_No = $('#txtsimno').val();
+        var Plan = $('#txtplan').val();
+        var Validity = $('#txtvalidity').val();
+        var Country = $("#cmbcountry option:selected").text(); 
+        var Start_Date = $('#txtstartdate').val();
+        var End_Date = $('#txtenddate').val();
+        var Sim_Return_Date = $('#txtsimreturndate').val();
+        var Tarrif_Detail = $('#txttariff').val();
+        var Tfno = $('#txttfno').val();
+        var redioclick = val;
+
+        var itemname = "";
+        var imeino = "";
+        if ($('#WITHHANDSET').is(":checked")) {
+
+            itemname = $('#txthandsetname').val();
+            imeino =  $("#cmbimeino option:selected").text();
+        }
+        else if ($('#WITHOUTHANDSET').is(":checked")) {
+            itemname = "NOT NOW";
+            imeino = "NOT NOW"; 
+        }
+        else {
+            alert("Please AtLeast One Checked Optin (Life Time Or One Time");
+            return;
+        }
+        var vstatus = $('#cmbstatus  option:selected').text();
+        var neft = $('#txtneft').val();
+  
+        var execalotcode = $('#txtexecutivecode').val();
+        
+       
+
+        $.post('/Client_Master/insertclientmastervalidate', { date: date, cafno: caf_no, customeracno: customerac_no, User_Name: User_Name, Father_Name: Father_Name,
+            Payment_Mode: Payment_Mode, Amount: Amount, Bank: Bank, Cheque_No: Cheque_No, Sim_No: Sim_No, Plan: Plan, Validity: Validity, Country: Country,
+            Start_Date: Start_Date, End_Date: End_Date, Sim_Return_Date: Sim_Return_Date, Tarrif_Detail: Tarrif_Detail,execalotcode:execalotcode, tfcode: Tfno, redioopt: redioclick,
+            itemname: itemname , imeino : imeino , amtstaus :vstatus , neft : neft
+        },
+        function (data) { chkval(data); }).error(function (data) { chkval(data); });
+
+    }
+
+    function chkval(abc) {
+        alert(abc);
+        clearr();
+        window.location.href = ('@Url.Action("Index", "Client_Master")');
+    }
+    function Update_cafdocfun() {
+        var cafno = $('#txtupdate_caf').val();
+        $.post('/Client_Master/Update_cafdoc', { cafno: cafno},
+        function (data) { chkval(data); }).error(function (data) { chkval(data); });
+    }
+
+    function IsEnter(e) {
+        try {
+
+            var keyCode = e.which ? e.which : e.keyCode
+            if (keyCode == 13) {
+                name_a();
+            }
+        }
+        catch (e) { }
+
+    }
+
+    function name_a() {
+        try {
+            var Ac_Name = $('#txtacno').val();
+            $.post("/Client_Master/searchauitocomcustname", { searchauitocomcustname: Ac_Name }, function (data) { acvalfun(data) }).error(function (data) { acvalfun(data) });
+        } catch (e) {
+
+        }
+    }
+    function acvalfun(abc) {       
+        var i = 0;
+        for (var cd in abc) {
+            ++i;
+        }
+        txtcustname.value = abc[i-1].customername;
+        txtusername.value = abc[i-1].User_Name;
+        txtfathername.value = abc[i-1].Father_Name;
+    }
+
+    //==========================Counntry Search ==========================================================
+
+    function country_searchsimno() {
+       
+        var c_Name = $('#cmbcountry option:selected').text();
+        $.post("/Client_Master/search_ChallanOutSimno", { country: c_Name }, function (data) { acvalfun1(data) }).error(function (data) { acvalfun1(data) });
+    }
+    function acvalfun1(abc) {
+
+        BuildTable(abc)
+    }
+
+    function BuildTable(msg) {
+
+        var table = "<table><thead><tr>"
+            + "<th style=background-color:#FAEBD7;width:100px; >Sim No</th>"
+            + "</thead><tbody>";
+        for (var cd in msg) {
+
+         
+            row = "<tr><td class='esimno' style=background-color:Silver;width:100px; onclick=ab_Simno(" + msg[cd].others + ") >" + msg[cd].others + "</td>";
+            row += "<td class='evalidity' style=background-color:Silver;width:100px;  >" + msg[cd].Validity + "</td>";
+            row += "</tr>";
+            table += row;
+        }
+
+        //        table += row;
+        table += "</tbody></table>";
+        $('#grdbind').html(table);
+
+
+    }
+
+    function ShowDialog() {
+
+        GETPLAN();
+        GETTARIFF();
+        country_searchsimno();
+        $("#grdbind").dialog({
+            modal: true,
+            width: 'auto',
+            height: 330,
+            title: "Please Select Sim",
+            resizable: false,
+            position: 'center',
+            open: function () {
+                $(".ui-dialog-titlebar-close").show();
+            }
+        });
+
+
+    }
+
+
+    function ab_Simno(v_SimNo) {
+
+        txtsimno.value = v_SimNo;
+        txtvalidity.value = $(this).find(".evalidity").html();   //$('#evalidity').val();
+        $("#grdbind").dialog('close');
+
+        ValiditySaerch(v_SimNo);
+    }
+
+
+
+    function ValiditySaerch() {
+        var sim_searchno = $("#txtsimno").val();
+
+        $.post("/Client_Master/Searchvalidity", { simno: sim_searchno }, function (data) { validitySim(data) }).error(function (data) { validitySim(data) });
+
+    }
+    function validitySim(abc) {
+        txtvalidity.value = abc;
+    }
+    //====================================================================================
+
+    function CafNo_data() {
+
+        var cafno = $("#txtcafno").val();
+
+        $.post("/Client_Master/cafnum", { cafno: cafno }, function () { caf_no(); });
+
+    }
+    function Caf_No_data() {
+
+        var cafno = $("#txtupdate_caf").val();
+
+        $.post("/Client_Master/cafnum", { cafno: cafno }, function () { caf_no(); });
+
+    }
+    function caf_no() {
+
+    }
+
+
+    function AmtOptChg() {
+
+        var val_cgg = $('#cmbOption').val();
+        if (val_cgg == "UNDER TAKEN") {
+            txtamt.value = 0;
+            txtbank.value = 0;
+            txtchequeno.value = 0;
+            txtbank.disabled = true;
+            txtchequeno.disabled = true;
+            txtamt.disabled = true;
+            txtneft.value = 0;
+            txtneft.disabled = true;
+
+        }
+        else if (val_cgg == "CASH") {
+            txtamt.value = 0;
+            txtbank.value = 0;
+            txtchequeno.value = 0;
+            txtamt.disabled = false;
+            txtbank.disabled = true;
+            txtchequeno.disabled = true;
+            txtneft.value = 0;
+            txtneft.disabled = true;
+
+        }
+        else if (val_cgg == "BANK") {
+            txtamt.value = "";
+            txtbank.value = "";
+            txtchequeno.value = "";
+            txtamt.disabled = false;
+            txtbank.disabled = false;
+            txtchequeno.disabled = false;
+            txtneft.value = 0;
+            txtneft.disabled = true;
+        }
+        else if (val_cgg == "ONLINE") {
+            txtamt.value = "";
+            txtbank.value = "";
+            txtchequeno.value = "";
+            txtamt.disabled = false;
+            txtbank.disabled = false;
+            txtchequeno.disabled = false;
+            txtneft.value = 0;
+            txtneft.disabled = false;
+        }
+       
+
+    }
+
+    function pv_call() {
+        if (txtcafno.value == "") {
+            alert("Please Fill CafNo....");
+            return;
+        }
+        $('#div_pv').load('@Url.Action("RenderIndex", "Client_Master")');
+    }
+
+    function pv_call_up() {
+        if (txtupdate_caf.value == "") {
+            alert("Please Fill CafNo....");            
+            return;
+        }
+        $('#div_p_v').load('@Url.Action("RenderIndex", "Client_Master")');
+    }
+
+    function pv_Searchcall() {
+
+        $('#Searchdiv').load('@Url.Action("RenderSearchIndex", "Client_Master")');
+    }
+
+    $(document).ready(function () { retusername(); });
+
+
+    function retusername() {
+
+        $.post("/Client_Master/ret_username", null, function (data) { retuname(data) }).error(function (data) { retuname(data) });
+    }
+    function retuname(abc) {
+
+        txtexecname.value = abc;
+        txtexecname.readOnly = true;
+        retsessid();
+    }
+
+    function retsessid() {
+
+        $.post("/Client_Master/ret_sessid", null, function (data) { retsessid1(data) }).error(function (data) { retsessid1(data) });
+    }
+    function retsessid1(abc) {
+
+        txtexecutivecode.value = abc;
+        txtexecutivecode.readOnly = true;
+    }
+
+
+
+    function clearr() {
+
+        txtacno.value = ""; txtamt.value = ""; txtbank.value = ""; txtcafno.value = ""; txtchequeno.value = "";
+        txtcustname.value = ""; txtenddate.value = "";
+        txtfathername.value = ""; txtplan.value = ""; txtsimno.value = ""; txtsimreturndate.value = "";
+        txtstartdate.value = ""; txttariff.value = ""; txtusername.value = ""; txtvalidity.value = "";
+        window.location.href = ('@Url.Action("Index", "Client_Master")');
+    }
+
+
+    $(document).ready(function () { spview(); });
+
+    function spview() {
+        txtamt.value = 0;
+        txtbank.value = 0;
+        txtchequeno.value = 0;
+
+
+
+    }
+
+    $(document).ready(function () { chop(); });
+
+    function chop() {
+        rdentry.checked = true;
+        chredioop();
+    }
+    function chredioop() {
+
+        if ($("#rdentry").is(":checked")) {
+            var vvv = "";
+            $("#Entrydiv").show();
+            $("#Searchdiv").hide();
+
+        }
+        else if ($("#rdsearch").is(":checked")) {
+            $("#Entrydiv").hide();
+            $("#Searchdiv").show();
+            pv_Searchcall();
+        }
+
+    }
+
+    function resetsp() {
+
+        // alert("saurabh");
+        window.location.href = ('@Url.Action("Index", "Client_Master")');
+    }
+
+    function showd() {
+        autocomplete_Ch();
+        $("#trhide").show();
+    }
+
+    function showh() {
+        autocomplete_Ch();
+        $("#trhide").hide();
+        txthandsetname.value = "";
+        }    
+</script>
+
+<script type="text/javascript">
+    function autocomplete_Ch() {
+    
+
+        $("#txthandsetname").autocomplete({
+
+            source: function (request, response) {
+              
+                $.ajax({
+                    url: "/ClientMasterOthers/AutocompleteSaerchitemname",
+                    data: "{ 'empName': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.itemname
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    }
+
+    function GetImeiNo() {
+
+
+        var itemname = $('#txthandsetname').val();
+        try {
+            $.post('/ClientMasterOthers/Fill_Imeino', {  empName: itemname },
+         function (data) { chkGetimei(data); }).error(function (data) { chkGetimei(data); });
+        }
+        catch (Error)
+         { }
+    }
+    function chkGetimei(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].imeino + " >" +
+                 abc[it].imeino + "</option>";
+        }
+
+        $('#cmbimeino').html(data);
+
+    }
+
+    function statusChg() {
+        var st = $("#cmbstatus").val();
+        if (st == "PENDING") {
+            txtamt.value = 0;
+            txtbank.value = 0;
+            txtchequeno.value = 0;
+            cmbOption.value = "UNDER TAKEN"
+            txtbank.disabled = true;
+            txtchequeno.disabled = true;
+            txtamt.disabled = true;
+            cmbOption.disabled = true;
+            txtneft.value = 0;
+            txtneft.disabled = true;
+        }
+        else if (st == "DONE") {
+            txtamt.value = 0;
+            txtbank.value = 0;
+            txtchequeno.value = 0;
+            txtneft.value = 0;
+            cmbOption.value = "SELECT"
+            txtbank.disabled = false;
+            txtchequeno.disabled = false;
+            txtamt.disabled = false;
+            cmbOption.disabled = false;
+            txtneft.disabled = false;
+
+        }
+    }
+
+    function updilog() {
+            $("#updatedocument").dialog({
+            modal: true,
+            width: 'auto',
+            height: 330,
+            title: "Please Select Sim",
+            resizable: false,
+            position: 'center',
+            open: function () {
+                $(".ui-dialog-titlebar-close").show();
+            }
+        });
+    }
+</script>
+
+
+<div align="center" style = "border-color:transparent;" >
+
+<div align="center" style=" width:95%; border:2;  border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">CLIENT MASTER </h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+
+</div>
+
+<div align="center">
+
+    <input id="rdentry" onclick = "chredioop();"  type="radio" name ="a" > Entry   </input>
+    
+    <input id="rdsearch" type="radio"  onclick = "chredioop();"  name = "a" /> Search</input>
+
+      <input id="rdupload" type="radio" onclick="updilog();"  name = "a" /> Upload Document</input>
+
+       <input id="rdreset" type="radio" onclick="resetsp();"  name = "a" /> Reset</input>
+    </div>
+
+<div id="Entrydiv" style="width:99%; float:none ; margin-left:2px;   margin-top:20px">
+
+<div id="pnlClick"  style =" Width:"100%">
+
+<table cellpadding="5px" cellspacing = "5px" align="center" width="94%">
+<tr>
+<td  style = "width:15%" >
+    Account No.:
+</td>
+<td style = "width:20%">
+
+   <input id="txtacno"    type="text" onkeypress = "return IsEnter(event)"  style = "Width:90%; font-size: medium;  font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER ACCOUNT NO." />
+   
+</td>
+
+<td style = "width:15%">
+    Customer Name:
+</td>
+<td style = "width:20%">
+ <input id="txtcustname" type="text" @*onclick="name_a()"*@  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER CUSTOMER NAME" />
+
+
+</td>
+
+<td>
+    CAF No.:
+</td>
+<td>
+ <input id="txtcafno" onchange = "CafNo_data()" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER CAF NO."/>
+
+</td>
+</tr>
+<tr>
+<td style = "width:15%">
+T.F. No:
+</td>
+<td style = "width:20%">
+ <input id="txttfno" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+ 
+</td>
+</tr>
+
+<tr>
+
+<td style = "width:15%">Status</td>
+<td style = "width:20%">
+   <select id = "cmbstatus"  onchange="statusChg()"  style = "Width:95%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+  <option value="-1" >...Select.. </option>  
+      <option value="PENDING"> PENDING</option>
+      <option value="DONE"> DONE</option>
+    </select>
+</td>
+
+<td style = "width:15%">
+Payment Mode:
+</td>
+<td style = "width:20%">
+   <select id = "cmbOption"  onchange="AmtOptChg()"  style = "Width:95%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+  <option value="-1" >...Select.. </option>
+    <option value = "UNDER TAKEN"> UNDER TAKEN</option>
+    <option value ="CASH"> CASH</option>
+    <option value="BANK"> BANK</option>
+     <option value="ONLINE"> ONLINE</option>
+     
+    </select>
+</td>
+
+<td style = "width:15%">
+Amount:
+</td>
+<td style = "width:20%">
+ <input id="txtamt" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER AMOUNT IN NUMERIC"/>
+ 
+</td>
+</tr>
+<tr>
+
+<td style = "width:15%">
+NEFT No:
+</td>
+<td style = "width:20%">
+ <input id="txtneft" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+ 
+</td>
+
+
+<td style = "width:15%">
+Bank:
+</td>
+<td style = "width:20%">
+ <input id="txtbank" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "BANK" />
+</td>
+
+<td style = "width:15%">
+Cheque No:
+</td>
+<td style = "width:20%">
+ <input id="txtchequeno" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "CHEQUE NO."/>
+</td>
+</tr>
+
+<tr>
+<td style = "width:15%">
+UserName:
+</td>
+<td style = "width:20%">
+ <input id="txtusername" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "USER NAME"/>
+ 
+</td>
+
+<td style = "width:15%">
+Father's Name:
+</td>
+<td style = "width:20%">
+ <input id="txtfathername" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "FATHER NAME"/>
+</td>
+
+<td style = "width:15%">
+Country:
+</td>
+<td style = "width:20%">
+    <select id="cmbcountry" onchange = "auto_comwithsim()" style = "Width:95%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" >
+  
+   </select>
+
+   <div id= "grdbind"> </div>
+    
+</td>
+</tr>
+
+
+<tr>
+<td style = "width:15%">
+Sim No:
+</td>
+<td style = "width:20%">
+ <input id="txtsimno"  type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER SIM NO."/>
+
+</td>
+
+<td style = "width:15%">
+    Plan:
+</td>
+<td style = "width:20%">
+ <select id="txtplan"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" >
+
+ </select>
+</td>
+
+<td style = "width:15%">
+    Validity:
+</td>
+<td style = "width:20%">
+ <input id="txtvalidity" onclick="ValiditySaerch()" readonly ="readonly" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER VALIDITY"/>
+</td>
+</tr>
+
+
+<tr>
+<td style = "width:15%">
+Start Date:
+</td>
+<td style = "width:20%">
+ <input id="txtstartdate" readonly="readonly" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER START DATE"/>
+ 
+</td>
+
+<td style = "width:15%">
+    End Date:
+</td>
+<td  style = "width:20%">
+ <input id="txtenddate" readonly="readonly" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER END DATE"/>
+
+</td>
+
+<td style = "width:15%">
+    Sim Return Date:
+</td>
+<td style = "width:20%">
+ <input id="txtsimreturndate" readonly="readonly" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER SIM RETURN DATE"/>
+ 
+</td>
+</tr>
+
+
+<tr>
+<td style = "width:15%">
+    Tariff Name:
+</td>
+<td style = "width:20%">
+    <select id="txttariff"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" >
+   
+    </select>
+    
+</td>
+
+<td style = "width:15%">
+    Executive Name
+    </td>
+<td style = "width:20%">
+<select id = "txtexecname" onchange = "getu_name()" >
+</select>
+ @*<input id="txtexecname" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" Enabled="False"/>*@
+</td>
+<td style = "width:15%">
+    Executive Code</td>
+<td style = "width:20%">
+ <input id="txtexecutivecode" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" Enabled="False"/>
+</td>
+
+
+</tr>
+
+<tr>
+<td>Select Option *</td>
+<td>
+
+ <input id="onetime"    type="radio" name ="c" > One Time</input>
+    
+    <input id="LifeTime" checked="checked" type="radio"   name = "c" /> Life Time </input>
+</td>
+
+<td>Other Entry *</td>
+<td>
+
+ <input id="WITHHANDSET" onclick = "showd()"    type="radio" name ="d" >Handset</input>
+    
+    <input id="WITHOUTHANDSET" checked="checked" onclick="showh()" type="radio"   name = "d" /> W/o Handset </input>
+</td>
+<td >
+    Upload Documents:
+</td>
+<td colspan = "6">
+<div id ="div_pv">
+    <input id="btnupload" onclick = "pv_call()" type="button" value="Upload" />
+    </div>
+</td>
+
+<td >
+    &nbsp;</td>
+
+</tr>
+<tr id = "trhide" style = "display:none "><td style = "width:15%">
+    HAND SET NAME:
+</td>
+<td  style = "width:20%">
+ <input id="txthandsetname"  type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "ENTER END DATE"/>
+
+</td>
+
+<td style = "width:15%">
+   IMEI NO:
+</td>
+<td style = "width:20%">
+  <select id="cmbimeino" ondblclick="GetImeiNo()"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" >
+   
+    </select> 
+</td>
+</tr>
+
+
+</table>
+
+
+      
+
+
+</div>
+<div style = "width:100% ; margin-top:2%;  text-align:center">
+    <input id="btnsave" type="button" value="SAVE"  onclick = "SaveRecord()" style = "width:20%" />
+   
+   
+   <input ID="btncancel" type="button" onclick ="clearr()" runat="server" 
+        style = "border-radous:6px ; Width:20%" " value="CANCEL"  />
+</div>
+
+
+</div>
+
+<div id = "updatedocument" style = "display:none ; width : 80%" >
+<table cellspacing = "6" cellpadding = "5" style = "width : 100%" >
+<tr>
+<td style = "width : 15%">CAF NO</td>
+<td style = "width : 35%"><input id="txtupdate_caf" onchange = "Caf_No_data()" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" PlaceHolder = "CAF NO"/></td>
+<td >UPLOAD DOCUMENT</td>
+<td>
+<div id ="div_p_v">
+    <input id="btn_upload" onclick = "pv_call_up()" type="button" value="Upload" style= "width:100% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+    </div>
+</td>
+</tr>
+<tr>
+<td colspan = "4">
+<div align = "center">
+ <input id="btn_save" type="button" value="SAVE"  onclick = "Update_cafdocfun()" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+   
+   
+   <input id="btn_cancel" type="button" onclick ="clearr()"     value="CANCEL"  style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+        </div>
+</td>
+</tr>
+</table>
+</div>
+
+<div id ="Searchdiv">
+
+</div>
+

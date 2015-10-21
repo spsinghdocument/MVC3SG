@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+- <Columns>
+  <Column Input="Token1" />
+  <Column Input="Token2" />
+  <Column Input="Token3" />
+  <Column Input="Token4" />
+  <Column Input="t1" />
+  <Column Input="t2" />
+  <Column Input="t3" />
+  <Column Input="t4" />
+  <Column Input="NHD" />
+  <Column Input="FHD" />
+  <Column Input="BUY_price_leg2" />
+  <Column Input="BUY_Price" />
+  <Column Input="tok1_cost" />
+  <Column Input="tok2_cost" />
+  <Column Input="tok1inst" />
+  <Column Input="tok2inst" />
+  <Column Input="N LTP" />
+  <Column Input="F LTP" />
+  <Column Input="tok3" />
+  <Column Input="Tok3B_S" />
+  <Column Input="Tok4B_S" />
+  <Column Input="SPREADBUY" />
+  <Column Input="SPREADSELL" />
+  <Column Input="F_LTP" />
+  <Column Input="ratio3" />
+  <Column Input="ratio4" />
+  <Column Input="F_BID" />
+  <Column Input="F_ASK" />
+</Columns> 

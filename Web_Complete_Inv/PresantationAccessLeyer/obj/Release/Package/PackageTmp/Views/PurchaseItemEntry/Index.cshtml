@@ -1,0 +1,566 @@
+﻿
+@model  PresantationAccessLeyer.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>PurchaseEntry Item</h2>*@
+<link href="../../CSS/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+<script  type="text/javascript">
+
+    var GData = "";
+    $(function () {
+        //        var fullDate = new Date();
+        //        var twoDigitMonth = fullDate.getMonth() + ""; if (twoDigitMonth.length == 1) twoDigitMonth = "0" + twoDigitMonth;
+        //        var twoDigitDate = fullDate.getDate() + ""; if (twoDigitDate.length == 1) twoDigitDate = "0" + twoDigitDate;
+        //        var currentDate = twoDigitDate + "-" + twoDigitMonth + "-" + fullDate.getFullYear();
+        //        txtdate.value = currentDate;
+        //        txtdatefrom.value = currentDate;
+        //        txtdateto.value = currentDate;
+
+        $("#txtdate").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    $(function () {
+        $("#txtdatefrom").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    $(function () {
+        $("#txtdateto").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+    $(function () {
+        $("#txtvalidity").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+
+    //==================auto complete mode ====================================================//
+
+    function autocomsearch() {
+        var opt = $('#cmboption').val();
+        var outval = "";
+        var u_rl = "";
+        if (opt == "ITEM NAME SEARCH") {
+            $('#txtval').show();
+            $('#txtchange').show();
+            $('#txtchange').text("ITEM NAME"); 
+            u_rl = "/PurchaseItemEntry/SearchData_itemname"
+
+        }
+        else if (opt == "BILL NO SEARCH") {
+            $('#txtval').show();
+            $('#txtchange').show();
+            $('#txtchange').text("BILL NO"); 
+            u_rl = "/PurchaseItemEntry/SearchData_billno"
+
+        }
+        else if (opt == "IMEI NO SEARCH") {
+            $('#txtval').show();
+            $('#txtchange').show();
+            $('#txtchange').text("IMEI NO"); 
+            u_rl = "/PurchaseItemEntry/SearchData_imei"
+        }
+        else if (opt == "DATE SEARCH") {
+            $('#txtval').hide();
+            $('#txtchange').hide();
+           
+        }
+
+        $("#txtval").autocomplete({
+            source: function (request, response) {
+
+                $.ajax({
+                    url: u_rl,
+                    data: "{ 'empName': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            if (opt == "ITEM NAME SEARCH") {
+                                return {
+                                    value: item.itemname
+                                }
+                            }
+                            else if (opt == "BILL NO SEARCH") {
+                                return {
+                                    value: item.BillNo
+                                }
+                            }
+                            else if (opt == "IMEI NO SEARCH") {
+                                return {
+                                    value: item.IMEINO
+                                }
+                            }
+                            else if (opt == "DATE SEARCH") {
+                                return false;
+                            }
+
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    }
+
+
+
+
+
+    //================ end auto complete mode ==================================================//
+
+    $(document).ready(function () { autonum(); });
+
+    function autonum() {
+        $.post('/PurchaseItemEntry/auto_number', null,
+             function (data) { chkGetauto(data); }).error(function (data) { chkGetauto(data); });
+
+    }
+
+    function chkGetauto(abc) {
+        txtbillno.value = abc;
+    }
+
+    function getCountry() {
+
+        $.post('/ChallanOut/fillcombo', null,
+             function (data) { chkGetCountry(data); }).error(function (data) { chkGetCountry(data); });
+
+        //    $.post('/Home/countryret', null,
+        //         function (data) { chkGetCountry(data); }).error(function (data) { chkGetCountry(data); });
+    }
+    function chkGetCountry(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].CountryName + " >" +
+                 abc[it].CountryName + "</option>";
+        }
+
+        $('#cmbcountry').html(data);
+    }
+
+
+    function SaveRecord() {
+        if ($('#txtbillno').val() == "") {
+            alert('Plz enter Bill No...');
+            return;
+        }
+        if ($('#txtdate').val() == "") {
+            alert('Plz enter Date..');
+            return;
+        }
+        if ($('#txtitemname').val() == "") {
+            alert('Plz Enter Item Name..');
+            return;
+        }
+
+        if ($('#txtimeino').val() == "") {
+            alert('Plz Enter IMEI NO..');
+            return;
+        }
+        insertdata();
+    }
+
+    function insertdata() {
+
+        var BillNo = $('#txtbillno').val();
+        if (BillNo == "") {
+            alert('Plz Enter Bill NO..');
+            return;
+        }
+
+        var Date = $('#txtdate').val();
+        if (Date == "") {
+            alert('Plz Enter Date..');
+            return;
+        }
+
+        var ItemType = $('#cmbitemtype').val();
+        if (ItemType == "Select") {
+            alert('Plz Enter ItemType..');
+            return;
+        }
+        var itemname = $('#txtitemname').val();
+        if (itemname == "") {
+            alert('Plz Enter item Name..');
+            return;
+        }
+
+        var IMEINO = $('#txtimeino').val();
+        if (IMEINO == "") {
+            alert('Plz Enter IMEI NO..');
+            return;
+        }
+        var validity = $('#txtvalidity').val();
+        var country = $('#cmbcountry').val();
+
+        $.post('/PurchaseItemEntry/purchaseentryothersvalidate', { BillNo: BillNo, Date: Date, ItemType: ItemType, itemname: itemname, IMEINO: IMEINO, validity: validity, country: country }, function (data) { chk(data); }).error(function (data) { chk(data); });
+    }
+    function chk(abc) {
+
+        alert(abc);
+        if (abc != "Please Ckeck Field ....") {
+            clearALL(0);
+        }
+    }
+
+
+    //===========================================search record=================================================================================
+    function show(PageIndex) {
+
+        var optn = $('#cmboption').val();
+        if (optn == "SELECT") {
+            alert("Please Select Date");
+            return;
+        }
+
+        var DTDat1 = $('#txtdatefrom').val();
+        if (DTDat1 == "") {
+            alert("Please Select Date");
+            return;
+        }
+        var DTDat2 = $('#txtdateto').val();
+        if (DTDat2 == "") {
+            alert("Please Select Date");
+            return;
+        }
+
+        if (optn == "BILL NO SEARCH") {
+            var country = $('#txtval').val();
+            if (country == "") {
+                alert('Plz Enter Bill No..');
+                return;
+            }
+            $.post('/PurchaseItemEntry/purchaseitementry_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2 }, function (data) { chkShow(data) });
+        }
+        else if (optn == "ITEM NAME SEARCH") {
+            var country = $('#txtval').val();
+            if (country == "") {
+                alert('Plz Enter Country..');
+                return;
+            }
+            $.post('/PurchaseItemEntry/purchaseitementry_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2 }, function (data) { chkShow(data) });
+        }
+        else if (optn == "IMEI NO SEARCH") {
+            var country = $('#txtval').val();
+            if (country == "") {
+                alert('Plz Enter Sim No..');
+                return;
+            }
+            $.post('/PurchaseItemEntry/purchaseitementry_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2 }, function (data) { chkShow(data) });
+        }
+        else if (optn == "DATE SEARCH") {
+            var country = $('#txtval').val();
+            $.post('/PurchaseItemEntry/purchaseitementry_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2 }, function (data) { chkShow(data) });
+        }
+    }
+
+
+    function chkShow(abc) {
+
+        GData = abc;
+        BuildTable(GData, 0);
+    }
+    function BuildTable(msg, eid) {
+
+        var table = "<table><thead><tr>"
+              + "<th style=background-color:#FAEBD7;width:100px; >ID</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >Bill No</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >Item Type</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >Item Name</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >IMEI NO</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >Branch Code</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; > Executive Code</th>"
+                + "<th style=background-color:#FAEBD7;width:100px; >Status</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >Opration</th>"
+            + "</thead><tbody>";
+        //     
+        //=======================================================================================================================================
+        for (var cd in msg) {
+            var row = "<tr ondblclick=Dialog(" + msg[cd].sno + "," + msg[cd].billno + ",'" + msg[cd].itemtype + "','" + msg[cd].simno + "'," + msg[cd].country + ",'" + msg[cd].PhoneNo + "','" + msg[cd].apn + "','" + msg[cd].simcode + "'  ,'" + msg[cd].puk + "')  >";
+            row += '<td style=background-color:Silver;width:100px; >' + msg[cd].sno + '</td>';
+            row += "<td class='eidbilno' style=background-color:Silver;width:60px; >" + msg[cd].BillNo + "</td>";
+            if (eid != msg[cd].sno) {
+                //  row += "<td class='eid' style=background-color:Silver;width:100px; >" + msg[cd].sno + "</td>";
+
+                row += "<td class='eiditemtype' style=background-color:Silver;width:100px; >" + msg[cd].ItemType + "</td>";
+                row += "<td class='esimno' style=background-color:Silver;width:100px; >" + msg[cd].itemname + "</td>";
+                row += "<td class='ecountry' style=background-color:Silver;width:100px; >" + msg[cd].IMEINO + "</td>";
+                row += "<td class='ephoneno' style=background-color:Silver;width:100px; >" + msg[cd].branchcode + "</td>";
+                row += "<td class='eapn' style=background-color:Silver;width:70px; >" + msg[cd].loginusercode + "</td>";
+                row += "<td class='esimcode' style=background-color:Silver;width:70px; >" + msg[cd].status + "</td>";
+                // row += "<td class='epuk' style=background-color:Silver;width:60px; >" + msg[cd].puk + "</td>";
+                row += "<td style=background-color:Silver;width:100px; >"
+                   + "<input onclick=editRecord(" + msg[cd].sno + ") id='btnEdit' type='button' value='Edit' /> </td>";
+
+            }
+            else {
+
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                    + ' <input id=txtitemtype_U type=text value=' + msg[cd].ItemType + ' /></td>';
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtitemname_U type=text value=' + msg[cd].itemname
+                      + ' /> </td>';
+
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                     + ' <input id=txtimeino_U type=text value=' + msg[cd].IMEINO
+                      + ' /> </td>';
+
+                row += '<td style=background-color:Silver;width:100px; > </td>';
+
+                row += '<td style=background-color:Silver;width:100px; > </td>';
+                row += '<td style=background-color:Silver;width:100px; > </td>';
+
+
+                row += '<td style=background-color:Silver;width:100px; >'
+                + "<input onclick=updateRecord(" + msg[cd].sno + ") id='btnUpdate' type='button' value='Update' />"
+                + " <input onclick=cancelRecord() id='btnCancel' type='button' value='Cancel' /> </td>";
+            }
+            row += '</tr>';
+            table += row;
+        }
+        //==============================================================================================================================
+        var row = "<tr >";
+        row += "<td colspan=7 style=background-color:Silver;width:100px; >";
+        for (var i = 1; i <= msg.noOfPages; i++) {
+            row += "<a href=# onclick='show(" + i + ")'>" + i + "</a> &nbsp;";
+        }
+        //        //  row += '<td colspan=8 style=background-color:Silver;width:100px; ><input id="btnSave" onClick="deleteChkRecord();" type="button" value="Save" /></td>';
+
+        row += "</td>";
+        row += "</tr>";
+        table += row;
+        table += "</tbody></table>";
+        $('#div1').html(table);
+    }
+
+
+    function editRecord(eid) {
+        BuildTable(GData, eid);
+    }
+    function cancelRecord() {
+        BuildTable(GData, 0);
+    }
+    function updateRecord(eid) {
+
+        var sno = eid;
+        var ItemType = $('#txtitemtype_U').val();
+        var itemname = $('#txtitemname_U').val();
+        var IMEINO = $('#txtimeino_U').val();
+
+
+        $.post('/PurchaseItemEntry/purchaseentryothers_Update',
+           { sno: sno, ItemType: ItemType, itemname: itemname, IMEINO: IMEINO },
+            function (data) { chkupdateRecord(data); }).error(function (data) { chkupdateRecord(data); });
+    }
+    function chkupdateRecord(abc) {
+
+        alert(abc);
+        show(0);
+    }
+    //==========================================================================================================================================
+
+    function change() {
+
+
+        var ItemType = $('#cmbitemtype').val();
+        if (ItemType == "VOUCHER") {
+
+            $('#lblimei').text("PIN");
+            $('#lblitemname').text("VOUCHER NO.");
+            $('#lblvalidity').show();
+            $('#lblcountry').show();
+            $('#txtvalidity').show();
+            $('#cmbcountry').show();
+            getCountry();
+
+        }
+        else {
+            $('#lblitemname').text("ITEM NAME.");
+            $('#lblvalidity').hide();
+            $('#lblcountry').hide();
+            $('#txtvalidity').hide();
+            $('#cmbcountry').hide();
+        }
+    }
+
+    $(document).ready(function () { chop(); });
+
+    function chop() {
+        rdentry.checked = true;
+        chredioop();
+    }
+    function chredioop() {
+        if ($("#rdentry").is(":checked")) {
+            $("#myform").show();
+            $("#d3").hide();
+        }
+        else if ($("#rdsearch").is(":checked")) {
+            //        $("#d2").hide();
+            $("#d3").show();
+            $("#myform").hide();
+        }
+
+    }
+
+
+
+    function clearAll(ied) {
+
+        txtbillno.value = ""; txtimeino.value = "";
+        txtitemname.value = ""; txtval.value = "";
+    }
+    </script>
+
+
+    <div align="center" style = "border-color:transparent;" >
+
+<div align="center" style=" width:95%; border:2;  border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">PURCHASE ITEM ENTRY</h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+
+</div>
+
+<div align="center" style= "width:95% ;  ">
+
+    <input id="rdentry" onclick="chredioop()" type="radio" name ="a" > ENTRY   </input>
+    
+    <input id="rdsearch" type="radio" onclick="chredioop()" name = "a" /> SEARCH</input>
+    </div>
+
+ <div id = "myform"  style="width:90% ; margin-top:25px; margin-left:5%;">
+   
+    <table  align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;border-collapse:collapse; 
+         font-size: medium; margin :auto; width: 90%; height:100%">
+
+        <tr><td class="style8">Bill No. * : </td><td class="style2">
+      
+         <input id="txtbillno" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER BILL NO." />     
+           
+          
+       </td>
+        <td style="width:13%">Date * : </td><td>
+
+            <input id="txtdate" readonly="readonly" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER DATE" />     
+      
+          
+     </td></tr>
+    
+       
+        <tr><td> Item Type * : </td>
+        <td>
+        <select id="cmbitemtype" onchange = "change()" style = "Width:92%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+            <option value="-1">SELECT</option>
+            <option>DATA CARD</option>
+              <option>HAND SET</option>
+               <option value="VOUCHER">VOUCHER </option>
+               <option>OTHERS</option>
+            </select>
+     
+        </td>
+        <td>  <label id ="lblitemname" for="Item Name * :">Item Name</label> </td><td>
+         <input id="txtitemname" type="text"  style = "Width:90%; text-transform:uppercase; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder = "ENTER ITEM NAME" />     
+       
+       
+        </td>
+      </tr>
+      
+       <tr>  <td > <label id ="lblimei" for="IMEI No. * :">IMEI No. * :</label>  </td>
+         
+         <td>
+          <input id="txtimeino" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"   placeholder ="ENTER IMEI NO." />     
+       
+        </td>
+
+        <td><label id ="lblvalidity" for="Validity * :">Validity * :</label>  </td>
+          <td>
+          <input id="txtvalidity" readonly="readonly" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  placeholder ="ENTER VALIDITY" />     
+       
+        </td>
+        </tr> 
+        <tr>
+
+         <td><label id ="lblcountry" for="Validity * :">Country * :</label>  </td>
+         <td>
+        <select id="cmbcountry"  style = "Width:92%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+           
+            </select>
+     
+        </td>
+        </tr>
+
+        <tr>
+     
+
+            <td  align ="center" colspan="4" rowspan="1">
+                <input id="btnSubmit" type="button" onclick ="SaveRecord();" style= "width:15% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" value="Submit" />
+         <input id="btncalcel" onclick = "clearAll(0);" type="button"  style= "width:15% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" value="Cancel" />
+         
+          </td>
+                </tr>
+                <tr><td colspan="4"> </td></tr>
+    </table>  
+    
+    </div>
+
+    </br>
+
+    <div id="d3" align = "center" style= "width:90%">
+    <table align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;border-collapse:collapse; 
+         font-size: medium; margin :auto; width: 80%; ">
+    <tr>
+    <td style="width:15%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">DATE FROM</td>
+     <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+      <input id="txtdatefrom" readonly="readonly" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder =  "ENTER DATE" />             
+      </td>
+      <td style="width:15%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">TO</td>
+       <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+         <input id="txtdateto" readonly="readonly" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder =  "ENTER DATE" />             
+       </td>
+       </tr>
+       <tr>
+     <td style="width:15%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+       Select Option </td>
+        <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+       <select id ="cmboption" onchange ="autocomsearch()" style= "width:90% ;border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;">
+      <option value="SELECT">SELECT</option>
+        <option value="DATE SEARCH">DATE SEARCH</option>
+       <option value="ITEM NAME SEARCH">ITEM NAME SEARCH</option>
+        <option value="BILL NO SEARCH">BILL NO SEARCH </option>
+          <option value="IMEI NO SEARCH">IMEI NO SEARCH </option>
+          
+       </select> </td>
+    <td><div id = "txtchange">Enter Value</div>
+        </td>
+         <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+        <input id="txtval" type="text" style= "width:60% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" /> @*</td>*@
+      @*  <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">*@
+         <input id="Submit1" onclick = "show(0)" type="submit" style= "width:35% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" value="submit" />
+        </td>
+    </tr>
+    </table>
+
+     <div id ="div1" align ="center">
+    
+    </div>
+    </div>
+
+  
+   

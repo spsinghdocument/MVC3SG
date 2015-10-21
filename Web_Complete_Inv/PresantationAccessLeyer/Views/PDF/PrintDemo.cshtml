@@ -1,0 +1,99 @@
+﻿@using PresantationAccessLeyer.Models
+@model CustomerList
+<br/>
+<table>
+<tr >
+<td>
+
+<img src="@Model.ImageUrl" width="44" height="44" /> </td>
+<td align="left">PURCHASE ENTRY</td>
+<td></td>
+</tr>
+</table>
+
+<br/>
+<table cellpadding="5" cellspacing="5">
+    <tr border="1" bgcolor="#777777" color="#ffffff">
+        
+        <td width="5%" align="center" style=" font-size:small;">
+            S. No
+        </td>
+        <td width="9%" align="center" style=" font-size:small;">
+            Bill No
+        </td>
+        
+          <td width="22%" align="center" style=" font-size:small;">
+           Sim no
+        </td>
+         
+          <td width="15%" align="center" style=" font-size:small;">
+           Contry
+        </td>
+         <td width="15%" align="center" style=" font-size:small;">
+           Phone No
+        </td>
+          <td width="15%" align="center" style=" font-size:small;">
+            Apn
+        </td>
+         <td width="9%" align="center" style=" font-size:small;">
+            Pin
+        </td>
+      
+       <td width="13%" align="center" style=" font-size:small;">
+           puk
+        </td>
+       
+        <td width="4%" align="center" style=" font-size:x-small; ">
+           U.Name
+        </td>
+        <td width="4%" align="center" style=" font-size:x-small; ">
+            Password
+        </td>
+
+        
+      
+    </tr>
+    @{
+        var OddColor = "#DDEEEE";
+        var evenColor = "#EEFFFF";
+        var Odd = OddColor;
+    }
+  
+    @foreach (Customer customer in Model)
+    {
+        <tr border="1" bgcolor="@Odd">
+            <td style=" font-size:small; font-family:Arial">@customer.sno
+            </td>
+            <td style=" font-size:small; font-family:Arial">@customer.billno
+            </td>
+           
+            <td style=" font-size:10px;font-family:Tahoma ; font-style:normal ; font-weight:normal">@customer.simno
+            </td>
+             <td style=" font-size:10px;">@customer.country
+            </td>
+            <td style=" font-size:10px;">@customer.PhoneNo
+            </td>
+            <td style=" font-size:10px;">@customer.apn
+            </td>
+             <td style=" font-size:10px;">@customer.simcode
+            </td>
+            <td style=" font-size:10px;">@customer.puk
+            </td>
+            <td style=" font-size:10px;">@customer.username
+            </td>
+             <td style=" font-size:10px;">@customer.password
+            </td>
+            
+        </tr>
+        if (Odd == OddColor)
+        {
+            Odd = evenColor;
+        }
+        else
+        {
+            Odd = OddColor;
+        }
+
+    }
+</table>
+

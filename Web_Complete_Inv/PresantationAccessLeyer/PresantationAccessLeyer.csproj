@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{881BBE99-78BB-4B49-B287-F9EC606937B8}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PresantationAccessLeyer</RootNamespace>
+    <AssemblyName>PresantationAccessLeyer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="SqlCon-Deployment" Order="1" Enabled="True">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="data source=103.21.58.192%3binitial catalog=inventory_MVC%3b user id=sgmayank%3bpassword=F%40%24tf0warD%3b" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\SqlCon-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="inventoryforwebappEntities-Deployment" Order="2" Enabled="True">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=103.21.58.192%3bInitial Catalog=inventory_MVC%3bPersist Security Info=True%3bUser ID=sgmayank%3bPassword=F%40%24tf0warD%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\inventoryforwebappEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="inventory_MVCEntities-Deployment" Order="3" Enabled="True">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=103.21.58.192%3bInitial Catalog=inventory_MVC%3bPersist Security Info=True%3bUser ID=sgmayank%3bPassword=F%40%24tf0warD%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\inventory_MVCEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PublishDatabases>false</PublishDatabases>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=2.7.0.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualC" />
+    <Reference Include="Microsoft.Web.Administration, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\System32\inetsrv\Microsoft.Web.Administration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetLight, Version=3.4.0.0, Culture=neutral, PublicKeyToken=32fbb46dc1730c57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\SpreadsheetLight.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Zayko.Finance.CurrencyConverter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Zayko.Finance.CurrencyConverter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Comman\Helper.cs" />
+    <Compile Include="Controllers\ActivePostponedController.cs" />
+    <Compile Include="Controllers\AddFundController.cs" />
+    <Compile Include="Controllers\AddTariffController.cs" />
+    <Compile Include="Controllers\BillController.cs" />
+    <Compile Include="Controllers\Billing_invoiceController.cs" />
+    <Compile Include="Controllers\BillInsertController.cs" />
+    <Compile Include="Controllers\billReportController.cs" />
+    <Compile Include="Controllers\Bill_inv_REPController.cs" />
+    <Compile Include="Controllers\ChallanINController.cs" />
+    <Compile Include="Controllers\ChallanInOtherController.cs" />
+    <Compile Include="Controllers\ChallanOutController.cs" />
+    <Compile Include="Controllers\ChallanOutOtherController.cs" />
+    <Compile Include="Controllers\ClientMasterOthersController.cs" />
+    <Compile Include="Controllers\Client_MasterController.cs" />
+    <Compile Include="Controllers\CompanyProfileController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\CustomerEntryController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\exlAdcolumnController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\LiveReportController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MobileTopUpController.cs" />
+    <Compile Include="Controllers\NewSimRequestController.cs" />
+    <Compile Include="Controllers\PayMentReportController.cs" />
+    <Compile Include="Controllers\PDFChallanoutController.cs" />
+    <Compile Include="Controllers\pdfchallanoutprtController.cs" />
+    <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\PDFCustomerentryController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\PurchaseItemEntryController.cs" />
+    <Compile Include="Controllers\RevenueReportController.cs" />
+    <Compile Include="Controllers\RoleSettingController.cs" />
+    <Compile Include="Controllers\SendMailerController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
+    <Compile Include="Controllers\ShowQueryController.cs" />
+    <Compile Include="Controllers\SimLostEntryController.cs" />
+    <Compile Include="Controllers\SimReplacementController.cs" />
+    <Compile Include="Controllers\SimWiseSearchController.cs" />
+    <Compile Include="Controllers\ssController.cs" />
+    <Compile Include="Controllers\TOTALFUNDController.cs" />
+    <Compile Include="Controllers\TrevellDetailController.cs" />
+    <Compile Include="Controllers\UserNameController.cs" />
+    <Compile Include="Controllers\VoucherEntryController.cs" />
+    <Compile Include="CurrencyCode.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Add_Tariffcls.cs" />
+    <Compile Include="Models\ADD_TARIFFCLS1.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerList.cs" />
+    <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\Listcls.cs" />
+    <Compile Include="Models\MailModel.cs" />
+    <Compile Include="Models\PaymentGroupModel.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Purchasecls.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\SimpleItem.cs" />
+    <Compile Include="Models\UploadFilesResult.cs" />
+    <Compile Include="Models\validationemail.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Report\challanoutrpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>challanoutrpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service References\WSRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Viewer\ChallanoutViewer.aspx.cs">
+      <DependentUpon>ChallanoutViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Viewer\ChallanoutViewer.aspx.designer.cs">
+      <DependentUpon>ChallanoutViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Viewer\Report\ChallanOutrpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChallanOutrpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Viewer\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Viewer\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Excelf\a.xml" />
+    <Content Include="App_Data\Excelf\ExcelColumnName.xml" />
+    <Content Include="App_Data\Excelf\Excel_Win.exe" />
+    <Content Include="autocomplete\1.4.2_jquery.min.js" />
+    <Content Include="autocomplete\1.8.1_jquery-ui.min.js" />
+    <Content Include="autocomplete\jquery-ui.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\jquery.fileupload.css" />
+    <Content Include="Content\report.jpg" />
+    <Content Include="Content\report1.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="CSS\StyleSheet3.css" />
+    <Content Include="CSS\StyleSheet4.css" />
+    <Content Include="csvtotable\Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="csvtotable\Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="csvtotable\Content\bootstrap\bootstrap.css" />
+    <Content Include="csvtotable\Content\bootstrap\bootstrap.min.css" />
+    <Content Include="csvtotable\Content\jquery.fileupload.css" />
+    <Content Include="csvtotable\Content\report1.jpg" />
+    <Content Include="csvtotable\Content\report.jpg" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="csvtotable\Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.all.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.base.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.button.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.core.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="csvtotable\Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="CSS\jquery-ui.css" />
+    <Content Include="CSS\jquery.fileupload.css" />
+    <Content Include="csvtotable\css\csvtable.css" />
+    <Content Include="csvtotable\images\loading.gif" />
+    <Content Include="csvtotable\js\jquery-1.4.2.min.js" />
+    <Content Include="csvtotable\js\jquery.csvToTable.js" />
+    <Content Include="csvtotable\js\jquery.tablesorter.min.js" />
+    <Content Include="Dialog\jquery-1.9.1.js" />
+    <Content Include="Dialog\jquery-2.1.0.js" />
+    <Content Include="Dialog\jquery-ui.css" />
+    <Content Include="Dialog\jquery-ui.js" />
+    <Content Include="Global.asax" />
+    <Content Include="csvtotable\Content\Site.css" />
+    <Content Include="Images\Address Img.jpg" />
+    <Content Include="Images\Address Img11 -.jpg" />
+    <Content Include="Images\BILL OFFER.jpg" />
+    <Content Include="Images\BILLING BACKGROUND.jpg" />
+    <Content Include="Images\branch-icon.png" />
+    <Content Include="Images\contactpage.jpg" />
+    <Content Include="Images\CUT.png" />
+    <Content Include="Images\downarrow.jpg" />
+    <Content Include="Images\edit-icon.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\Excel_Win.exe" />
+    <Content Include="Images\facebook.jpg" />
+    <Content Include="Images\google.png" />
+    <Content Include="Images\green_bg.gif" />
+    <Content Include="Images\image1.jpg" />
+    <Content Include="Images\inserticon.png" />
+    <Content Include="Images\linked.jpg" />
+    <Content Include="Images\login arrow.png" />
+    <Content Include="Images\logout.png" />
+    <Content Include="Images\new header logo.jpg" />
+    <Content Include="Images\newheaderimg.png" />
+    <Content Include="Images\next.png" />
+    <Content Include="Images\out-icon.png" />
+    <Content Include="Images\password-icon.png" />
+    <Content Include="Images\pre.png" />
+    <Content Include="Images\print-icon.png" />
+    <Content Include="Images\rupees.jpeg" />
+    <Content Include="Images\SGimg.png" />
+    <Content Include="Images\sgnew logo.jpg" />
+    <Content Include="Images\slide_01.jpg" />
+    <Content Include="Images\sp.png" />
+    <Content Include="Images\twitter.png" />
+    <Content Include="Images\uparrow.jpg" />
+    <Content Include="Images\updateicon.png" />
+    <Content Include="Images\user-icon.png" />
+    <Content Include="jquery\jquery-1.7.1.min.js" />
+    <Content Include="jquery\jquery-ui-1.8.17.custom.min.js" />
+    <Content Include="jquery\jspdf.plugin.addhtml.js" />
+    <Content Include="Login\Images\bg.png" />
+    <Content Include="Login\styles.css" />
+    <Content Include="Login\StyleSheet.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dropzone.js" />
+    <Content Include="Scripts\Dwload.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jQuery.print.js" />
+    <Content Include="Scripts\jquery.table2excel.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <None Include="Content\RISHAB.xlsx" />
+    <None Include="Service References\WSRef\Ex_f.disco" />
+    <None Include="Service References\WSRef\configuration91.svcinfo" />
+    <None Include="Service References\WSRef\configuration.svcinfo" />
+    <None Include="Service References\WSRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\jspdf.debug.js" />
+    <Content Include="Scripts\jspdf.js" />
+    <Content Include="Scripts\pdf\basic.js" />
+    <Content Include="Scripts\pdf\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\pdf\jquery-ui-1.8.17.custom.min.js" />
+    <Content Include="Scripts\pdf\jspdf.debug.js" />
+    <Content Include="Viewer\ChallanoutViewer.aspx" />
+    <Content Include="Viewer\WebForm1.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\VoucherEntry\Index.cshtml" />
+    <Content Include="Views\ClientMasterOthers\Index.cshtml" />
+    <Content Include="Views\AddTariff\Index.cshtml" />
+    <None Include="App_Data\UserFile\PersonDetails %282%29.pdf" />
+    <None Include="csvtotable\test.csv" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="Properties\PublishProfiles\Profile2.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Setting\Index.cshtml" />
+    <Content Include="Views\NewSimRequest\Index.cshtml" />
+    <Content Include="Views\MobileTopUp\Index.cshtml" />
+    <Content Include="Views\Plan\Index.cshtml" />
+    <Content Include="Views\RoleSetting\Index.cshtml" />
+    <Content Include="Views\Client_Master\pv_uploaddata.cshtml" />
+    <Content Include="Views\ChallanIN\Index.cshtml" />
+    <Content Include="Views\SimLostEntry\Index.cshtml" />
+    <Content Include="Views\SendMailer\Index.cshtml" />
+    <Content Include="Views\Client_Master\pv_search.cshtml" />
+    <Content Include="Views\PayMentReport\Pay_ment.cshtml" />
+    <Content Include="Views\LiveReport\Live_Report.cshtml" />
+    <Content Include="Views\SimReplacement\Sim_Replacement.cshtml" />
+    <Content Include="Views\ActivePostponed\Active_Postponed.cshtml" />
+    <Content Include="Views\ActivePostponed\DisplayPDF.cshtml" />
+    <Content Include="Views\ContactUs\Contact_Us.cshtml" />
+    <Content Include="Views\ShowQuery\Show_Query.cshtml" />
+    <Content Include="Views\ChallanOut\pv_singleentry.cshtml" />
+    <Content Include="Views\AddTariff\pv_tariffupload.cshtml" />
+    <Content Include="Views\PDF\PDF_INDEX.cshtml" />
+    <Content Include="Views\PDF\PrintDemo.cshtml" />
+    <Content Include="Views\MobileTopUp\pv_newtoprequest.cshtml" />
+    <Content Include="Views\PDFChallanout\Index.cshtml" />
+    <Content Include="Views\PDFChallanout\PrintDemo.cshtml" />
+    <Content Include="Views\TOTALFUND\TOTAL_FUND.cshtml" />
+    <Content Include="Views\Bill\Bill_Index.cshtml" />
+    <Content Include="Views\ChallanOut\printpv_rpt.cshtml" />
+    <Content Include="Views\ChallanOut\a.cshtml" />
+    <Content Include="Views\pdfchallanoutprt\prtview.cshtml" />
+    <Content Include="Views\pdfchallanoutprt\pv_prtview.cshtml" />
+    <Content Include="Views\ss\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ChallanOut\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessAccessLeyer\BusinessAccessLeyer.csproj">
+      <Project>{59868C50-0501-4FD7-9A6B-3E5B0AC3D05C}</Project>
+      <Name>BusinessAccessLeyer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLeyer\DataAccessLeyer.csproj">
+      <Project>{F28AF757-9E06-4744-842E-385726D2C74A}</Project>
+      <Name>DataAccessLeyer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PdfReportGenerator\PdfReportGenerator.csproj">
+      <Project>{DF00196A-3B96-4BCD-8C4E-879DB8EDFE95}</Project>
+      <Name>PdfReportGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Bill\Printbillpdf.cshtml" />
+    <Content Include="Views\billReport\Index.cshtml" />
+    <Content Include="Views\Bill\pv_upload.cshtml" />
+    <Content Include="Views\Bill\backup.cshtml" />
+    <Content Include="Views\Billing_invoice\Index.cshtml" />
+    <Content Include="Views\Bill_inv_REP\Index.cshtml" />
+    <Content Include="Views\AddFund\Add_Fund.cshtml" />
+    <Content Include="Views\MobileTopUp\pv_execdataview.cshtml" />
+    <Content Include="Views\NewSimRequest\pv_requestsim.cshtml" />
+    <Content Include="Views\Bill\pv_excelprint.cshtml" />
+    <Content Include="Views\NewSimRequest\BillInsert\Bill_Insert.cshtml" />
+    <Content Include="Views\NewSimRequest\BillInsert\pv_uploadbill.cshtml" />
+    <None Include="Service References\WSRef\Ex_f.wsdl" />
+    <Content Include="Views\NewSimRequest\BillInsert\pv_sendmailler.cshtml" />
+    <Content Include="Views\Bill\pv_newprofile.cshtml" />
+    <Content Include="Views\PDFCustomerentry\PrintDemo.cshtml" />
+    <Content Include="Views\Bill\pv_payslip.cshtml" />
+    <Content Include="Views\AddTariff\pv_printtariff.cshtml" />
+    <Content Include="Views\Email\pv_emailpassword.cshtml" />
+    <Content Include="Views\Email\E_mail.cshtml" />
+    <Content Include="Views\ChallanInOther\Index.cshtml" />
+    <Content Include="Views\exlAdcolumn\Index.cshtml" />
+    <Content Include="Views\BillInsert\Bill_Insert.cshtml" />
+    <Content Include="Views\BillInsert\pv_sendmailler.cshtml" />
+    <Content Include="Views\BillInsert\pv_uploadbill.cshtml" />
+    <None Include="Views\Purchase\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Country\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client_Master\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserName\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CustomerEntry\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TrevellDetail\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CompanyProfile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Inventory\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PurchaseItemEntry\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ChallanOutOther\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\RevenueReport\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ChallanOut\pv_challanoutsearch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Add Tariff\" />
+    <Folder Include="App_Data\Billcaf\" />
+    <Folder Include="App_Data\Billexcel\" />
+    <Folder Include="CAFUPLOAD\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Report\challanoutrpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>challanoutrpt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Viewer\Report\ChallanOutrpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChallanOutrpt.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SimWiseSearch\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WSRef\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7036</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

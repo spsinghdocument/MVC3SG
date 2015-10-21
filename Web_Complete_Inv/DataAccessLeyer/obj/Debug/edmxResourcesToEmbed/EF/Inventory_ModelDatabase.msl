@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="inventoryforwebappModelStoreContainer" CdmEntityContainer="inventoryforwebappEntities">
+    <FunctionImportMapping FunctionImportName="Add_CountryInsert_tab" FunctionName="inventoryforwebappModel.Store.Add_Country" />
+    <FunctionImportMapping FunctionImportName="InsertPurchaseEntry_Insert" FunctionName="inventoryforwebappModel.Store.InsertPurchaseEntry" />
+    <FunctionImportMapping FunctionImportName="pChallanout_insert" FunctionName="inventoryforwebappModel.Store.pChallanout" />
+    <FunctionImportMapping FunctionImportName="IUDclientmaster" FunctionName="inventoryforwebappModel.Store.IUDclientmaster" />
+    <FunctionImportMapping FunctionImportName="IUDclientmaster_Insert" FunctionName="inventoryforwebappModel.Store.IUDclientmaster" />
+    <FunctionImportMapping FunctionImportName="UserNameInsert" FunctionName="inventoryforwebappModel.Store.UserName" />
+    <FunctionImportMapping FunctionImportName="InsertCompanyProfile_Insert" FunctionName="inventoryforwebappModel.Store.InsertCompanyProfile" />
+    <FunctionImportMapping FunctionImportName="customerdetailstableproc_Insert" FunctionName="inventoryforwebappModel.Store.customerdetailstableproc" />
+    <FunctionImportMapping FunctionImportName="PurchaseEntryotherstabproc_Insert" FunctionName="inventoryforwebappModel.Store.PurchaseEntryotherstabproc" />
+    <FunctionImportMapping FunctionImportName="challanoutothersproc_Insert" FunctionName="inventoryforwebappModel.Store.challanoutothersproc" />
+    <FunctionImportMapping FunctionImportName="SimWiseSearch_Data" FunctionName="inventoryforwebappModel.Store.SimWiseSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.SimWiseSearch_Data_Result">
+          <ScalarProperty Name="SimDate" ColumnName="SimDate" />
+          <ScalarProperty Name="Sim_No" ColumnName="Sim_No" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TName" ColumnName="TName" />
+          <ScalarProperty Name="LoginCode" ColumnName="LoginCode" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PUK" ColumnName="PUK" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ClientMasterothersproc" FunctionName="inventoryforwebappModel.Store.ClientMasterothersproc" />
+    <FunctionImportMapping FunctionImportName="addtarif_Proc_INSERT" FunctionName="inventoryforwebappModel.Store.addtarif_Proc" />
+    <FunctionImportMapping FunctionImportName="simsearch_Proc_Search" FunctionName="inventoryforwebappModel.Store.simsearch_Proc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.simsearch_Proc_SimSearch_Result">
+          <ScalarProperty Name="others" ColumnName="others" />
+          <ScalarProperty Name="Validity" ColumnName="Validity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RequestSim_Insert" FunctionName="inventoryforwebappModel.Store.RequestSim" />
+    <FunctionImportMapping FunctionImportName="rolesettings_proc_insert" FunctionName="inventoryforwebappModel.Store.rolesettings_proc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.rolesettings_proc_insert_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="formname" ColumnName="formname" />
+          <ScalarProperty Name="view" ColumnName="view" />
+          <ScalarProperty Name="edit" ColumnName="edit" />
+          <ScalarProperty Name="rolsetingname" ColumnName="rolsetingname" />
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="insert" ColumnName="insert" />
+          <ScalarProperty Name="all" ColumnName="all" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="delete_1" ColumnName="delete_1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="customerautobillno_proc_search" FunctionName="inventoryforwebappModel.Store.customerautobillno_proc" />
+    <EntitySetMapping Name="AddNewTables">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.AddNewTable">
+        <MappingFragment StoreEntitySet="AddNewTable">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ExecName" ColumnName="ExecName" />
+          <ScalarProperty Name="ExecCode" ColumnName="ExecCode" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="LDate" ColumnName="LDate" />
+          <ScalarProperty Name="SDate" ColumnName="SDate" />
+          <ScalarProperty Name="AddNewid" ColumnName="AddNewid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADDTARIFs">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.ADDTARIF">
+        <MappingFragment StoreEntitySet="ADDTARIF">
+          <ScalarProperty Name="D" ColumnName="D" />
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="A" ColumnName="A" />
+          <ScalarProperty Name="COUNTRY_TO" ColumnName="COUNTRY_TO" />
+          <ScalarProperty Name="COUNTRY_FROM" ColumnName="COUNTRY_FROM" />
+          <ScalarProperty Name="VALIDITY_DAYS" ColumnName="VALIDITY_DAYS" />
+          <ScalarProperty Name="PERMINCHARGES" ColumnName="PERMINCHARGES" />
+          <ScalarProperty Name="TALK_VALUE" ColumnName="TALK_VALUE" />
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="CHARGESTYPE" ColumnName="CHARGESTYPE" />
+          <ScalarProperty Name="CURRENCY" ColumnName="CURRENCY" />
+          <ScalarProperty Name="PLANTYPE" ColumnName="PLANTYPE" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+          <ScalarProperty Name="TARIFF_CODE" ColumnName="TARIFF_CODE" />
+          <ScalarProperty Name="SNO" ColumnName="SNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillUploads">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.BillUpload">
+        <MappingFragment StoreEntitySet="BillUpload">
+          <ScalarProperty Name="execcode" ColumnName="execcode" />
+          <ScalarProperty Name="billfile" ColumnName="billfile" />
+          <ScalarProperty Name="caffile" ColumnName="caffile" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="particulars" ColumnName="particulars" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="cafno" ColumnName="cafno" />
+          <ScalarProperty Name="billid" ColumnName="billid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChallanIns">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.ChallanIn">
+        <MappingFragment StoreEntitySet="ChallanIn">
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="LoginUsercode" ColumnName="LoginUsercode" />
+          <ScalarProperty Name="ExecName" ColumnName="ExecName" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="SimNo" ColumnName="SimNo" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="fkchallanoutid" ColumnName="fkchallanoutid" />
+          <ScalarProperty Name="pkchallanin" ColumnName="pkchallanin" />
+          <ScalarProperty Name="chdate" ColumnName="chdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="challanouts">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.challanout">
+        <MappingFragment StoreEntitySet="challanout">
+          <ScalarProperty Name="givento" ColumnName="givento" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="pkchallanid" ColumnName="pkchallanid" />
+          <ScalarProperty Name="executivename" ColumnName="executivename" />
+          <ScalarProperty Name="executivenameto" ColumnName="executivenameto" />
+          <ScalarProperty Name="others" ColumnName="others" />
+          <ScalarProperty Name="itemtype" ColumnName="itemtype" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="cdate" ColumnName="cdate" />
+          <ScalarProperty Name="challanno" ColumnName="challanno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="challanoutcounters">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.challanoutcounter">
+        <MappingFragment StoreEntitySet="challanoutcounter">
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="challanoutid" ColumnName="challanoutid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="challanoutitemcounters">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.challanoutitemcounter">
+        <MappingFragment StoreEntitySet="challanoutitemcounter">
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="challanoutitemid" ColumnName="challanoutitemid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="challanoutothers">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.challanoutother">
+        <MappingFragment StoreEntitySet="challanoutothers">
+          <ScalarProperty Name="partnersname" ColumnName="partnersname" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="pkchallanid" ColumnName="pkchallanid" />
+          <ScalarProperty Name="executivename" ColumnName="executivename" />
+          <ScalarProperty Name="executivenameto" ColumnName="executivenameto" />
+          <ScalarProperty Name="Imeino" ColumnName="Imeino" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="itemtype" ColumnName="itemtype" />
+          <ScalarProperty Name="sno" ColumnName="sno" />
+          <ScalarProperty Name="cdate" ColumnName="cdate" />
+          <ScalarProperty Name="challanno" ColumnName="challanno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientMasterothers">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.ClientMasterother">
+        <MappingFragment StoreEntitySet="ClientMasterothers">
+          <ScalarProperty Name="itemtype" ColumnName="itemtype" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="Executive_Code" ColumnName="Executive_Code" />
+          <ScalarProperty Name="Executive_Name" ColumnName="Executive_Name" />
+          <ScalarProperty Name="Plan" ColumnName="Plan" />
+          <ScalarProperty Name="imeino" ColumnName="imeino" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="Cheque_No" ColumnName="Cheque_No" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment_Mode" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="fkchallanoutid" ColumnName="fkchallanoutid" />
+          <ScalarProperty Name="customeracno" ColumnName="customeracno" />
+          <ScalarProperty Name="cafno" ColumnName="cafno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyProfiles">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.CompanyProfile">
+        <MappingFragment StoreEntitySet="CompanyProfile">
+          <ScalarProperty Name="loginusercode" ColumnName="loginusercode" />
+          <ScalarProperty Name="servicetax" ColumnName="servicetax" />
+          <ScalarProperty Name="panno" ColumnName="panno" />
+          <ScalarProperty Name="bankdetails" ColumnName="bankdetails" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="PunchLine" ColumnName="PunchLine" />
+          <ScalarProperty Name="CustSupportNo" ColumnName="CustSupportNo" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="ManagingDirector" ColumnName="ManagingDirector" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="cmpid" ColumnName="cmpid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consigneenames">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.consigneename">
+        <MappingFragment StoreEntitySet="consigneename">
+          <ScalarProperty Name="loginusercode" ColumnName="loginusercode" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="PunchLine" ColumnName="PunchLine" />
+          <ScalarProperty Name="CustSupportNo" ColumnName="CustSupportNo" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="ManagingDirector" ColumnName="ManagingDirector" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="cmpid" ColumnName="cmpid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountryLists">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.CountryList">
+        <MappingFragment StoreEntitySet="CountryList">
+          <ScalarProperty Name="impnotice" ColumnName="impnotice" />
+          <ScalarProperty Name="importantnotice" ColumnName="importantnotice" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="countrycode" ColumnName="countrycode" />
+          <ScalarProperty Name="Indiacalling" ColumnName="Indiacalling" />
+          <ScalarProperty Name="isdcode" ColumnName="isdcode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customeraccounters">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.customeraccounter">
+        <MappingFragment StoreEntitySet="customeraccounter">
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="customeracid" ColumnName="customeracid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerdetailstables">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.customerdetailstable">
+        <MappingFragment StoreEntitySet="customerdetailstable">
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="loginusercode" ColumnName="loginusercode" />
+          <ScalarProperty Name="alternateno" ColumnName="alternateno" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="passportno" ColumnName="passportno" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="customeraddress" ColumnName="customeraddress" />
+          <ScalarProperty Name="customername" ColumnName="customername" />
+          <ScalarProperty Name="customeracno" ColumnName="customeracno" />
+          <ScalarProperty Name="customerdetailstableid" ColumnName="customerdetailstableid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Executivecounters">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.Executivecounter">
+        <MappingFragment StoreEntitySet="Executivecounter">
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="Executiveid" ColumnName="Executiveid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LostSimDatas">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.LostSimData">
+        <MappingFragment StoreEntitySet="LostSimData">
+          <ScalarProperty Name="loginuser" ColumnName="loginuser" />
+          <ScalarProperty Name="partnername" ColumnName="partnername" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="DeleteInventry" ColumnName="DeleteInventry" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="SimNo" ColumnName="SimNo" />
+          <ScalarProperty Name="LostDate" ColumnName="LostDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pdffiles">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.pdffile">
+        <MappingFragment StoreEntitySet="pdffiles">
+          <ScalarProperty Name="usernamecode" ColumnName="usernamecode" />
+          <ScalarProperty Name="pdffile1" ColumnName="pdffile" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="pdffileid" ColumnName="pdffileid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prefixsettings">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.prefixsetting">
+        <MappingFragment StoreEntitySet="prefixsettings">
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="A" ColumnName="A" />
+          <ScalarProperty Name="status_s" ColumnName="status_s" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="startwith" ColumnName="startwith" />
+          <ScalarProperty Name="prefixnumber" ColumnName="prefixnumber" />
+          <ScalarProperty Name="formname" ColumnName="formname" />
+          <ScalarProperty Name="Prefixtype" ColumnName="Prefixtype" />
+          <ScalarProperty Name="prefixid" ColumnName="prefixid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseEntries">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.PurchaseEntry">
+        <MappingFragment StoreEntitySet="PurchaseEntry">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="partnername" ColumnName="partnername" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="simcode" ColumnName="simcode" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="SimAlotexeccode" ColumnName="SimAlotexeccode" />
+          <ScalarProperty Name="loginusercode" ColumnName="loginusercode" />
+          <ScalarProperty Name="APN" ColumnName="APN" />
+          <ScalarProperty Name="Validity" ColumnName="Validity" />
+          <ScalarProperty Name="PUK" ColumnName="PUK" />
+          <ScalarProperty Name="IndCallCode" ColumnName="IndCallCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="SimNo" ColumnName="SimNo" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="sno" ColumnName="sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchaseentrycounters">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.Purchaseentrycounter">
+        <MappingFragment StoreEntitySet="Purchaseentrycounter">
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="Purchaseid" ColumnName="Purchaseid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchaseentryitemcounters">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.Purchaseentryitemcounter">
+        <MappingFragment StoreEntitySet="Purchaseentryitemcounter">
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="Purchaseitemid" ColumnName="Purchaseitemid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseEntryotherstabs">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.PurchaseEntryotherstab">
+        <MappingFragment StoreEntitySet="PurchaseEntryotherstab">
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="validity" ColumnName="validity" />
+          <ScalarProperty Name="partnername" ColumnName="partnername" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="IMEINO" ColumnName="IMEINO" />
+          <ScalarProperty Name="SimAlotexeccode" ColumnName="SimAlotexeccode" />
+          <ScalarProperty Name="loginusercode" ColumnName="loginusercode" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="sno" ColumnName="sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleSettings_Tab">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.RoleSettings_Tab">
+        <MappingFragment StoreEntitySet="RoleSettings_Tab">
+          <ScalarProperty Name="rolesettingcode" ColumnName="rolesettingcode" />
+          <ScalarProperty Name="CMPID" ColumnName="CMPID" />
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="usertype" ColumnName="usertype" />
+          <ScalarProperty Name="rolesettingname" ColumnName="rolesettingname" />
+          <ScalarProperty Name="rolesettiungid" ColumnName="rolesettiungid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="simreplacementtabs">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.simreplacementtab">
+        <MappingFragment StoreEntitySet="simreplacementtab">
+          <ScalarProperty Name="execcode" ColumnName="execcode" />
+          <ScalarProperty Name="Aloatnewsimno" ColumnName="Aloatnewsimno" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="cafno" ColumnName="cafno" />
+          <ScalarProperty Name="currentsimno" ColumnName="currentsimno" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="simriplacementid" ColumnName="simriplacementid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Todolists">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.Todolist">
+        <MappingFragment StoreEntitySet="Todolist">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Alerttime" ColumnName="Alerttime" />
+          <ScalarProperty Name="Alertdate" ColumnName="Alertdate" />
+          <ScalarProperty Name="todolistid" ColumnName="todolistid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Name">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.User_Name">
+        <MappingFragment StoreEntitySet="User_Name">
+          <ScalarProperty Name="updatedata" ColumnName="updatedata" />
+          <ScalarProperty Name="valueassign" ColumnName="valueassign" />
+          <ScalarProperty Name="rolesetting" ColumnName="rolesetting" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="User_Code" ColumnName="User_Code" />
+          <ScalarProperty Name="partnername" ColumnName="partnername" />
+          <ScalarProperty Name="Branchcode" ColumnName="Branchcode" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userdetailstables">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.userdetailstable">
+        <MappingFragment StoreEntitySet="userdetailstable">
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="fathersname" ColumnName="fathersname" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="fkcompid" ColumnName="fkcompid" />
+          <ScalarProperty Name="userdetailstableid" ColumnName="userdetailstableid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vouchertables">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.vouchertable">
+        <MappingFragment StoreEntitySet="vouchertable">
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="executivecode" ColumnName="executivecode" />
+          <ScalarProperty Name="netbalance" ColumnName="netbalance" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Chequeno" ColumnName="Chequeno" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Acno" ColumnName="Acno" />
+          <ScalarProperty Name="cafno" ColumnName="cafno" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Voucherno" ColumnName="Voucherno" />
+          <ScalarProperty Name="voucher_id" ColumnName="voucher_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rollsetting_subtab">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.Rollsetting_subtab">
+        <MappingFragment StoreEntitySet="Rollsetting_subtab">
+          <ScalarProperty Name="delete_1" ColumnName="delete_1" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="all" ColumnName="all" />
+          <ScalarProperty Name="insert" ColumnName="insert" />
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="rolsetingname" ColumnName="rolsetingname" />
+          <ScalarProperty Name="edit" ColumnName="edit" />
+          <ScalarProperty Name="view" ColumnName="view" />
+          <ScalarProperty Name="formname" ColumnName="formname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="pChallanin_Proc" FunctionName="inventoryforwebappModel.Store.pChallanin" />
+    <FunctionImportMapping FunctionImportName="vouchertableproc_Insert" FunctionName="inventoryforwebappModel.Store.vouchertableproc" />
+    <FunctionImportMapping FunctionImportName="vouchertableproc_SaveAndSearch" FunctionName="inventoryforwebappModel.Store.vouchertableproc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.vouchertableproc_SaveAndSearch_Result">
+          <ScalarProperty Name="voucher_id" ColumnName="voucher_id" />
+          <ScalarProperty Name="Voucherno" ColumnName="Voucherno" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="cafno" ColumnName="cafno" />
+          <ScalarProperty Name="Acno" ColumnName="Acno" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Chequeno" ColumnName="Chequeno" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="netbalance" ColumnName="netbalance" />
+          <ScalarProperty Name="executivecode" ColumnName="executivecode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PlanTables">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.PlanTable">
+        <MappingFragment StoreEntitySet="PlanTable">
+          <ScalarProperty Name="LOGINUSER" ColumnName="LOGINUSER" />
+          <ScalarProperty Name="BRANCHCODE" ColumnName="BRANCHCODE" />
+          <ScalarProperty Name="TALKTIMEDATA" ColumnName="TALKTIMEDATA" />
+          <ScalarProperty Name="PLAN_VALUE" ColumnName="PLAN_VALUE" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+          <ScalarProperty Name="PLAN_TYPE" ColumnName="PLAN_TYPE" />
+          <ScalarProperty Name="PLAN_NAME" ColumnName="PLAN_NAME" />
+          <ScalarProperty Name="PLAN_CODE" ColumnName="PLAN_CODE" />
+          <ScalarProperty Name="PLANID" ColumnName="PLANID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientMasters">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.ClientMaster">
+        <MappingFragment StoreEntitySet="ClientMaster">
+          <ScalarProperty Name="neft" ColumnName="neft" />
+          <ScalarProperty Name="amtstatus" ColumnName="amtstatus" />
+          <ScalarProperty Name="imeino" ColumnName="imeino" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="tfno" ColumnName="tfno" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="Executive_Code" ColumnName="Executive_Code" />
+          <ScalarProperty Name="Executive_Name" ColumnName="Executive_Name" />
+          <ScalarProperty Name="Tarrif_Detail" ColumnName="Tarrif_Detail" />
+          <ScalarProperty Name="Sim_Return_Date" ColumnName="Sim_Return_Date" />
+          <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+          <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Validity" ColumnName="Validity" />
+          <ScalarProperty Name="Plan" ColumnName="Plan" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="Sim_No" ColumnName="Sim_No" />
+          <ScalarProperty Name="Cheque_No" ColumnName="Cheque_No" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment_Mode" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="pdffile" ColumnName="pdffile" />
+          <ScalarProperty Name="fkchallanoutid" ColumnName="fkchallanoutid" />
+          <ScalarProperty Name="customeracno" ColumnName="customeracno" />
+          <ScalarProperty Name="cafno" ColumnName="cafno" />
+          <ScalarProperty Name="clmasterdate" ColumnName="clmasterdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientmasterTFNOes">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.ClientmasterTFNO">
+        <MappingFragment StoreEntitySet="ClientmasterTFNO">
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="ClientmasterTFNO1" ColumnName="ClientmasterTFNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Clientmasterautotfno_proc" FunctionName="inventoryforwebappModel.Store.Clientmasterautotfno_proc" />
+    <FunctionImportMapping FunctionImportName="SimLost_Insert" FunctionName="inventoryforwebappModel.Store.SimLost" />
+    <FunctionImportMapping FunctionImportName="purchaseautobillno_proc" FunctionName="inventoryforwebappModel.Store.purchaseautobillno_proc" />
+    <FunctionImportMapping FunctionImportName="Challanautobillno_proc" FunctionName="inventoryforwebappModel.Store.Challanautobillno_proc" />
+    <FunctionImportMapping FunctionImportName="prefixsettings_proc_insert" FunctionName="inventoryforwebappModel.Store.prefixsettings_proc" />
+    <FunctionImportMapping FunctionImportName="rolenametable_proc_insert" FunctionName="inventoryforwebappModel.Store.rolenametable_proc" />
+    <FunctionImportMapping FunctionImportName="Executiveautobillno_proc" FunctionName="inventoryforwebappModel.Store.Executiveautobillno_proc" />
+    <FunctionImportMapping FunctionImportName="Paymentsheet" FunctionName="inventoryforwebappModel.Store.Paymentsheet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.Paymentsheet_Result">
+          <ScalarProperty Name="ACCOUNTNO" ColumnName="ACCOUNTNO" />
+          <ScalarProperty Name="S_AMOUNT" ColumnName="S_AMOUNT" />
+          <ScalarProperty Name="R_AMOUNT" ColumnName="R_AMOUNT" />
+          <ScalarProperty Name="P_AMOUNT" ColumnName="P_AMOUNT" />
+          <ScalarProperty Name="D_AMOUNT" ColumnName="D_AMOUNT" />
+          <ScalarProperty Name="B_AMOUNT" ColumnName="B_AMOUNT" />
+          <ScalarProperty Name="NETVALUE" ColumnName="NETVALUE" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="live_stockreport_proc" FunctionName="inventoryforwebappModel.Store.live_stockreport_proc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.live_stockreport_proc_Result">
+          <ScalarProperty Name="PUR" ColumnName="PUR" />
+          <ScalarProperty Name="EXE" ColumnName="EXE" />
+          <ScalarProperty Name="CLI" ColumnName="CLI" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="simreplacementtabproc_insert" FunctionName="inventoryforwebappModel.Store.simreplacementtabproc" />
+    <EntitySetMapping Name="mobile_topup">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.mobile_topup">
+        <MappingFragment StoreEntitySet="mobile_topup">
+          <ScalarProperty Name="statu_s" ColumnName="statu_s" />
+          <ScalarProperty Name="request_date" ColumnName="request_date" />
+          <ScalarProperty Name="plancode" ColumnName="plancode" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="loginuser" ColumnName="loginuser" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="topup_sptopup" ColumnName="topup_sptopup" />
+          <ScalarProperty Name="topup_data" ColumnName="topup_data" />
+          <ScalarProperty Name="topup" ColumnName="topup" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="topid" ColumnName="topid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="mobile_topup_proc_insert" FunctionName="inventoryforwebappModel.Store.mobile_topup_proc" />
+    <FunctionImportMapping FunctionImportName="billsummaryproc_Insert" FunctionName="inventoryforwebappModel.Store.billsummaryproc" />
+    <FunctionImportMapping FunctionImportName="PLAN_PROC_INSERT" FunctionName="inventoryforwebappModel.Store.PLAN_PROC" />
+    <FunctionImportMapping FunctionImportName="contacttableproc" FunctionName="inventoryforwebappModel.Store.contacttableproc" />
+    <FunctionImportMapping FunctionImportName="updatedataval_proc" FunctionName="inventoryforwebappModel.Store.updatedataval_proc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.updatedataval_proc_Result">
+          <ScalarProperty Name="user_code" ColumnName="user_code" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="valueassign" ColumnName="valueassign" />
+          <ScalarProperty Name="Fund" ColumnName="Fund" />
+          <ScalarProperty Name="UserdFund" ColumnName="UserdFund" />
+          <ScalarProperty Name="updatedata" ColumnName="updatedata" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="billexcels">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.billexcel">
+        <MappingFragment StoreEntitySet="billexcel">
+          <ScalarProperty Name="billno" ColumnName="billno" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="loginuser" ColumnName="loginuser" />
+          <ScalarProperty Name="grandtotal" ColumnName="grandtotal" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="excelfilename" ColumnName="excelfilename" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="cafno" ColumnName="cafno" />
+          <ScalarProperty Name="billexcel1" ColumnName="billexcel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="billexcelproc" FunctionName="inventoryforwebappModel.Store.billexcelproc" />
+    <FunctionImportMapping FunctionImportName="purchaseautobillnoItem_proc" FunctionName="inventoryforwebappModel.Store.purchaseautobillnoItem_proc" />
+    <FunctionImportMapping FunctionImportName="challanoutitemcounter_proc" FunctionName="inventoryforwebappModel.Store.challanoutitemcounter_proc" />
+    <FunctionImportMapping FunctionImportName="citem_cout_proc" FunctionName="inventoryforwebappModel.Store.citem_cout_proc" />
+    <EntitySetMapping Name="MAILSETTINGTABLEs">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.MAILSETTINGTABLE">
+        <MappingFragment StoreEntitySet="MAILSETTINGTABLE">
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="A" ColumnName="A" />
+          <ScalarProperty Name="BRANCHCODE" ColumnName="BRANCHCODE" />
+          <ScalarProperty Name="LOGINUSER" ColumnName="LOGINUSER" />
+          <ScalarProperty Name="BODY" ColumnName="BODY" />
+          <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL_FROM" ColumnName="EMAIL_FROM" />
+          <ScalarProperty Name="ENABLE_SSL" ColumnName="ENABLE_SSL" />
+          <ScalarProperty Name="PORT_NUMBER" ColumnName="PORT_NUMBER" />
+          <ScalarProperty Name="SMTP_ADDRESS" ColumnName="SMTP_ADDRESS" />
+          <ScalarProperty Name="MAILSETTING_ID" ColumnName="MAILSETTING_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="MAILSETTINGTABLE_PROC" FunctionName="inventoryforwebappModel.Store.MAILSETTINGTABLE_PROC" />
+    <FunctionImportMapping FunctionImportName="SENDMAIL_PROC" FunctionName="inventoryforwebappModel.Store.SENDMAIL_PROC">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventoryforwebappModel.SENDMAIL_PROC_Result">
+          <ScalarProperty Name="ACCOUNTNO" ColumnName="ACCOUNTNO" />
+          <ScalarProperty Name="EMAILID" ColumnName="EMAILID" />
+          <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+          <ScalarProperty Name="BODY" ColumnName="BODY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PROFILE_TABLE">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.PROFILE_TABLE">
+        <MappingFragment StoreEntitySet="PROFILE_TABLE">
+          <ScalarProperty Name="LOGINUSERCODE" ColumnName="LOGINUSERCODE" />
+          <ScalarProperty Name="BRANCHCODE" ColumnName="BRANCHCODE" />
+          <ScalarProperty Name="H" ColumnName="H" />
+          <ScalarProperty Name="G" ColumnName="G" />
+          <ScalarProperty Name="F" ColumnName="F" />
+          <ScalarProperty Name="E" ColumnName="E" />
+          <ScalarProperty Name="D" ColumnName="D" />
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="A" ColumnName="A" />
+          <ScalarProperty Name="PROFILE_NAME" ColumnName="PROFILE_NAME" />
+          <ScalarProperty Name="PROFILE_ID" ColumnName="PROFILE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PROFILE_TABLE_PROC" FunctionName="inventoryforwebappModel.Store.PROFILE_TABLE_PROC" />
+    <EntitySetMapping Name="NewSimRequests">
+      <EntityTypeMapping TypeName="inventoryforwebappModel.NewSimRequest">
+        <MappingFragment StoreEntitySet="NewSimRequest">
+          <ScalarProperty Name="status_n" ColumnName="status_n" />
+          <ScalarProperty Name="UniqueValue" ColumnName="UniqueValue" />
+          <ScalarProperty Name="Executive_Code" ColumnName="Executive_Code" />
+          <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="SimNo" ColumnName="SimNo" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="requestid" ColumnName="requestid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="newvoucher" FunctionName="inventoryforwebappModel.Store.newvoucher" />
+  </EntityContainerMapping>
+</Mapping>

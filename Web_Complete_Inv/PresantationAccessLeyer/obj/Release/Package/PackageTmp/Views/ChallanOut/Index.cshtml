@@ -1,0 +1,1015 @@
+﻿
+
+@using PresantationAccessLeyer.Models
+@model CustomerList
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+@*<h2>Challan out</h2>*@
+<script src="../../Scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+<link href="../../autocomplete/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script src="../../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jQuery.print.js" type="text/javascript"></script>
+<script  type="text/javascript">
+
+    $(function () {
+        $("#txtdatefrom").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    $(function () {
+        $("#txtdateto").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+    $(document).ready(function () { getCountry(); });
+
+    function getCountry() {
+
+        $.post('/ChallanOut/fillcombo', null,
+         function (data) { chkGetCountry(data); }).error(function (data) { chkGetCountry(data); });
+    }
+    function chkGetCountry(abc) {
+
+        var data = "";
+        data += "<option value=Select >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].CountryName + ">" +
+                 abc[it].CountryName + "</option>";
+        }
+
+        $('#cmbCountry').html(data);
+    }
+
+
+    $(document).ready(function () { Alotuser(); });
+
+    function Alotuser() {
+
+        $.post('/ChallanOut/GetAloat_User', null,
+         function (data) { chkGetCountry1(data); }).error(function (data) { chkGetCountry1(data); });
+    }
+    function chkGetCountry1(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].user_name + " >" +
+                 abc[it].usercode + " </option>";
+        }
+
+        $('#cmbalotuser').html(data);
+    }
+
+
+
+
+    function getSim() {
+        alert('getsim');
+
+
+        var countryName = $("#cmbCountry option:selected").text();   // $('#cmbCountry').val();
+        $.post('/ChallanOut/GetSim', { Countryname: countryName },
+            function (data) { chkGetState(data); });
+    }
+    function chkGetState(abc) {
+
+        var data = "";
+        data += "<option value=-1 >Select</option>";
+        for (var it in abc) {
+            data += "<option value=" + abc[it].StateName + " >" +
+                 abc[it].StateName + "</option>";
+        }
+
+        $('#txtsimno').html(data);
+    }
+
+    $(document).ready(function () { autonum(); });
+
+    function autonum() {
+
+        $.post('/ChallanOut/auto_number', null,
+             function (data) { chkGetauto(data); }).error(function (data) { chkGetauto(data); });
+
+    }
+
+    function chkGetauto(abc) {
+
+        txtbillno.value = abc;
+        $('#lblitemname').hide();
+        $('#txtval').hide();
+    }
+
+
+    $(function () {
+        $("#txtdate").datepicker({ dateFormat: 'dd-MM-yy' });
+    });
+
+
+    function show(PageIndex) {
+
+        var Billno = $('#txtbillno').val();
+        if (Billno == "") {
+            alert("Please Fill Bill No ");
+            return;
+        }
+        var Date_C = $('#txtdate').val();
+        if (Date_C == "") {
+            alert("Please Select Date ");
+            return;
+        }
+
+        var country = $('#cmbCountry option:selected').text();
+
+        if (country == "-1") {
+            alert("Please Select Country Name ");
+            return;
+        }
+        var Al_User = $('#cmbalotuser').val();
+        if (Al_User == "-1") {
+            alert("Please Select Alot User Name ");
+            return;
+        }
+        var v_Check = $("#cmboption1").val();
+        if (v_Check == "MULTIPLE SIM ENTRY") {
+
+            url = '/ChallanOut/purchaseentry_Search';
+
+            $.post('/ChallanOut/purchaseentry_Search', { pageIndex: PageIndex, country: country }, function (data) { chkShow(data) });
+        }
+        else if (v_Check == "SINGLE SIM ENTRY") {
+
+            var txtsim = $('#txtsim_s').val();
+            if (txtsim == "") {
+                alert("Please Enter Sim no.. ");
+                return;
+            }
+            $.post('/ChallanOut/purchaseentry_WIthSIMSearch', { pageIndex: PageIndex, simno: txtsim }, function (data) { chkShow(data) });
+        }
+    }
+
+    function chkShow(abc) {
+        BuildTable(abc);
+    }
+    function BuildTable(msg) {
+
+        $("#myTable1").show();
+
+        for (var cd in msg) {
+
+            var row = "<tr >";
+            row += "<td style=background-color:Silver;width:20px; >"
+                + "<input class='row' id=chkRow type=checkbox  /></td>";
+            row += "<td class='eitemtype' style=background-color:Silver;width:100px; >" + msg[cd].itemtype + "</td>";
+            row += "<td class='esimno' style=background-color:Silver;width:100px; >" + msg[cd].simno + "</td>";
+            row += "<td class='ecountry' style=background-color:Silver;width:200px; >" + msg[cd].country + "</td>";
+            row += "<td class='ephoneno' style=background-color:Silver;width:100px; >" + msg[cd].PhoneNo + "</td>";
+            row += "<td class='esimcode' style=background-color:Silver;width:100px; >" + msg[cd].simcode + "</td>";
+            row += "<td class='epuk' style=background-color:Silver;width:100px; >" + msg[cd].puk + "</td>";
+           
+            row += "</tr>";
+
+            //   table += row;
+            $('#myTable1').append(row);
+        }
+
+
+
+    }
+
+    function chkAllRows() {
+        $('tr').each(function () {
+            if ($('#chkAll').attr("checked")) {
+                $('.row').attr("checked", true);
+            }
+            else {
+                $('.row').attr("checked", false);
+            }
+        });
+    }
+
+    // save record in database ...................................................
+
+    var cout = 0;
+    function deleteChkRecord() {
+
+        var billno = $('#txtbillno').val();
+        var cdate = $('#txtdate').val();
+        var AlotUser = $("#cmbusercode").val();
+        var givento = $("#txtgivento").val();
+
+        var Alot_User = AlotUser.split(',');
+        var simno;
+        var Country;
+
+
+        $('tr').filter(':has(:checkbox:checked)').each(function () {
+            cout++;
+            simno = $(this).find(".esimno").html();
+            Country = $(this).find(".ecountry").html();
+
+            if (Alot_User == "") {
+                alert("Please Select Alot User Name...");
+            }
+
+            $.post('/ChallanOut/challaninsert', { bill_no: billno, c_date: cdate, Country: Country, simno: simno, AlotUser: Alot_User[0], givento: givento }, function (data) { chksaveRecord(data); }).error(function (data) { chksaveRecord(data); });
+        });
+
+        // End save record in database .........................................
+    }
+    function chksaveRecord(abc) {
+
+        if (cout != 1) {
+            cout--;
+            return;
+        }
+        cout = 0;
+        alert(abc);
+        // show();
+        ShowDialog();
+        autonum();
+        txtsim_s.value = "";
+        //  show(1);
+
+    }
+
+    function pv_searchch() {
+        $('#d1').load('@Url.Action("pv_searchchallan", "ChallanOut")');
+    }
+
+
+
+
+    //////////////////////////////////// // ///////////////////////////////////////////////////////////////////
+
+    function ShowDialog() {
+
+        // clearControls();
+        show1(1);
+        $("#popupDeviceSetting").dialog({
+            modal: true,
+            width: 'auto',
+            height: 630,
+            title: "CHALLANL OUT SEARCH",
+            resizable: false,
+            position: 'center',
+            //             buttons:{ "Close": function() { $(this).dialog('**destroy**'); } },
+            //            close: function(ev, ui) { $(this).close(); },
+            open: function () {
+                $(".ui-dialog-titlebar-close").show();
+            }
+        });
+
+
+    }
+
+    function ShowDialog1() {
+
+
+
+        $("#popupDeviceSearch").dialog({
+            modal: true,
+            width: 'auto',
+            height: 630,
+            title: "CHALLAN OUT SEARCH",
+            resizable: false,
+            position: 'center',
+            open: function () {
+                $(".ui-dialog-titlebar-close").show();
+            }
+        });
+
+    }
+
+    function ShowDialog12() {
+
+        $("#popupDeviceclick").dialog({
+            modal: true,
+            width: 'auto',
+            height: 630,
+            title: "CHALLAN OUT SEARCH",
+            resizable: false,
+            position: 'center',
+            open: function () {
+                $(".ui-dialog-titlebar-close").show();
+            }
+        });
+
+
+    }
+
+    function ShowDialog_ForChallanNo(challanno) {
+
+        challannosearch(challanno);
+        $("#shw_box").dialog({
+            modal: true,
+            width: 'auto',
+            height: 630,
+            title: "CHALLAN OUT BILL NO. SEARCH",
+            resizable: false,
+            position: 'top',
+            open: function () {
+                $(".ui-dialog-titlebar-close").show();
+            }
+        });
+
+
+
+    }
+
+
+    ////////////////////////////////// // function for save and search ////////////////////////////////////////////
+
+
+    function show1(PageIndex) {
+
+        var country = $('#txtbillno').val();
+        $.post('/ChallanOut/purchaseentry_Searchbillno', { pageIndex: PageIndex, challanno: country }, function (data) { chkShow1(data) }).error(function (data) { chkShow1(data) });
+    }
+    function chkShow1(abc) {
+
+        BuildTable1(abc);
+    }
+    function BuildTable1(msg) {
+
+        var table = "<table><thead><tr>"
+            + "<th style=background-color:#FAEBD7;width:100px; ></th>"
+        //            + "<input onclick='chkAllRows()' id=chkAll type=checkbox /></th>"  
+             + "<th style=background-color:#FAEBD7;width:100px; >CHALLAN NO</th>"
+              + "<th style=background-color:#FAEBD7;width:100px; >ITEM TYPE</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >SIM NO</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >COUNTRY</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >PHONE NO</th>"
+                + "<th style=background-color:#FAEBD7;width:100px; >PIN</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >PUK</th>"
+            + "</thead><tbody>";
+        for (var cd in msg) {
+            var row = "<tr >";
+            row += '<td style=background-color:Silver;width:100px; >'
+                   + '<input class=row id=chkRow1 type=radio name =a onclick=Print("' + msg[cd].others +'") /></td>';
+            row += "<td class='echno' style=background-color:Silver;width:100px;  >" + msg[cd].challanno + "</td>";
+            row += "<td class='eitemtype' style=background-color:Silver;width:100px; >" + msg[cd].itemtype + "</td>";
+            row += "<td class='eothers' style=background-color:Silver;width:100px; >" + msg[cd].others + "</td>";
+            row += "<td class='ecountry' style=background-color:Silver;width:100px; >" + msg[cd].country + "</td>";
+            row += "<td class='ephoneno' style=background-color:Silver;width:100px; >" + msg[cd].PhoneNo + "</td>";
+            row += "<td class='esimcode' style=background-color:Silver;width:100px; >" + msg[cd].simcode + "</td>";
+            row += "<td class='epuk' style=background-color:Silver;width:100px; >" + msg[cd].puk + "</td>";         
+            row += "</tr>";
+            table += row;
+        }
+    
+      
+        table += "</tbody></table>";
+        $('#popupDeviceSetting').html(table);
+    }
+
+    ////////////////////////////////////////////function for only search///////////////////////////////////////////////////////////
+
+    function showsearch(PageIndex) {
+        debugger;
+        var optn = $('#cmboption').val();
+        var DTDat1 = $('#txtdatefrom').val();
+        var DTDat2 = $('#txtdateto').val();
+        var chkval = null;
+
+        if ($('#chk_All').is(":checked")) {
+            chkval = "ALL";
+        }
+        else if ($('#chk_stock').is(":checked")) {
+            chkval = "STOCK";
+        }
+
+        if (chkval == null) {
+            alert("Please ckeck any chechbox");
+            return;
+        }
+
+        if (optn == "CHALLANNOSEARCH") {
+            var country = $('#txtval').val();
+            $.post('/ChallanOut/challan_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2, chkval: chkval }, function (data) { chkShowsearch(data); });
+        }
+        else if (optn == "COUNTRYSEARCH") {
+            var country = $('#txtval').val();
+            $.post('/ChallanOut/challan_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2, chkval: chkval }, function (data) { chkShowsearch(data); });
+        }
+        else if (optn == "SIMNOSEARCH") {
+            var country = $('#txtval').val();
+            $.post('/ChallanOut/challan_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2, chkval: chkval }, function (data) { chkShowsearch(data); });
+        }
+        else if (optn == "DATESEARCH") {
+            var country = $('#txtval').val();
+            $.post('/ChallanOut/challan_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2, chkval: chkval }, function (data) { chkShowsearch(data); });
+        }
+        else if (optn == "EXECUTIVECODESEARCH") {
+            var country = $('#txtval').val();
+            $.post('/ChallanOut/challan_Search', { pageIndex: PageIndex, strval: country, option: optn, date1: DTDat1, date2: DTDat2, chkval: chkval }, function (data) { chkShowsearch(data); });
+         }
+    }
+    function chkShowsearch(abc) {
+        BuildTablesearch(abc);
+    }
+    function BuildTablesearch(msg) {
+
+        var table = "<table><thead><tr>"
+            + "<th style=background-color:#FAEBD7;width:20px; ></th>"
+               + "<th style=background-color:#FAEBD7;width:100px; >CHALLAN NO</th>"
+              + "<th style=background-color:#FAEBD7;width:100px; >DATE</th>"
+              + "<th style=background-color:#FAEBD7;width:100px; >ITEM TYPE</th>"
+            + "<th style=background-color:#FAEBD7;width:200px; >COUNTRY</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >EXECUTIVE CODE</th>"
+
+            + "</thead><tbody>";
+        for (var cd in msg) {
+            var MyDate_String_Value = msg[cd].cdate
+            var value = new Date
+            (
+                 parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var dat = value.getMonth() +
+                         1 +
+                       "/" +
+           value.getDate() +
+                       "/" +
+           value.getFullYear();
+
+            var row = "<tr >";
+            row += "<td style=background-color:Silver;width:20px; >"
+             + '<input class=row id=chkRow type=radio name =a  onclick= funchk("'+msg[cd].challanno+'") /></td>';
+           
+            row += "<td class='echallanno' style=background-color:Silver;width:100px;> " + msg[cd].challanno + "</td>";
+            row += "<td class='edate' style=background-color:Silver;width:100px; >" + dat + "</td>";
+            row += "<td class='eitemtype' style=background-color:Silver;width:100px; >" + msg[cd].itemtype + "</td>";
+            row += "<td class='ecountry' style=background-color:Silver;width:200px; >" + msg[cd].country + "</td>";
+            row += "<td class='eexecname' style=background-color:Silver;width:100px; >" + msg[cd].executivenameto + "</td>";
+          
+            row += "</tr>";
+            table += row;
+        }
+        var row = "<tr >";
+        row += "<td colspan=7 style=background-color:Silver;width:100px; >";
+        for (var i = 1; i <= msg.noOfPages; i++) {
+            row += "<a href=# onclick='show(" + i + ")'>" + i + "</a> &nbsp;";
+        }
+        // row += '<td colspan=8 style=background-color:Silver;width:100px; ><input id="btnSave" onClick="deleteChkRecord();" type="button" value="Print" /></td>';
+
+        row += "</td>";
+        row += "</tr>";
+        table += row;
+        table += "</tbody></table>";
+        $('#popupDeviceSearchOK').html(table);
+    }
+
+
+    //=================================search challan no then click ==============================//
+    function challannosearch(challanno) {
+
+        //            var country = $('#txtbillno').val();
+        $.post('/ChallanOut/purchaseentry_Searchbillno', { challanno: challanno }, function (data) { challannosearch_1(data) }).error(function (data) { challannosearch_1(data) });
+    }
+    function challannosearch_1(abc) {
+
+        challannosearch_Data(abc);
+    }
+    function challannosearch_Data(msg) {
+
+        var table = "<table><thead><tr>"
+            + "<th style=background-color:#FAEBD7;width:100px; ></th>"
+        //                +"<input id=btnprt_id type=button value=Print onclick= Prinppdf(); />  </th>"          
+             + "<th style=background-color:#FAEBD7;width:100px; >CHALLAN NO</th>"
+              + "<th style=background-color:#FAEBD7;width:100px; >ITEM TYPE</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >SIM NO</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >COUNTRY</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >PHONE NO</th>"
+                + "<th style=background-color:#FAEBD7;width:100px; >PIN</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >PUK</th>"
+
+            + "</thead><tbody>";
+
+        for (var cd in msg) {
+            var row = "<tr >";
+            row += '<td style=background-color:Silver;width:100px; >'
+              + '<input class=row id=chkRow1 type=radio name =a onclick=Print("' + msg[cd].others + '") /></td>';
+            row += "<td class='echno' style=background-color:Silver;width:100px;  >" + msg[cd].challanno + "</td>";
+            row += "<td class='eitemtype' style=background-color:Silver;width:100px; >" + msg[cd].itemtype + "</td>";
+            row += "<td class='eothers' style=background-color:Silver;width:100px; >" + msg[cd].others + "</td>";
+            row += "<td class='ecountry' style=background-color:Silver;width:100px; >" + msg[cd].country + "</td>";
+            row += "<td class='ephoneno' style=background-color:Silver;width:100px; >" + msg[cd].PhoneNo + "</td>";
+            row += "<td class='esimcode' style=background-color:Silver;width:100px; >" + msg[cd].simcode + "</td>";
+            row += "<td class='epuk' style=background-color:Silver;width:100px; >" + msg[cd].puk + "</td>";
+          
+            row += "</tr>";
+            table += row;
+        }
+        var row = "<tr >";
+        row += "<td colspan=7 style=background-color:Silver;width:100px; >";
+        for (var i = 1; i <= msg.noOfPages; i++) {
+            row += "<a href=# onclick='show(" + i + ")'>" + i + "</a> &nbsp;";
+        }
+        //  row += '<td colspan=8 style=background-color:Silver;width:100px; ><input id="btnPrint" onClick="Print();" type="button" value="Print" /></td>';
+
+        row += "</td>";
+        row += "</tr>";
+        table += row;
+        table += "</tbody></table>";
+        $('#idbillnosearch').html(table);
+    }
+
+
+
+    function Prinppdf() {
+       
+        // window.location.href = 'Url.Action("PrintCustomers", "PDFChallanout" , new {target ="_blank"})';
+
+    }
+
+    function Print(simno) {
+        debugger;
+      //  var simno;
+        var Country="";
+        var ChallanNo="";
+        $.post('/ChallanOut/challanoutreport1', { simno: simno, country: Country, challanno: ChallanNo }, function (data) { Result_Print(data); }).error(function (data) { Result_Print(data); });
+
+//        $('tr').filter(':has(:radio:checked)').each(function () {
+
+//            simno = $(this).find(".eothers").html();
+//            Country = $(this).find(".ecountry").html();
+//            ChallanNo = $(this).find(".echno").html();
+//      
+//          $.post('/ChallanOut/challanoutreport1', { simno: simno, country: Country, challanno: ChallanNo }, function (data) { Result_Print(data); }).error(function (data) { Result_Print(data); });
+//        });
+    }
+
+    function Result_Print(abc) {
+        if (abc == "ok") {
+            window.open("/ss/Index", "PopUpWindow", 'width=400px, height=400px,top=150,left=250');
+        }
+    }
+
+
+    function funchk(chno) {
+
+        ShowDialog_ForChallanNo(chno);
+//        var chno;
+//        $('tr').filter(':has(:radio:checked)').each(function () {
+
+//            chno = $(this).find(".echallanno").html();
+
+//            ShowDialog_ForChallanNo(chno);
+
+//        });
+        // End save record in database .........................................
+    }
+
+
+    //===================================end serch===============================================//
+
+    //---------------Auto complete modescript -----------------------  //
+
+
+    $(function () {
+
+        $("#txtsimno").autocomplete({
+
+            source: function (request, response) {
+
+                $.ajax({
+                    url: "/ChallanOut/SearchData",
+                    data: "{ 'empName': '" + request.term + "' }",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item._others
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            },
+            minLength: 1
+        });
+    });
+
+
+
+
+    $(document).ready(function () { chop(); });
+
+    function chop() {
+        rdentry.checked = true;
+        chredioop();
+    }
+    function chredioop() {
+
+        if ($("#rdentry").is(":checked")) {
+            var vvv = "";
+        }
+        else if ($("#rdsearch").is(":checked")) {
+            ShowDialog1();
+        }
+
+    }
+    function cearr() {
+
+        window.location.href = "/ChallanOut/Index";
+
+
+    }
+
+</script>
+
+    <script  type="text/javascript">
+
+        function SIMWITHCOUNTRY() {
+
+            $("#txtsim_s").show();
+
+            var v_check = $("#cmboption1").val();
+
+            if (v_check == "SINGLE SIM ENTRY") {
+                $("#d1").hide();
+                $("#txtsim_s").show();
+
+            }
+            else if (v_check == "MULTIPLE SIM ENTRY") {
+                $("#txtsim_s").hide();
+                $("#d1").show();
+                return;
+            }
+
+            $("#txtsim_s").autocomplete({
+
+                source: function (request, response) {
+
+                    var country = $("#cmbCountry option:selected").text();   // $("#cmbCountry").val();
+                    $("#txtsim_s").show();
+
+                    $.ajax({
+                        url: "/ChallanOut/SimSearch",
+                        data: "{ 'empName': '" + request.term + "' , 'country': '" + country + "' }",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.simno
+                                }
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus);
+                        }
+                    });
+                },
+                minLength: 1
+            });
+        }
+
+    </script>
+    <script  type="text/javascript">
+        function SelectOption() {
+            $('#lblitemname').show();
+            $('#txtval').show();
+            var u_rl;
+            var v_check = $("#cmboption").val();
+
+            if (v_check == "COUNTRYSEARCH") {
+
+                $('#txtval').show();
+                $('#lblitemname').show();
+                $('#lblitemname').text("COUNTRY");
+                u_rl = "/Purchase/SearchData"
+
+            }
+            else if (v_check == "CHALLANNOSEARCH") {
+                $('#txtval').show();
+                $('#lblitemname').show();
+                $('#lblitemname').text("CHALLAN NO.");
+                u_rl = "/ChallanOut/ChallanSearch"
+
+            }
+            else if (v_check == "SIMNOSEARCH") {
+                $('#txtval').show();
+                $('#lblitemname').show();
+                $('#lblitemname').text("SIM NO.");
+                u_rl = "/ChallanOut/SimnoSearch"
+
+            }
+            else if (v_check == "EXECUTIVECODESEARCH") {
+                $('#txtval').show();
+                $('#lblitemname').show();
+                $('#lblitemname').text("EXECUTIVE NAME");
+                u_rl = "/UserName/usercodeautosearch"
+            }
+            else if (v_check == "DATESEARCH") {
+                $('#lblitemname').hide();
+                $('#txtval').hide();
+                return;
+            }
+
+
+            $("#txtval").autocomplete({
+
+                source: function (request, response) {
+
+                    $.ajax({
+                        url: u_rl,
+                        data: "{ 'empName': '" + request.term + "' }",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+
+                            response($.map(data, function (item) {
+                                if (v_check == "COUNTRYSEARCH") {
+                                    return {
+                                        value: item.country
+                                    }
+                                }
+                                else if (v_check == "CHALLANNOSEARCH") {
+                                    return {
+                                        value: item.challanno
+                                    }
+                                }
+                                else if (v_check == "SIMNOSEARCH") {
+                                    return {
+                                        value: item.simno
+                                    }
+                                }
+
+                                else if (v_check == "EXECUTIVECODESEARCH") {
+                                    return {
+                                        value: item.User_Code
+                                    }
+                                }
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus);
+                        }
+                    });
+                },
+                minLength: 1
+            });
+        }
+
+        function remove_table() {
+
+           
+            $("#myTable1  tbody").remove();
+
+        }
+
+        function onchangecountry() {
+
+            var country = $("#cmbCountry option:selected").text();   
+            $.post('/Purchase/count_sim', { country: country }, function (data) { Purchasesimcount(data) }).error(function (data) { Purchasesimcount(data) });
+        }
+        function Purchasesimcount(abc) {
+            $('#lblcount').text(abc);
+
+        }
+
+        function chkGetCountry_usercode() {
+            cmbusercode.value = $("#cmbalotuser").val();
+
+        }
+
+    </script>
+    
+    <script type = "text/javascript">
+
+        function nWin() {
+            var w = window.open();
+            var html = $("#prt").html();
+
+            $(w.document.body).html(html);
+        }
+        function pp() {
+          
+            $('#prt').dialog();
+           
+        }
+    </script>
+    
+ 
+
+    <div align="center" style = "border-color:transparent;" >
+
+<div align="center" style=" width:95%; border:2; border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+<h1 align="center"   style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">CHALLAN OUT ENTRY</h1>
+@*<hr align="center" style="  height:5px; background-color:Gray;" />*@
+</div>
+
+<div align="center" style= "width:95% ;  ">
+
+    <input id="rdentry"   onclick="chredioop()" type="radio" name ="a" > ENTRY   </input>
+    
+    <input id="rdsearch" type="radio" onclick="chredioop()" name = "a" /> SEARCH</input>
+    </div>
+
+</div>
+    <div>
+   <br />
+<table cellpadding="5px" ; cellspacing="5px" id="tbl"  align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;border-collapse:collapse;
+         font-size: medium; margin :auto; width: 85%" >
+
+
+        <tr><td style="width:15%;border-color:transparent;font-size:large;font-family: 'Arial';">Bill No. * : </td>
+        <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';">
+            <input id="txtbillno" type="text" style = "width :63% ;font-size: medium;font-family: 'Arial Narrow'"  />       
+          
+       </td>
+        <td style="width:13%;border-color:transparent;font-size: large;font-family:'Arial';">Date * : </td>
+        <td style="width:35%;border-color:transparent;font-size: large;font-family: 'Arial';">
+         <input id="txtdate" type="text" readonly="readonly" style = "width :63%;font-size: medium;font-family: 'Arial' " PlaceHolder = "ENTER DATE"  />     
+        </td>
+        </tr>
+             
+        <tr>
+
+         <td style="width:13%;border-color:transparent;font-size: large;font-family: 'Arial';">Select Option * : </td>
+        <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial';">
+        <select id= "cmboption1" onchange="SIMWITHCOUNTRY()" style="width:63% ; font-size: medium;font-family: 'Arial Narrow'" > 
+       <option value = "SELECT">SELECT</option>
+     <option value = "SINGLE SIM ENTRY">SINGLE SIM ENTRY</option>      
+        <option value = "MULTIPLE SIM ENTRY">MULTIPLE SIM ENTRY</option>
+   
+        </select>     </td>  
+        
+        <td style="width:13%;border-color:transparent;font-size: large;font-family: 'Arial';">Country * : </td>
+        <td style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial';">
+        <select id= "cmbCountry" onchange = "onchangecountry()" style="width:63% ; font-size: medium;font-family: 'Arial Narrow'" >
+       
+        </select> <label style = "color:Red"> Available Sim = </label> <label id = "lblcount" style = "color:Red" > 0</label>      
+        </td>
+        
+        </tr><tr>
+         <td style="width:13%;border-color:transparent;font-size: large;font-family:'Arial';">SIM NO. : </td>
+        <td style="width:35%;border-color:transparent;font-size: large;font-family: 'Arial';">
+         <input  id="txtsim_s" type="text"  style = "width :63%;font-size: medium;font-family: 'Arial' " PlaceHolder = "ENTER SIM NO."  />     
+        </td>
+
+        <td style="width:13%;border-color:transparent;font-size: large;font-family: 'Arial';">Allot User * : </td>
+         <td style="width:35%;border-color:transparent;font-size: large;font-family: 'Arial';">
+
+          <select id= "cmbalotuser" onchange = "chkGetCountry_usercode()" style="width:63%; font-size: medium;font-family: 'Arial Narrow'" >
+       
+        </select>   
+            
+         
+            
+           </td>    
+    
+       
+      </tr> 
+      <tr>
+     <td style="width:13%;border-color:transparent;font-size: large;font-family: 'Arial';">Allot Code * : </td>
+         <td style="width:35%;border-color:transparent;font-size: large;font-family: 'Arial';">
+          <input id="cmbusercode" type="text"  style = "width :63%;font-size: medium;font-family: 'Arial' " PlaceHolder = "ENTER ALLOT CODE"  />     
+          
+            
+        
+            
+           </td>  
+
+            <td style="width:13%;border-color:transparent;font-size: large;font-family: 'Arial';">Given To * : </td>
+         <td style="width:35%;border-color:transparent;font-size: large;font-family: 'Arial';">
+          <input id="txtgivento" type="text"  style = "width :63%;font-size: medium;font-family: 'Arial' " PlaceHolder = "ENTER GIVE TO"  />     
+       
+           </td>  
+      </tr>
+      <tr>
+     
+
+            <td  align ="center" colspan="4" style="width:35%;border-color:transparent;font-size: medium;font-family: 'Arial Narrow';" >
+                      <input id="btnsearch" type="button" onclick = "show(1);" value="Submit" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+         <input id="btncalcel" type="button" onclick = "cearr();" value="Cancel" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+            
+           
+         
+            </td>
+                </tr>
+       </table>
+    </div>
+  
+
+       <div align ="center"  id = "d1" style="margin-top:2% ; display:none">
+       
+       </div>
+      
+        <div align ="center" id = "popupDeviceSetting" style="margin-top:2%">
+          
+           
+       </div>
+
+         <div align ="center" id = "popupDeviceclick" style="margin-top:2%">
+          
+           
+       </div>
+        <div align ="center"  id = "popupDeviceSearch" style="display:none; margin-top:2%">          
+          
+    <table align="center" cellspacing="5px"  cellpadding="5px"  border=".2px solid gray"         
+            style="font-style:normal; border:1px solid gray;border-collapse:collapse; 
+         font-size: medium; margin :auto; width: 96%; ">
+    <tr>
+    <td>DATE FROM </td>
+     <td>
+      <input id="txtdatefrom" readonly="readonly"  type="text"  style = "Width:90%;   font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder =  "ENTER DATE" />             
+      </td>
+      <td>TO</td>
+       <td>
+         <input id="txtdateto" readonly="readonly" type="text"  style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"  PlaceHolder =  "ENTER DATE" />             
+       </td>
+       </tr>
+       <tr>
+     <td>
+       Select Option </td>
+        <td>
+       <select id ="cmboption" onchange="SelectOption()" style= "width:90%">
+        <option  value = "DATESEARCH">DATE SEARCH</option>
+       <option value="COUNTRYSEARCH">COUNTRY SEARCH</option>
+        <option value="CHALLANNOSEARCH">CHALLAN NO SEARCH </option>
+          <option value ="SIMNOSEARCH">SIM NO SEARCH </option>
+            <option value = "EXECUTIVECODESEARCH">EXECUTIVE CODE SEARCH</option>
+       </select> </td>
+    <td>
+       <label id ="lblitemname" for="Item Name * :">ENTER COUNTRY</label> 
+        
+        </td>
+         <td>
+        <input id="txtval" type="text" style = "Width:90%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;"/> </td>
+       </tr>
+        <tr>
+       <td align = "center" colspan ="4">
+       <div style="width: 50%; float:left" align = "left">
+       <input type = "radio" id = "chk_All" name = a_b" >ALL </input>
+         <input type = "radio" id = "chk_Stock" name = a_b" >IN STOCK </input></div>
+       <div style="width: 69%" align = "left">
+         <input id="Submit1"  type="submit" onclick ="showsearch();"  value="submit" style = "Width:30%; font-size: medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+       </div>
+        </td>
+    </tr>
+    </table>
+
+   <div align ="center"  id = "popupDeviceSearchOK" style="margin-top:2%">
+   
+   </div>
+
+   
+       </div>
+       <div style="display:none">
+       <div align ="center" id = "shw_box" > 
+       <div>
+        @Html.ActionLink("Print All", "PrintCustomers", "PDFChallanout", new { target = "_blank" }, new { target = "_blank" }) 
+       </div>
+        <div id="idbillnosearch">  
+        </div>  
+         </div>
+         </div>
+      
+    <div align = "center">
+    <div>
+    <table>
+    <tr>
+      <th style="background-color:#FAEBD7;width:20px;" ></th>
+      <th style="background-color:#FAEBD7;width:100px;" >Item Name</th>
+            <th style="background-color:#FAEBD7;width:100px;" >Sim No</th>
+             <th style="background-color:#FAEBD7;width:200px;" >Country</th>
+            <th style="background-color:#FAEBD7;width:100px;" >PhoneNo</th>
+                <th style="background-color:#FAEBD7;width:100px;" >Pin</th>
+            <th style="background-color:#FAEBD7;width:100px;" >pin</th>
+           
+          
+    </tr>
+    </table>
+    
+    </div>
+    <table id="myTable1">
+   <tbody></tbody>
+            </table>
+
+            <div>
+            <input onclick = "deleteChkRecord() @*, remove_table()*@ " id="Button1" type="button" value="save" style= "width:20% ; border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" />
+            </div>
+            </div>
+
+
+
+
+
+  
